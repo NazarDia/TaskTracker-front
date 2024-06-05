@@ -1,0 +1,29 @@
+:root {
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 400;
+
+  color: #161616;
+  background-color: #f6f6f6;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+.container {
+  padding-left: 20px;
+  padding-right: 20px;
+  margin: 0 auto;
+}
+
+@media (min-width: 375px) {
+}
+
+@media (min-width: 768px) {
+}
+
+@media (min-width: 1440px) {
+}
