@@ -11,7 +11,7 @@ import { LoginForm } from '../LoginForm/LoginForm';
 // import { Dashboard } from '../Dashboard/Dashboard';
 import PrivateRoute from '../PrivateRoute';
 import RestrictedRoute from '../RestrictedRoute';
-import Loader from '../Loader/Loader';
+// import Loader from '../Loader/Loader';
 
 import s from './App.module.css';
 
