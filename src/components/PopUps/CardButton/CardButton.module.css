@@ -1,0 +1,40 @@
+.addBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    background-color: #5255BC;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 0;
+    cursor: pointer;
+    transition: scale 250ms ease-in 0s;
+}
+
+.addBtn:hover {
+    background-color: #7B7EDE;
+    ;
+}
+
+.iconWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    background-color: #ffff;
+}
+
+.svg {
+    font-size: 14px;
+    color: #000;
+}
+
+.btnTextWrap {
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: -0.02em;
+    color: #ffff;
+}
