@@ -8,12 +8,12 @@ import { selectIsRefreshing } from '../../redux/auth/selectors';
 
 import { RegisterForm } from '../RegisterForm/RegisterForm';
 import { LoginForm } from '../LoginForm/LoginForm';
-// import { Dashboard } from '../Dashboard/Dashboard';
 import PrivateRoute from '../PrivateRoute';
 import RestrictedRoute from '../RestrictedRoute';
-// import Loader from '../Loader/Loader';
+import Loader from '../Loader/Loader';
 
 import s from './App.module.css';
+import ScreensPage from '../ScreensPage/ScreensPage';
 
 const WelcomePage = lazy(() => import('../../pages/WelcomePage/WelcomePage'));
 const HomePage = lazy(() => import('../../pages/HomePage/HomePage'));
@@ -55,10 +55,11 @@ export default function App() {
           path="/home"
           element={<PrivateRoute redirectTo="/" component={<HomePage />} />}
         >
-          {/* Можливо треба буде змінити назву Dashboard */}
           <Route
             path="/home/:boardName"
-            element={<PrivateRoute redirectTo="/" component={<Dashboard />} />}
+            element={
+              <PrivateRoute redirectTo="/" component={<ScreensPage />} />
+            }
           />
         </Route>
         <Route
