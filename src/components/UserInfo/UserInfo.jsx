@@ -10,7 +10,7 @@ const UserInfo = ({ onEditProfile }) => {
     <div className={s.userInfoContainer}>
       <button className={s.userName}>{user.name}</button>
       <svg height={68} width={68}>
-        <use href={`${icon}#icon-user`}></use>
+        {/* <use href={`${icon}#icon-user`}></use> */}
         onClick={onEditProfile}
       </svg>
     </div>
