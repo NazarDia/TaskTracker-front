@@ -3,11 +3,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Suspense, lazy, useEffect } from 'react';
 
 // Можливо потрібно буде виправивити назви селекторів
-import { refreshUser } from '../../redux/auth/opeartions';
+import { refreshUser } from '../../redux/auth/operations';
 import { selectIsRefreshing } from '../../redux/auth/selectors';
 
-import { RegisterForm } from '../RegisterForm/RegisterForm';
-import { LoginForm } from '../LoginForm/LoginForm';
+import RegisterForm from '../RegisterForm/RegisterForm';
+import LoginForm from '../LoginForm/LoginForm';
 import PrivateRoute from '../PrivateRoute';
 import RestrictedRoute from '../RestrictedRoute';
 import Loader from '../Loader/Loader';

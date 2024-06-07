@@ -1,0 +1,22 @@
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 8px;
+  margin-bottom: 20px;
+}
+.logBtn {
+  background-color: lightgrey;
+  color: black;
+  padding: 8px 12px;
+  border: 2px solid black;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.logBtn:hover,
+.logBtn:focus {
+  background-color: red;
+  border: 2px solid black;
+}
