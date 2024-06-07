@@ -11,7 +11,7 @@ import LoginForm from '../LoginForm/LoginForm';
 import PrivateRoute from '../PrivateRoute';
 import RestrictedRoute from '../RestrictedRoute';
 import Loader from '../Loader/Loader';
-import { HomePage } from '../../pages/HomePage/HomePage';
+import HomePage from '../../pages/HomePage/HomePage';
 
 import s from './App.module.css';
 import ScreensPage from '../ScreensPage/ScreensPage';
