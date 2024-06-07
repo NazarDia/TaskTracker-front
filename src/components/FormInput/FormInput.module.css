@@ -1,0 +1,16 @@
+.fieldContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.input {
+  border-radius: 4px;
+  border: 2px solid black;
+  padding-left: 12px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+.error {
+  font-size: 12px;
+  color: red;
+}

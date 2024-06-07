@@ -1,0 +1,86 @@
+.welcomeContainer {
+  background: linear-gradient(
+    180deg,
+    rgba(196, 196, 196, 0) 25%,
+    #bedbb0 92.19%
+  );
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  /* width: 375px;
+  margin: 0 auto; */
+}
+.logo {
+  width: 124px;
+  height: 124px;
+}
+.welcomeLogo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.welcomeText {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+.logoContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background-color: #161616;
+}
+.logoIcon {
+  width: 16px;
+  height: 20px;
+  fill: #fff;
+}
+.logoItem {
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 28px;
+  letter-spacing: -0.04em;
+  color: #161616;
+}
+.mainSlogan {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.02em;
+  text-align: center;
+  color: #161616;
+}
+.mainButtons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+.registerButton {
+  font-weight: 500;
+  text-align: center;
+  min-width: 280px;
+  border-radius: 8px;
+  padding: 14px 0px;
+  color: white;
+  background-color: black;
+  border: none;
+}
+.loginButton {
+  font-weight: 500;
+  text-align: center;
+  font-size: 14px;
+  letter-spacing: -0.02em;
+  color: #161616;
+  background-color: transparent;
+  border: none;
+}
