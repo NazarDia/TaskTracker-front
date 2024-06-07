@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
+axios.defaults.baseURL = 'https://tasktracker-back.onrender.com/api';
 
 const setAuthHeader = token => {
   axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
@@ -15,7 +15,7 @@ export const register = createAsyncThunk(
   'auth/register',
   async (credentials, thunkAPI) => {
     try {
-      const response = await axios.post('/users/signup', credentials);
+      const response = await axios.post('/users/register', credentials);
       setAuthHeader(response.data.token);
       return response.data;
     } catch (e) {
