@@ -67,3 +67,15 @@ export const refreshUser = createAsyncThunk(
     },
   }
 );
+
+export const changeTheme = createAsyncThunk(
+  'auth/usertheme',
+  async (userTheme, thunkAPI) => {
+    try {
+      const response = await axios.patch('/auth/:id', userTheme);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
