@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import { selectUserData } from '../../redux/auth/selectors';
 import s from '../UserInfo/UserInfo.module.css';
-import icon from '../../images/sprite/icons.svg';
+// import icon from '../../images/sprite/icons.svg';
 
 const UserInfo = ({ onEditProfile }) => {
   const user = useSelector(selectUserData);

@@ -1,5 +1,5 @@
 import s from './WelcomePage.module.css';
-import icons from '../../images/sprite/icons.svg';
+// import icons from '../../images/sprite/icons.svg';
 
 import { Link } from 'react-router-dom';
 
@@ -14,9 +14,9 @@ export default function WelcomePage() {
         />
         <div className={s.welcomeText}>
           <span className={s.logoContainer}>
-            <svg className={s.logoIcon}>
+            {/* <svg className={s.logoIcon}>
               <use xlinkHref={`${icons}#icon-lightning`} />
-            </svg>
+            </svg> */}
           </span>
           <p className={s.logoItem}>Task Pro</p>
         </div>
