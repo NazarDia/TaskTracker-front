@@ -19,9 +19,9 @@ export default function WelcomePage() {
       </div>
       <p className={s.welcomeSlogan}>
         Supercharge your productivity and take control
-        <br className={s.tabletBreak} /> of your tasks with Task
-        <br className={s.mobileBreak} /> Pro - Don&apos;t wait, start
-        <br className={s.tabletBreak} /> achieving your goals now!
+        <br className={s.mobileBreak} /> of your tasks with Task
+        <br className={s.tabletBreak} /> Pro - Don&apos;t wait, start
+        <br className={s.mobileBreak} /> achieving your goals now!
       </p>
       <div className={s.mainButtons}>
         <Link to="/auth/register">

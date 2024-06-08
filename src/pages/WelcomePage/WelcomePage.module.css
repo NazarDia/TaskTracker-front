@@ -59,7 +59,7 @@
     color: #161616;
     margin-bottom: 48px;
   }
-  .mobileBreak {
+  .tabletBreak {
     display: none;
   }
   .mainButtons {
@@ -157,7 +157,7 @@
     color: #161616;
     margin-bottom: 48px;
   }
-  .tabletBreak {
+  .mobileBreak {
     display: none;
   }
   .mainButtons {
@@ -248,7 +248,6 @@
     color: #161616;
   }
   .welcomeSlogan {
-    max-width: 335px;
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
     font-size: 14px;
@@ -257,6 +256,9 @@
     text-align: center;
     color: #161616;
     margin-bottom: 48px;
+  }
+  .mobileBreak {
+    display: none;
   }
   .mainButtons {
     display: flex;
