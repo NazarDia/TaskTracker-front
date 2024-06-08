@@ -1,0 +1,91 @@
+/* NewBoard.module.css */
+
+.form {
+    margin: 0;
+    position: relative;
+}
+
+.smallTitle {
+    color: #161616;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: -0.28px;
+    margin-bottom: 14px;
+}
+
+.input {
+    width: 287px;
+    padding: 14px 18px;
+    font-size: 14px;
+    background-color: var(--main-bg-color);
+    border-radius: 8px;
+    margin-bottom: 24px;
+    opacity: 0.4;
+    transition: border var(--primary-transition);
+}
+
+.input:focus {
+    opacity: 1;
+    outline: none;
+}
+
+.errorMessage {
+    margin-bottom: 15px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #000;
+    text-align: center;
+}
+
+
+.iconsWrapper {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 24px;
+}
+
+.label {
+    position: relative;
+    display: inline-block;
+}
+
+.field {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+}
+
+.icon {
+    width: 18px;
+    height: 18px;
+    transition: fill 0.2s;
+    color: rgba(22, 22, 22, 0.5);
+}
+
+.label .icon {
+    cursor: pointer;
+}
+
+.icon use {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+}
+
+.checked {
+    transform: scale(1.2);
+    outline-offset: 2px;
+    color: #000;
+}
+
+
+.backgroundsWrapper {
+    display: flex;
+    width: 252px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 4px;
+    margin-bottom: 40px;
+}
