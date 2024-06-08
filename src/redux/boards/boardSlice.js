@@ -1,12 +1,13 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 import {
+  fetchBoards,
   addBoard,
   deleteBoard,
   editBoardById,
-} from "./operations";
+} from './operations.js';
 
 const boardsSlice = createSlice({
-  name: "boards",
+  name: 'boards',
   initialState: {
     boards: {
       current: {},
@@ -20,9 +21,21 @@ const boardsSlice = createSlice({
       state.boards.current.board.filter = action.payload;
     },
   },
-  extraReducers: (builder) => {
+  extraReducers: builder => {
     builder
-      .addCase(addBoard.pending, (state) => {
+      .addCase(fetchBoards.pending, state => {
+        state.boards.isLoading = true;
+      })
+      .addCase(fetchBoards.fulfilled, (state, action) => {
+        state.boards.isLoading = false;
+        state.boards.error = null;
+        state.boards.items = action.payload;
+      })
+      .addCase(fetchBoards.rejected, (state, action) => {
+        state.boards.isLoading = false;
+        state.boards.error = action.payload;
+      })
+      .addCase(addBoard.pending, state => {
         state.boards.isLoading = true;
       })
       .addCase(addBoard.fulfilled, (state, action) => {
@@ -34,14 +47,14 @@ const boardsSlice = createSlice({
         state.boards.isLoading = false;
         state.boards.error = action.payload;
       })
-      .addCase(editBoardById.pending, (state) => {
+      .addCase(editBoardById.pending, state => {
         state.boards.isLoading = true;
       })
       .addCase(editBoardById.fulfilled, (state, action) => {
         state.boards.isLoading = false;
         state.boards.error = null;
 
-        state.boards.items = state.boards.items.map((board) =>
+        state.boards.items = state.boards.items.map(board =>
           board._id === action.payload._id
             ? { ...board, ...action.payload }
             : board
@@ -51,7 +64,19 @@ const boardsSlice = createSlice({
         state.boards.isLoading = false;
         state.boards.error = action.payload;
       })
-      .addCase(deleteBoard.pending, (state) => {
+      // .addCase(getBoardById.pending, (state) => {
+      //   state.boards.isLoading = true;
+      // })
+      // .addCase(getBoardById.fulfilled, (state, action) => {
+      //   state.boards.isLoading = false;
+      //   state.boards.error = null;
+      //   state.boards.current = { ...action.payload };
+      // })
+      // .addCase(getBoardById.rejected, (state, action) => {
+      //   state.boards.isLoading = false;
+      //   state.boards.error = action.payload;
+      // })
+      .addCase(deleteBoard.pending, state => {
         state.boards.isLoading = true;
       })
       .addCase(deleteBoard.fulfilled, (state, action) => {
@@ -61,9 +86,9 @@ const boardsSlice = createSlice({
         const deletedId = action.payload.id || action.payload._id;
 
         state.boards.items = state.boards.items.filter(
-          (board) => board._id !== deletedId
+          board => board._id !== deletedId
         );
-      })
+      });
   },
 });
 
