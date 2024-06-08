@@ -1,24 +1,13 @@
-.userInfoContainer {
+.profile {
   display: flex;
+  gap: 8px;
   align-items: center;
-  height: 68px;
-}
 
-.userPhoto {
-  width: 68px;
-  height: 68px;
-  cursor: pointer;
-}
-
-.userName {
-  display: flex;
-    gap: 8px;
-    align-items: center;
-  
-    color: #000;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-    letter-spacing: -0.28px;
+  color: #161616;
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.28px;
 }
