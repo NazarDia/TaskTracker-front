@@ -1,86 +1,293 @@
-.welcomeContainer {
-  background: linear-gradient(
-    180deg,
-    rgba(196, 196, 196, 0) 25%,
-    #bedbb0 92.19%
-  );
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  height: 100vh;
-  /* width: 375px;
-  margin: 0 auto; */
+@media only screen and (min-width: 320px) and (max-width: 767px) {
+  .welcomeContainer {
+    background: linear-gradient(
+      180deg,
+      rgba(196, 196, 196, 0) 25%,
+      #bedbb0 92.19%
+    );
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+  }
+  .welcomeHeader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin-bottom: 24px;
+  }
+  .welcomeImage {
+    background-image: url('/src/images/welcome-page-image/welcome-mob-1x.png');
+    background-size: cover;
+    width: 124px;
+    height: 124px;
+  }
+  .welcomeNameWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+  }
+  .welcomeIconWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    background-color: black;
+  }
+  .welcomeName {
+    font-weight: 600;
+    font-size: 28px;
+    letter-spacing: -0.04em;
+    font-family: 'Poppins', sans-serif;
+    color: #161616;
+  }
+  .welcomeSlogan {
+    max-width: 335px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.29;
+    letter-spacing: -0.02em;
+    text-align: center;
+    color: #161616;
+    margin-bottom: 48px;
+  }
+  .mobileBreak {
+    display: none;
+  }
+  .mainButtons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+  }
+  .registerButton {
+    font-weight: 500;
+    text-align: center;
+    min-width: 280px;
+    border-radius: 8px;
+    padding: 14px 0px;
+    color: white;
+    background-color: black;
+    border: none;
+    height: 49px;
+    width: 335px;
+  }
+  .loginButton {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    text-align: center;
+    font-size: 14px;
+    letter-spacing: -0.02em;
+    color: #161616;
+    background-color: transparent;
+    border: none;
+  }
 }
-.logo {
-  width: 124px;
-  height: 124px;
+
+@media only screen and (min-width: 768px) and (max-width: 1439px) {
+  .welcomeContainer {
+    background: linear-gradient(
+      180deg,
+      rgba(196, 196, 196, 0) 25%,
+      #bedbb0 92.19%
+    );
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+  }
+  .welcomeHeader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    margin-bottom: 24px;
+  }
+  .welcomeImage {
+    background-image: url('/src/images/welcome-page-image/welcome-tab-1x.png');
+    background-size: cover;
+    width: 162px;
+    height: 162px;
+  }
+  .welcomeNameWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+  }
+  .welcomeIconWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    background-color: black;
+  }
+  .welcomeIcon {
+    width: 18px;
+    height: 24px;
+  }
+  .welcomeName {
+    font-weight: 600;
+    font-size: 40px;
+    letter-spacing: -0.04em;
+    font-family: 'Poppins', sans-serif;
+    color: #161616;
+  }
+  .welcomeSlogan {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.29;
+    letter-spacing: -0.02em;
+    text-align: center;
+    color: #161616;
+    margin-bottom: 48px;
+  }
+  .tabletBreak {
+    display: none;
+  }
+  .mainButtons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+  }
+  .registerButton {
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: -0.02em;
+    text-align: center;
+    color: white;
+    min-width: 280px;
+    border-radius: 8px;
+    padding: 14px 0px;
+    background-color: black;
+    border: none;
+    height: 49px;
+    width: 344px;
+  }
+  .loginButton {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    text-align: center;
+    font-size: 14px;
+    letter-spacing: -0.02em;
+    color: #161616;
+    background-color: transparent;
+    border: none;
+  }
 }
-.welcomeLogo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
-.welcomeText {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 14px;
-}
-.logoContainer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 8px;
-  background-color: #161616;
-}
-.logoIcon {
-  width: 16px;
-  height: 20px;
-  fill: #fff;
-}
-.logoItem {
-  font-family: var(--font-family);
-  font-weight: 600;
-  font-size: 28px;
-  letter-spacing: -0.04em;
-  color: #161616;
-}
-.mainSlogan {
-  font-family: var(--font-family);
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 129%;
-  letter-spacing: -0.02em;
-  text-align: center;
-  color: #161616;
-}
-.mainButtons {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 14px;
-}
-.registerButton {
-  font-weight: 500;
-  text-align: center;
-  min-width: 280px;
-  border-radius: 8px;
-  padding: 14px 0px;
-  color: white;
-  background-color: black;
-  border: none;
-}
-.loginButton {
-  font-weight: 500;
-  text-align: center;
-  font-size: 14px;
-  letter-spacing: -0.02em;
-  color: #161616;
-  background-color: transparent;
-  border: none;
+
+@media only screen and (min-width: 1440px) {
+  .welcomeContainer {
+    background: linear-gradient(
+      180deg,
+      rgba(196, 196, 196, 0) 25%,
+      #bedbb0 92.19%
+    );
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+  }
+  .welcomeHeader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    margin-bottom: 24px;
+  }
+  .welcomeImage {
+    background-image: url('/src/images/welcome-page-image/welcome-desk-1x.png');
+    background-size: cover;
+    width: 162px;
+    height: 162px;
+  }
+  .welcomeNameWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+  }
+  .welcomeIconWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    background-color: black;
+  }
+  .welcomeIcon {
+    width: 18px;
+    height: 24px;
+  }
+  .welcomeName {
+    font-weight: 600;
+    font-size: 40px;
+    letter-spacing: -0.04em;
+    font-family: 'Poppins', sans-serif;
+    color: #161616;
+  }
+  .welcomeSlogan {
+    max-width: 335px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.29;
+    letter-spacing: -0.02em;
+    text-align: center;
+    color: #161616;
+    margin-bottom: 48px;
+  }
+  .mainButtons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+  }
+  .registerButton {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: -0.02em;
+    text-align: center;
+    min-width: 280px;
+    border-radius: 8px;
+    padding: 14px 0px;
+    color: white;
+    background-color: black;
+    border: none;
+    height: 49px;
+    width: 344px;
+  }
+  .loginButton {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    text-align: center;
+    font-size: 14px;
+    letter-spacing: -0.02em;
+    color: #161616;
+    background-color: transparent;
+    border: none;
+  }
 }
