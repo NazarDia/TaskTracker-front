@@ -1,3 +1,27 @@
 .container {
-  max-width: 1080px;
+  width: 335px;
+  padding: 18px 20px;
+  margin-bottom: 14px;
+  background-color: var(--main-color);
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  border-radius: 8px;
+  font-family: 'PoppinsMedium';
+  font-size: var(--base-font-size);
+  color: var(--text-color);
+  line-height: normal;
+  letter-spacing: -0.0175em;
+  fill: var(--text-color);
+}
+.icons {
+  opacity: 50%;
+}
+
+@media screen and (min-width: 768px) {
+}
+
+@media screen and (min-width: 1280px) {
+}
+@media screen and (max-width: 1440px) {
 }
