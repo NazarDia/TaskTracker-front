@@ -2,7 +2,23 @@
   display: flex;
 }
 
+.sidebar {
+  display: none;
+}
+
 .mainContent {
   display: flex;
   flex-direction: column;
+}
+
+@media screen and (min-width: 375px) {
+}
+
+@media screen and (min-width: 768px) {
+}
+
+@media screen and (min-width: 1440px) {
+  .sidebar {
+    display: flex;
+  }
 }

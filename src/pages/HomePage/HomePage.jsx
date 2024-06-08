@@ -8,7 +8,7 @@ import ErrorMessage from '../../components/Error/Error';
 
 import Header from '../../components/Header/Header';
 import Sidebar from '../../components/SideBar/SideBar';
-import HeaderDashboard from '../../components/HeaderDashboard/HeaderDashboard';
+import ScreensPage from '../../components/ScreensPage/ScreensPage';
 
 import s from './HomePage.module.css';
 
@@ -23,7 +23,9 @@ export default function HomePage() {
 
   return (
     <div className={s.container}>
-      <Sidebar />
+      <div className={s.sidebar}>
+        <Sidebar />
+      </div>
       <div className={s.mainContent}>
         <Header />
 
@@ -32,7 +34,7 @@ export default function HomePage() {
           {errorMessage && <ErrorMessage />}
         </div>
 
-        {!isLoading && !errorMessage && <HeaderDashboard />}
+        {!isLoading && !errorMessage && <ScreensPage />}
       </div>
     </div>
   );
