@@ -16,7 +16,9 @@ export const register = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const response = await axios.post('/users/register', credentials);
-      setAuthHeader(response.data.token);
+      const { token } = response.data;
+      localStorage.setItem('token', token);
+      setAuthHeader(token);
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
@@ -29,7 +31,9 @@ export const login = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const response = await axios.post('/users/login', credentials);
-      setAuthHeader(response.data.token);
+      const { token } = response.data;
+      localStorage.setItem('token', token);
+      setAuthHeader(token);
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
@@ -40,6 +44,7 @@ export const login = createAsyncThunk(
 export const logout = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
   try {
     const response = await axios.post('/users/logout');
+    localStorage.removeItem('token');
     clearAuthHeader();
     return response.data;
   } catch (e) {
@@ -50,19 +55,19 @@ export const logout = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
 export const refreshUser = createAsyncThunk(
   'auth/refresh',
   async (_, thunkAPI) => {
-    try {
-      const reduxState = thunkAPI.getState();
-      setAuthHeader(reduxState.auth.token);
-      const response = await axios.get('/users/current');
-      return response.data;
-    } catch (e) {
-      return thunkAPI.rejectWithValue(e.message);
+    const token = localStorage.getItem('token');
+
+    if (!token) {
+      return thunkAPI.rejectWithValue('No token found');
     }
+
+    setAuthHeader(token);
+
+    return { token };
   },
   {
     condition: (_, { getState }) => {
       const reduxState = getState();
-
       return reduxState.auth.token !== null;
     },
   }

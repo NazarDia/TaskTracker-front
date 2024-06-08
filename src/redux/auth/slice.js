@@ -9,15 +9,17 @@ const handleRejected = (state, action) => {
   state.error = action.payload;
 };
 
+const initialState = {
+  user: { name: null, email: null },
+  token: localStorage.getItem('token') || null,
+  isLoggedIn: false,
+  isRefreshing: false,
+  error: null,
+};
+
 const authSlice = createSlice({
   name: 'auth',
-  initialState: {
-    user: { name: null, email: null },
-    token: null,
-    isLoggedIn: false,
-    isRefreshing: false,
-    error: null,
-  },
+  initialState,
   reducers: {
     resetAuthError(state) {
       state.error = null;
@@ -43,10 +45,7 @@ const authSlice = createSlice({
 
       .addCase(logout.pending, handlePending)
       .addCase(logout.fulfilled, state => {
-        state.user = {
-          name: null,
-          email: null,
-        };
+        state.user = { name: null, email: null };
         state.token = null;
         state.isLoggedIn = false;
       })

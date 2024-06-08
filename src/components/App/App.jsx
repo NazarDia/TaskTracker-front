@@ -4,7 +4,10 @@ import { Suspense, lazy, useEffect } from 'react';
 
 // Можливо потрібно буде виправивити назви селекторів
 import { refreshUser } from '../../redux/auth/operations';
-import { selectIsRefreshing } from '../../redux/auth/selectors';
+import {
+  selectIsRefreshing,
+  selectIsLoggedIn,
+} from '../../redux/auth/selectors';
 
 import RegisterForm from '../RegisterForm/RegisterForm';
 import LoginForm from '../LoginForm/LoginForm';
@@ -25,10 +28,13 @@ const NotFoundPage = lazy(() =>
 export default function App() {
   const dispatch = useDispatch();
   const isRefreshing = useSelector(selectIsRefreshing);
+  const isLoggedIn = useSelector(selectIsLoggedIn);
 
   useEffect(() => {
-    dispatch(refreshUser());
-  }, [dispatch]);
+    if (!isLoggedIn) {
+      dispatch(refreshUser());
+    }
+  }, [dispatch, isLoggedIn]);
 
   return isRefreshing ? (
     <Loader />
