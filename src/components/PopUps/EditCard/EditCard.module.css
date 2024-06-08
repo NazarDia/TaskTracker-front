@@ -1,0 +1,7 @@
+.editContactContainer {
+    width: 335px;
+    height: 522px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}

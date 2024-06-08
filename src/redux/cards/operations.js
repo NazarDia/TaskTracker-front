@@ -28,3 +28,15 @@ export const addCard = createAsyncThunk(
     }
   }
 );
+//UPDATE
+export const updateCard = createAsyncThunk(
+  'card/updateCard',
+  async (updatedCard, thunkAPI) => {
+    try {
+      const response = await axios.put(`/tasks/${updatedCard.id}`, updatedCard);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
