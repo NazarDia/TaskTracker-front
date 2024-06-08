@@ -1,0 +1,10 @@
+.logoutBtn {
+  display: flex;
+  align-items: center;
+
+  gap: 13px;
+  width: 105px;
+  height: 32px;
+  padding: 0 0 4px 4px;
+  font-size: 14px;
+}

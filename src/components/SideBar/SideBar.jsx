@@ -1,3 +1,11 @@
+import LogoutBtn from '../LogoutBtn/LogoutBtn';
+
 export default function SideBar() {
-  return <div>SideBar</div>;
+  return (
+    <div>
+      <p>SideBar</p>
+      <br />
+      <LogoutBtn />
+    </div>
+  );
 }
