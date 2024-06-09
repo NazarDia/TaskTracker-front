@@ -12,7 +12,6 @@ export default function BoardList() {
     dispatch(fetchBoards());
   }, [dispatch]);
   const boards = useSelector(state => state.boards.boards.items);
-  console.log(boards);
 
   const handleBoardClick = board => {
     dispatch(setActiveBoard(board));

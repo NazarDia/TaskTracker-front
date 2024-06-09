@@ -3,8 +3,8 @@ import { useDispatch } from 'react-redux';
 import { Formik, Form } from 'formik';
 import { register } from '../../redux/auth/operations';
 import FormInput from '../FormInput/FormInput';
-import * as Yup from 'yup';
 import { useId } from 'react';
+import { registerUserSchema } from '../../Schemas/schema';
 
 export default function RegistrationForm() {
   const dispatch = useDispatch();
@@ -19,16 +19,6 @@ export default function RegistrationForm() {
     password: '',
   };
 
-  const validationSchema = Yup.object().shape({
-    name: Yup.string()
-      .trim()
-      .min(3, 'Too short!')
-      .max(50, 'Too long!')
-      .required('Required'),
-    password: Yup.string().trim().min(4, 'Too short!').required('Required'),
-    email: Yup.string().trim().email().required('Required'),
-  });
-
   const handleSubmit = values => {
     dispatch(register(values));
   };
@@ -37,7 +27,7 @@ export default function RegistrationForm() {
     <Formik
       initialValues={initialValues}
       onSubmit={handleSubmit}
-      validationSchema={validationSchema}
+      validationSchema={registerUserSchema}
     >
       <Form className={s.formContainer} autoComplete="off">
         <FormInput

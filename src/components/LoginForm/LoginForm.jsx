@@ -4,7 +4,7 @@ import { Formik, Form } from 'formik';
 import { login } from '../../redux/auth/operations';
 import FormInput from '../FormInput/FormInput';
 import { useId } from 'react';
-import * as Yup from 'yup';
+import { loginUserSchema } from '../../Schemas/schema';
 
 export default function LoginForm() {
   const dispatch = useDispatch();
@@ -17,11 +17,6 @@ export default function LoginForm() {
     password: '',
   };
 
-  const validationSchema = Yup.object().shape({
-    password: Yup.string().required('Required, please insert the password'),
-    email: Yup.string().email().required('Required, please insert the email'),
-  });
-
   const handleSubmit = values => {
     dispatch(login(values));
   };
@@ -30,7 +25,7 @@ export default function LoginForm() {
     <Formik
       initialValues={initialValues}
       onSubmit={handleSubmit}
-      validationSchema={validationSchema}
+      validationSchema={loginUserSchema}
     >
       <Form className={s.formContainer} autoComplete="off">
         <FormInput
