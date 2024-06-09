@@ -26,7 +26,7 @@ const TaskColumnsList = () => {
         ) : (
           <ul>
             {columns.map(column => (
-              <li key={column.id}>
+              <li key={column._id}>
                 <TaskColumn column={column} />
               </li>
             ))}

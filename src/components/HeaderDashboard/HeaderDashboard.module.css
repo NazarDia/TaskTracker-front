@@ -16,14 +16,18 @@
   display: flex;
   align-items: center;
 }
-
-.icon {
-  fill: rgba(22, 22, 22, 0.8);
-}
 .filterWrapper {
+  display: flex;
   height: 100%;
 }
+.icon {
+  stroke: rgba(22, 22, 22, 0.8);
+  display: block;
+  align-self: center;
+}
+
 .filtersPar {
+  margin-left: 10px;
   height: 100%;
   color: rgba(22, 22, 22, 0.8);
   font-family: 'PoppinsMedium';
