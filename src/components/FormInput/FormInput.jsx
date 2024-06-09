@@ -9,14 +9,14 @@ export default function FormInput({
   children,
 }) {
   return (
-    <div className={s.fieldContainer}>
+    <div>
       <label htmlFor={id}>{children}</label>
       <Field
         type={type}
         name={name}
         id={id}
         placeholder={placeholder}
-        className={s.input}
+        className={s.fieldInput}
       ></Field>
       <span className={s.error}>
         <ErrorMessage name={name} as="span" />

@@ -5,9 +5,12 @@ import { register } from '../../redux/auth/operations';
 import FormInput from '../FormInput/FormInput';
 import * as Yup from 'yup';
 import { useId } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
 export default function RegistrationForm() {
   const dispatch = useDispatch();
+  const location = useLocation();
+  const isRegister = location.pathname === '/auth/register';
 
   const nameFieldId = useId();
   const emailFieldId = useId();
@@ -39,38 +42,53 @@ export default function RegistrationForm() {
       onSubmit={handleSubmit}
       validationSchema={validationSchema}
     >
-      <Form className={s.formContainer} autoComplete="off">
-        <FormInput
-          id={nameFieldId}
-          type="text"
-          name="name"
-          placeholder="Username"
-        >
-          Username
-        </FormInput>
+      <div className={s.registerPage}>
+        <div className={s.registerContainer}>
+          <ul className={s.navBtns}>
+            <li className={isRegister ? s.active : ''}>
+              <Link
+                className={isRegister ? s.activeLink : s.navLinks}
+                to="/auth/register"
+              >
+                Registration
+              </Link>
+            </li>
+            <li className={isRegister ? s.active : ''}>
+              <Link
+                className={!isRegister ? s.activeLink : s.navLinks}
+                to="/auth/login"
+              >
+                Log In
+              </Link>
+            </li>
+          </ul>
+          <Form className={s.formContainer} autoComplete="off">
+            <FormInput
+              id={nameFieldId}
+              type="text"
+              name="name"
+              placeholder="Enter your name"
+            ></FormInput>
 
-        <FormInput
-          id={emailFieldId}
-          type="email"
-          name="email"
-          placeholder="Email"
-        >
-          Email
-        </FormInput>
+            <FormInput
+              id={emailFieldId}
+              type="email"
+              name="email"
+              placeholder="Enter your email"
+            ></FormInput>
 
-        <FormInput
-          id={passwordFieldId}
-          type="password"
-          name="password"
-          placeholder="Password"
-        >
-          Password
-        </FormInput>
-
-        <button type="submit" className={s.regBtn}>
-          Register
-        </button>
-      </Form>
+            <FormInput
+              id={passwordFieldId}
+              type="password"
+              name="password"
+              placeholder="Create a password"
+            ></FormInput>
+            <button type="submit" className={s.regBtn}>
+              Register Now
+            </button>
+          </Form>
+        </div>
+      </div>
     </Formik>
   );
 }
