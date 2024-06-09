@@ -20,9 +20,10 @@
     gap: 14px;
     margin-bottom: 24px;
   }
-  .welcomeImage {
-    background-image: url('/src/images/welcome-page-image/welcome-mob-1x.png');
-    background-size: cover;
+  .welcomeImage img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 124px;
     height: 124px;
   }
@@ -92,7 +93,6 @@
     border: none;
   }
 }
-
 @media only screen and (min-width: 768px) and (max-width: 1439px) {
   .welcomeContainer {
     background: linear-gradient(
@@ -115,9 +115,10 @@
     gap: 24px;
     margin-bottom: 24px;
   }
-  .welcomeImage {
-    background-image: url('/src/images/welcome-page-image/welcome-tab-1x.png');
-    background-size: cover;
+  .welcomeImage img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 162px;
     height: 162px;
   }
@@ -192,7 +193,6 @@
     border: none;
   }
 }
-
 @media only screen and (min-width: 1440px) {
   .welcomeContainer {
     background: linear-gradient(
@@ -215,9 +215,10 @@
     gap: 24px;
     margin-bottom: 24px;
   }
-  .welcomeImage {
-    background-image: url('/src/images/welcome-page-image/welcome-desk-1x.png');
-    background-size: cover;
+  .welcomeImage img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 162px;
     height: 162px;
   }

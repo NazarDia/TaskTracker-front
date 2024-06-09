@@ -1,22 +1,186 @@
-.formContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 12px;
-  padding: 12px 8px;
-  margin-bottom: 20px;
+@media only screen and (min-width: 320px) and (max-width: 767px) {
+  .registerPage {
+    background: linear-gradient(
+      180deg,
+      rgba(196, 196, 196, 0) 25%,
+      #bedbb0 92.19%
+    );
+    width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .registerContainer {
+    width: 335px;
+    height: 300px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    background-color: #151515;
+    border-radius: 8px;
+  }
+  .navBtns {
+    display: flex;
+    gap: 14px;
+    list-style-type: none;
+    margin-bottom: 40px;
+  }
+  .navLinks {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    letter-spacing: -0.02em;
+    color: rgba(255, 255, 255, 0.3);
+  }
+  .activeLink {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    letter-spacing: -0.02em;
+    color: #fff;
+  }
+  .formContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 24px;
+  }
+  .logBtn {
+    border-radius: 8px;
+    border: none;
+    width: 287px;
+    height: 49px;
+    background: #bedbb0;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: -0.02em;
+    text-align: center;
+    color: #161616;
+  }
 }
-.logBtn {
-  background-color: lightgrey;
-  color: black;
-  padding: 8px 12px;
-  border: 2px solid black;
-  border-radius: 5px;
-  cursor: pointer;
+@media only screen and (min-width: 768px) and (max-width: 1439px) {
+  .registerPage {
+    background: linear-gradient(
+      180deg,
+      rgba(196, 196, 196, 0) 25%,
+      #bedbb0 92.19%
+    );
+    width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .registerContainer {
+    width: 424px;
+    height: 332px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    background-color: #151515;
+    border-radius: 8px;
+  }
+  .navBtns {
+    display: flex;
+    gap: 14px;
+    list-style-type: none;
+    margin-bottom: 40px;
+  }
+  .navLinks {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    letter-spacing: -0.02em;
+    color: rgba(255, 255, 255, 0.3);
+  }
+  .activeLink {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    letter-spacing: -0.02em;
+    color: #fff;
+  }
+  .formContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 24px;
+  }
+  .logBtn {
+    border-radius: 8px;
+    border: none;
+    width: 344px;
+    height: 49px;
+    background: #bedbb0;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: -0.02em;
+    text-align: center;
+    color: #161616;
+  }
 }
-.logBtn:hover,
-.logBtn:focus {
-  background-color: red;
-  border: 2px solid black;
+@media only screen and (min-width: 1440px) {
+  .registerPage {
+    background: linear-gradient(
+      180deg,
+      rgba(196, 196, 196, 0) 25%,
+      #bedbb0 92.19%
+    );
+    width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .registerContainer {
+    width: 424px;
+    height: 332px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(21, 21, 21);
+    border-radius: 8px;
+  }
+  .navBtns {
+    display: flex;
+    gap: 14px;
+    list-style-type: none;
+    margin-bottom: 40px;
+  }
+  .navLinks {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    letter-spacing: -0.02em;
+    color: rgba(255, 255, 255, 0.3);
+  }
+  .activeLink {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    letter-spacing: -0.02em;
+    color: #fff;
+  }
+  .formContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 24px;
+  }
+  .logBtn {
+    border-radius: 8px;
+    border: none;
+    width: 344px;
+    height: 49px;
+    background: #bedbb0;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: -0.02em;
+    text-align: center;
+    color: #161616;
+  }
 }
