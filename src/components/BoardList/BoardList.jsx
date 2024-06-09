@@ -1,12 +1,39 @@
+import { useDispatch, useSelector } from 'react-redux';
 import SideBarCreateBoard from '../SideBarCreateBoard/SideBarCreateBoard';
 import s from './BoardList.module.css';
+import { setActiveBoard } from '../../redux/boards/boardSlice.js';
+import { getAllColumns } from '../../redux/columns/operations.js';
+import { useEffect } from 'react';
+import { fetchBoards } from '../../redux/boards/operations.js';
 
 export default function BoardList() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchBoards());
+  }, [dispatch]);
+  const boards = useSelector(state => state.boards.boards.items);
+  console.log(boards);
+
+  const handleBoardClick = board => {
+    dispatch(setActiveBoard(board));
+    dispatch(getAllColumns(board.id));
+  };
+
   return (
     <div className={s.container}>
       <h2 className={s.title}>My boards</h2>
       <SideBarCreateBoard />
-      <div className={s.boardList}>BoardList...</div>
+      {boards.length > 0 ? (
+        <ul className={s.boardList}>
+          {boards.map(board => (
+            <li key={board._id} onClick={() => handleBoardClick(board)}>
+              {board.title}
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <div></div>
+      )}
     </div>
   );
 }

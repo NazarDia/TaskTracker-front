@@ -1,9 +1,14 @@
 import s from './HeaderDashboard.module.css';
-const HeaderDashboard = () => {
+import sprite from '../../images/sprite/sprite-icon.svg';
+
+const HeaderDashboard = ({ activeBoard }) => {
   return (
     <div className={s.headerWrapper}>
-      <p className={s.baordTitle}>Board Name</p>
+      <p className={s.boardTitle}>{activeBoard ? activeBoard.title : ''}</p>
       <div className={s.filterWrapper}>
+        <svg width={20} height={20} className={s.icon}>
+          <use href={`${sprite}#filter`}></use>
+        </svg>
         <p className={s.filtersPar}>Filters</p>
       </div>
     </div>
