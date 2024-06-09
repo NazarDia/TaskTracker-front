@@ -1,10 +1,27 @@
 .logoutBtn {
   display: flex;
   align-items: center;
-
   gap: 13px;
   width: 105px;
   height: 32px;
-  padding: 0 0 4px 4px;
+  padding: 0;
+  background-color: transparent;
+  border: 0;
+  font-weight: 500;
+}
+
+.logoutBtn p {
   font-size: 14px;
+}
+
+@media screen and (min-width: 768px) {
+  .logoutBtn {
+    gap: 14px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .logoutBtn p {
+    font-size: 16px;
+  }
 }

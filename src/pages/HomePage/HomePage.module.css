@@ -4,11 +4,16 @@
 
 .sidebar {
   display: none;
+  position: fixed;
+  z-index: 2;
 }
 
 .mainContent {
-  display: flex;
+  /* display: flex; */
+  position: relative;
   flex-direction: column;
+  width: 100%;
+  z-index: 1;
 }
 
 @media screen and (min-width: 375px) {
@@ -20,5 +25,7 @@
 @media screen and (min-width: 1440px) {
   .sidebar {
     display: flex;
+    position: static;
+    z-index: 1;
   }
 }

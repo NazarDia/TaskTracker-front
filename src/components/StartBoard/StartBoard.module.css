@@ -1,0 +1,14 @@
+.textInner {
+  height: 100vh;
+  min-width: 335px;
+  max-width: 468px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.startWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}

@@ -1,0 +1,33 @@
+.createBoard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 197px;
+  height: 70px;
+  margin-bottom: 40px;
+  border-top: 1px solid var(--aside-els-frame-color);
+  border-bottom: 1px solid var(--aside-els-frame-color);
+}
+
+.text {
+  width: 76px;
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: -0.02em;
+  color: var(--text-color);
+}
+
+.btn {
+  width: 40px;
+  height: 36px;
+  background-color: var(--btn-bg-color);
+  border: 0;
+  border-radius: 6px;
+  line-height: 0;
+}
+
+@media screen and (min-width: 768px) {
+  .createBoard {
+    width: 212px;
+  }
+}

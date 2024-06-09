@@ -1,0 +1,16 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 225px;
+  height: 100vh;
+  padding: 14px;
+  background-color: var(--aside-bg-color);
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    width: 260px;
+    padding: 24px;
+  }
+}

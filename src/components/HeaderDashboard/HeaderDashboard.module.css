@@ -1,0 +1,39 @@
+.headerWrapper {
+  width: 100%;
+  height: 48px;
+  padding: 0 20px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--main-bg-color);
+}
+.baordTitle {
+  color: var(--text-color);
+  font-family: 'PoppinsMedium';
+  font-size: var(--base-font-size);
+  line-height: normal;
+  letter-spacing: -0.0175em;
+  display: flex;
+  align-items: center;
+}
+.filterWrapper {
+  display: flex;
+  height: 100%;
+}
+.icon {
+  stroke: rgba(22, 22, 22, 0.8);
+  display: block;
+  align-self: center;
+}
+
+.filtersPar {
+  margin-left: 10px;
+  height: 100%;
+  color: rgba(22, 22, 22, 0.8);
+  font-family: 'PoppinsMedium';
+  font-size: var(--base-font-size);
+  line-height: normal;
+  letter-spacing: -0.0175em;
+  display: flex;
+  align-items: center;
+}

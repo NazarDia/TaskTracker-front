@@ -20,6 +20,9 @@ const boardsSlice = createSlice({
     setFilter(state, action) {
       state.boards.current.board.filter = action.payload;
     },
+    setActiveBoard(state, action) {
+      state.boards.current = action.payload;
+    },
   },
   extraReducers: builder => {
     builder
@@ -92,4 +95,5 @@ const boardsSlice = createSlice({
   },
 });
 
+export const { setActiveBoard, setFilter } = boardsSlice.actions;
 export const boardsReducer = boardsSlice.reducer;
