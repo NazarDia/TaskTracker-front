@@ -61,8 +61,8 @@
   -webkit-text-size-adjust: 100%;
 }
 
-/* 
-.theme-light {
+
+[data-theme='light'] {
   --main-color: #ffffff;
   --header-bg-color: #fcfcfc;
   --modal-bg-color: #fcfcfc;
@@ -83,7 +83,7 @@
   --column-color-active:#9092D6;
 }
 
-.theme-dark {
+[data-theme='dark'] {
   --main-color: #121212;
   --header-bg-color: #161616;
   --modal-bg-color: #151515;
@@ -104,7 +104,7 @@
   --column-color-active:#121212;
 }
 
-.theme-violet {
+[data-theme='violet'] {
   --main-color: #5255BC;
   --header-bg-color: #FFF;
   --modal-bg-color: #FCFCFC;
@@ -124,7 +124,7 @@
   --btn-bg-color: #5255BC; 
   --column-color-active:#FFF;
 }
-*/
+
 
 .container {
   padding-left: 20px;

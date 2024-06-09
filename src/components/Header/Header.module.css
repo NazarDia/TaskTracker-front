@@ -1,5 +1,5 @@
 .header {
-  background-color: #fcfcfc;;
+  background-color: var(--header-bg-color);
   
   height: 60px;
 
@@ -8,11 +8,11 @@
   }
 }
 
-/* .header_iconMenu {
+.header_iconMenu {
   fill: #161616;
   width: 100%;
   height: 100%;
-} */
+}
 
 .container {
   display: flex;
@@ -30,7 +30,7 @@
   }
 }
 
-/* .menu_btn {
+.menu_btn {
   height: 24px;
   width: 24px;
 
@@ -42,7 +42,7 @@
   @media screen and (min-width: 1440px) {
     display: none;
   }
-} */
+}
 
 .profile_container {
   display: flex;
