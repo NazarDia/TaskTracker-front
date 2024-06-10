@@ -30,8 +30,8 @@ export default function LoginForm() {
       onSubmit={handleSubmit}
       validationSchema={loginUserSchema}
     >
-      <div className={s.registerPage}>
-        <div className={s.registerContainer}>
+      <div className={s.loginPage}>
+        <div className={s.loginContainer}>
           <ul className={s.navBtns}>
             <li className={isLogin ? s.active : ''}>
               <Link

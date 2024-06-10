@@ -1,5 +1,5 @@
 @media only screen and (min-width: 320px) and (max-width: 767px) {
-  .registerPage {
+  .loginPage {
     background: linear-gradient(
       180deg,
       rgba(196, 196, 196, 0) 25%,
@@ -11,9 +11,7 @@
     align-items: center;
     justify-content: center;
   }
-  .registerContainer {
-    width: 335px;
-    height: 300px;
+  .loginContainer {
     padding: 24px;
     display: flex;
     flex-direction: column;
@@ -44,7 +42,6 @@
     display: flex;
     flex-direction: column;
     gap: 14px;
-    margin-bottom: 24px;
   }
   .logBtn {
     border-radius: 8px;
@@ -58,10 +55,11 @@
     letter-spacing: -0.02em;
     text-align: center;
     color: #161616;
+    margin-top: 10px;
   }
 }
 @media only screen and (min-width: 768px) and (max-width: 1439px) {
-  .registerPage {
+  .loginPage {
     background: linear-gradient(
       180deg,
       rgba(196, 196, 196, 0) 25%,
@@ -73,9 +71,7 @@
     align-items: center;
     justify-content: center;
   }
-  .registerContainer {
-    width: 424px;
-    height: 332px;
+  .loginContainer {
     padding: 40px;
     display: flex;
     flex-direction: column;
@@ -106,7 +102,6 @@
     display: flex;
     flex-direction: column;
     gap: 14px;
-    margin-bottom: 24px;
   }
   .logBtn {
     border-radius: 8px;
@@ -120,10 +115,11 @@
     letter-spacing: -0.02em;
     text-align: center;
     color: #161616;
+    margin-top: 10px;
   }
 }
 @media only screen and (min-width: 1440px) {
-  .registerPage {
+  .loginPage {
     background: linear-gradient(
       180deg,
       rgba(196, 196, 196, 0) 25%,
@@ -135,9 +131,7 @@
     align-items: center;
     justify-content: center;
   }
-  .registerContainer {
-    width: 424px;
-    height: 332px;
+  .loginContainer {
     padding: 40px;
     display: flex;
     flex-direction: column;
@@ -168,7 +162,6 @@
     display: flex;
     flex-direction: column;
     gap: 14px;
-    margin-bottom: 24px;
   }
   .logBtn {
     border-radius: 8px;
@@ -182,5 +175,6 @@
     letter-spacing: -0.02em;
     text-align: center;
     color: #161616;
+    margin-top: 10px;
   }
 }
