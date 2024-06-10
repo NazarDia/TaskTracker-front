@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { register, login, logout, refreshUser } from './operations';
+import { register, login, logout, refreshUser, changeTheme, updateProfile } from './operations';
+import { toast } from 'react-hot-toast';
 
 const handlePending = state => {
   state.error = null;
@@ -14,6 +15,7 @@ const initialState = {
   token: localStorage.getItem('token') || null,
   isLoggedIn: false,
   isRefreshing: false,
+  isLoading: false,
   error: null,
 };
 
@@ -62,8 +64,33 @@ const authSlice = createSlice({
       })
       .addCase(refreshUser.rejected, state => {
         state.isRefreshing = false;
-      }),
-});
+      })
 
+      .addCase(changeTheme.pending, state => {
+        state.isLoading = true;
+      })
+      .addCase(changeTheme.fulfilled, (state, { payload }) => {
+        state.user = payload.user;
+        state.isLoading = false;
+      })
+      .addCase(changeTheme.rejected, state => {
+        state.isLoading = false;
+      })
+      .addCase(updateProfile.pending, state => {
+        state.isLoading = true;
+      })
+      .addCase(updateProfile.fulfilled, (state, { payload }) => {
+        state.user = payload.user;
+        state.isLoading = false;
+        toast.success(`Profile updated!`);
+        if (payload.token === '') {
+          state.isLoggedIn = false;
+        }
+      })
+      .addCase(updateProfile.rejected, state => {
+        state.isLoading = false;
+        toast.error(`Something went wrong`);
+      })
+});
 export const authReducer = authSlice.reducer;
 export const { resetAuthError } = authSlice.actions;

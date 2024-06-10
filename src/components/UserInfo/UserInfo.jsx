@@ -2,17 +2,18 @@ import { useUserData } from '../../hooks/useUserData';
 import s from '../UserInfo/UserInfo.module.css';
 import icon from '../../images/sprite/sprite-icon.svg';
 
-const UserInfo = ({ handlerClick }) => {
+const UserInfo = ({ onClick }) => {
   const user = useUserData();
 
   return (
-    <div>
-      <span className={s.profile}>{user.name}</span>
+    <div className={s.userInfoContainer}>
+      <p className={s.profile}>{user.name}</p>
 
-      <svg height={29} width={32}>
-        <use href={`${icon}#icon-user-ico`}></use>
-        onClick={handlerClick}
-      </svg>
+      <button className={s.profile_btn} onClick={onClick}>
+        <svg height={29} width={32}>
+          <use href={`${icon}#icon-user-ico`}></use>
+        </svg>
+      </button>
     </div>
   );
 };
