@@ -8,9 +8,8 @@ const UserInfo = ({ onClick }) => {
   return (
     <div className={s.userInfoContainer}>
       <p className={s.profile}>{user.name}</p>
-
       <button className={s.profile_btn} onClick={onClick}>
-        <svg height={29} width={32}>
+        <svg height={29} width={32} stroke="#F6F6F7">
           <use href={`${icon}#icon-user-ico`}></use>
         </svg>
       </button>

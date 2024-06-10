@@ -1,7 +1,6 @@
+import { useState } from 'react';
 import s from './Header.module.css';
 import icon from '../../images/sprite/sprite-icon.svg';
-import { useState } from 'react';
-
 import UserInfo from '../../components/UserInfo/UserInfo';
 import ThemeSelect from '../ThemeSelect/ThemeSelect';
 
@@ -12,8 +11,6 @@ const Header = ({ handlerMenu }) => {
     setModalIsOpen(!modalIsOpen);
   };
 
-  const option = ['Light', 'Dark', 'Violet'];
-
   return (
     <header className={s.header}>
       <div className={s.container}>
@@ -23,8 +20,11 @@ const Header = ({ handlerMenu }) => {
           </svg>
         </button>
         <div className={s.profile_container}>
-          <ThemeSelect placeholder={'Theme'} option={option} />
-          <UserInfo handlerClick={handlerModalIsOpen} />
+          <ThemeSelect
+            placeholder="Theme"
+            option={['Light', 'Dark', 'Violet']}
+          />
+          <UserInfo onClick={handlerModalIsOpen} />
         </div>
       </div>
     </header>
