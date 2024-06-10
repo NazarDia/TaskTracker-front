@@ -1,5 +1,8 @@
-export const selectCards = state => state.cards.items;
+export const selectCards = state => {
+  console.log('selectCards state', state);
+  state.tasks.items;
+};
 
-export const selectCardsLoading = state => state.cards.loading;
+export const selectCardsLoading = state => state.tasks.loading;
 
-export const selectCardsError = state => state.cards.error;
+export const selectCardsError = state => state.tasks.error;
