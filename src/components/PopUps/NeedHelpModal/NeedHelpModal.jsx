@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { toast } from "react-toastify";
-// import { requestHelp } from "../../redux/user/operations";
+// import { requestHelp } from "../../redux/user/operations"; 
 import styles from "./NeedHelpModal.module.css";
 
 const NeedHelpModal = () => {
   const dispatch = useDispatch();
   const [errorMessage, setErrorMessage] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
 
-  const onSubmitClick = (evt) => {
+  const onSubmitClick = async (evt) => {
     evt.preventDefault();
 
     const form = evt.currentTarget;
@@ -25,30 +25,13 @@ const NeedHelpModal = () => {
 
     if (validEmail && validComment) {
       try {
-        const responseText = dispatch(requestHelp(formData));
+        const responseText = await dispatch(requestHelp(formData)).unwrap();
         form.reset();
-
-        toast.success(responseText, {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: false,
-          draggable: false,
-          progress: undefined,
-          theme: "light",
-        });
+        setErrorMessage(""); 
+        setSuccessMessage(responseText); 
       } catch (err) {
-        toast.error("Failed to submit request", {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: false,
-          draggable: false,
-          progress: undefined,
-          theme: "light",
-        });
+        setErrorMessage("Failed to submit request. Please try again.");
+        setSuccessMessage(""); 
       }
     } else {
       if (!validEmail) {
@@ -57,6 +40,7 @@ const NeedHelpModal = () => {
       if (!validComment) {
         setErrorMessage("Please enter a comment!");
       }
+      setSuccessMessage(""); 
     }
   };
 
@@ -66,7 +50,8 @@ const NeedHelpModal = () => {
         <div>
           <h2 className={styles.helpTitle}>Need help</h2>
           <form className={styles.helpForm} onSubmit={onSubmitClick}>
-            <p className={styles.helpErrorMsg}>{errorMessage}</p>
+            {errorMessage && <p className={styles.helpErrorMsg}>{errorMessage}</p>}
+            {successMessage && <p className={styles.helpSuccessMsg}>{successMessage}</p>}
             <input
               className={styles.helpInput}
               name="email"
