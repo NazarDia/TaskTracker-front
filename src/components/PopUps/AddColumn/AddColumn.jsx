@@ -13,14 +13,16 @@ const ColumnsSchema = Yup.object().shape({
     .required('Required'),
 });
 
-const AddColumn = ({ boardId = '6660bea58deb72fa3d250e18' }) => {
+const AddColumn = ({ boardId, closeModal }) => {
   const dispatch = useDispatch();
+  console.log('AddColumn boardId', boardId);
   const handleSubmit = (values, actions) => {
     console.log('values', values);
     dispatch(addNewColumn({ title: values.title, boardId: boardId }))
       .unwrap()
       .then(() => {
         toast.success('Column added successfully');
+        closeModal();
       })
       .catch(() => {
         toast.error('Error, please reload page');
@@ -35,7 +37,7 @@ const AddColumn = ({ boardId = '6660bea58deb72fa3d250e18' }) => {
       <div className={s.modalAddColumnContainer}>
         <Formik
           initialValues={{
-            boardId: '',
+            boardId: boardId,
             title: '',
           }}
           validationSchema={ColumnsSchema}
