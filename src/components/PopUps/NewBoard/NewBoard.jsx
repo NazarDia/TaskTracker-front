@@ -3,8 +3,8 @@ import * as Yup from "yup";
 import sprite from "../../../images/sprite/sprite-icon.svg";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addBoard } from "../../../redux/boards/operations.js";
-import { selectBoards } from "../../../redux/boards/selectors.js";
+import { addBoard, fetchBoards } from "../../../redux/boards/operations";
+import { selectBoards } from "../../../redux/boards/selectors";
 import styles from './NewBoard.module.css';
 import { CardButton } from "../CardButton/CardButton.jsx";
 import toast from "react-hot-toast";
@@ -79,13 +79,18 @@ export default function NewBoard ({ closeModal }) {
       });
     } else {
       const newBoard = {
-        titleBoard: values.titleBoard,
+        title: values.titleBoard, 
         icon: icon,
         background: background,
       };
-      dispatch(addBoard(newBoard));
-      resetForm();
-      closeModal();
+      try {
+        await dispatch(addBoard(newBoard));
+        await dispatch(fetchBoards()); 
+        resetForm();
+        closeModal();
+      } catch (error) {
+        toast.error("Error creating board");
+      }
     }
   };
 
@@ -99,9 +104,9 @@ export default function NewBoard ({ closeModal }) {
       validationSchema={formSchema}
       onSubmit={handleSubmit}
     >
-      {({ errors, touched, isSubmitting }) => (
+      {({ errors, touched, isSubmitting, handleSubmit }) => (
         <form className={styles.form} onSubmit={handleSubmit}>
-           <h2 className={styles.title}>New board</h2>
+          <h2 className={styles.title}>New board</h2>
           <label className={styles.label}>
             <Field
               className={`${styles.input} ${errors.titleBoard && touched.titleBoard ? styles.error : ''}`}
@@ -115,24 +120,24 @@ export default function NewBoard ({ closeModal }) {
 
           <div className={styles.smallTitle}>Icons</div>
           <div id="my-radio-group">
-      <div className={styles.iconsWrapper} role="group" aria-labelledby="my-radio-group">
-        {icons.map((name) => (
-          <label className={styles.label} key={name}>
-            <input
-              className={styles.field}
-              onChange={handleRadioChange}
-              checked={icon === name}
-              type="radio"
-              name="icon"
-              value={name}
-            />
-            <svg className={`${styles.icon} ${icon === name ? styles.checked : ''}`} width="18" height="18">
-              <use href={`${sprite}#${name}`} />
-            </svg>
-          </label>
-        ))}
-      </div>
-    </div>
+            <div className={styles.iconsWrapper} role="group" aria-labelledby="my-radio-group">
+              {icons.map((name) => (
+                <label className={styles.label} key={name}>
+                  <input
+                    className={styles.field}
+                    onChange={handleRadioChange}
+                    checked={icon === name}
+                    type="radio"
+                    name="icon"
+                    value={name}
+                  />
+                  <svg className={`${styles.icon} ${icon === name ? styles.checked : ''}`} width="18" height="18">
+                    <use href={`${sprite}#${name}`} />
+                  </svg>
+                </label>
+              ))}
+            </div>
+          </div>
 
           <div className={styles.smallTitle}>Background</div>
           <div id="my-backgrounds-radio-group">
