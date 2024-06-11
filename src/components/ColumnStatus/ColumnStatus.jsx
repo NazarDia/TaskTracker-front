@@ -1,20 +1,30 @@
 import s from './ColumnStatus.module.css';
 import AddColumn from '../PopUps/AddColumn/AddColumn';
 import { useState } from 'react';
+import GeneralModal from '../GeneralModal/GeneralModal';
+import { useSelector } from 'react-redux';
+import { selectOneBoard } from '../../redux/boards/selectors';
+import { CardButton } from '../PopUps/CardButton/CardButton';
 
 const ColumnStatus = () => {
-  const [isAddColumnVisible, setIsAddColumnVisible] = useState(false);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const openModal = () => setModalIsOpen(true);
+  const closeModal = () => setModalIsOpen(false);
+  const currentBoard = useSelector(selectOneBoard);
 
-  const handleButtonClick = () => {
-    setIsAddColumnVisible(false);
-  };
   return (
     <div className={s.container}>
-      <div className={s.icons}>
-        <button onClick={handleButtonClick}>Add Column</button>
-      </div>
-      <p className={s.statusPar}>Add another column</p>
-      {isAddColumnVisible && <AddColumn />}
+      <CardButton
+        onClick={openModal}
+        btnText={'Add another column'}
+      ></CardButton>
+      <GeneralModal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        contentLabel="Add another column"
+      >
+        <AddColumn boardId={currentBoard._id} />
+      </GeneralModal>
     </div>
   );
 };
