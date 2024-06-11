@@ -22,11 +22,7 @@ const EditProfile = ({ onClose }) => {
 
   const handleChangeAvatar = event => {
     setAvatar(event.target.files[0]);
-
     setAvatarUploaded(event.target.files[0]);
-    const formData = new FormData();
-
-    formData.append('avatarUploaded', avatarUploaded);
   };
 
   const handleChange = ({ target: { name, value } }) => {
@@ -42,27 +38,6 @@ const EditProfile = ({ onClose }) => {
     }
   };
 
-  // console.log(avatar);
-
-  if (user.avatarURL === '') {
-    console.log(`Аватара у пользователя нет, пришло ''`);
-  }
-
-  if (user.avatarURL !== '') {
-    console.log(
-      `Аватар пришёл, avatarURL:${user.avatarURL}, должна быть фотка`
-    );
-    console.log(
-      `Или фотка загружена только что пользователем, avatarURL:${avatarUploaded}`
-    );
-  }
-
-  console.log(avatarUploaded.type);
-
-  if (avatarUploaded.type) {
-    console.log(`Работает`);
-  }
-
   const modalClose = event => {
     onClose();
   };
@@ -70,50 +45,27 @@ const EditProfile = ({ onClose }) => {
   const handleFormSubmit = e => {
     e.preventDefault();
 
-    let updatedProfile;
-
-    if (user.avatarURL !== '' || user.avatarURL === '') {
-      if (avatarUploaded.type) {
-        if (password === '') {
-          updatedProfile = {
-            name,
-            email,
-            avatar,
-          };
-        } else {
-          updatedProfile = {
-            name,
-            email,
-            password,
-            avatar,
-          };
-        }
-      } else {
-        if (password === '') {
-          updatedProfile = {
-            name,
-            email,
-          };
-        } else {
-          updatedProfile = {
-            name,
-            email,
-            password,
-          };
-        }
-      }
+    if (name === '' || email === '') {
+      return alert('Name and email are required!');
     }
 
-    // console.log(updatedProfile);
+    let updatedProfile = { name, email };
+
+    if (avatarUploaded) {
+      updatedProfile.avatar = avatar;
+    }
+
+    if (password) {
+      updatedProfile.password = password;
+    }
+
     dispatch(updateProfile(updatedProfile));
-    //закрити модалку
     modalClose();
   };
 
   return (
     <div className={s.modal}>
       <h2 className={s.titleName}>Edit profile</h2>
-
       <form className={s.formStyle} onSubmit={handleFormSubmit}>
         <label className={s.labelStyle}>
           <input
@@ -121,7 +73,6 @@ const EditProfile = ({ onClose }) => {
             type="file"
             onChange={handleChangeAvatar}
           />
-
           {user.avatarURL === '' ? (
             <svg width="68" height="68" className={s.img}>
               <use xlinkHref={`${sprite}#icon-user-ico`} />
@@ -137,6 +88,7 @@ const EditProfile = ({ onClose }) => {
             name="name"
             value={name}
             onChange={handleChange}
+            required
           />
         </label>
         <label className={s.labelStyle}>
@@ -146,6 +98,7 @@ const EditProfile = ({ onClose }) => {
             name="email"
             value={email}
             onChange={handleChange}
+            required
           />
         </label>
         <label className={s.labelStyle}>
