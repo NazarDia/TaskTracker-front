@@ -1,23 +1,29 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import HeaderDashboard from '../HeaderDashboard/HeaderDashboard';
 import MainDashboard from '../MainDashboard/MainDashboard';
 import s from './ScreensPage.module.css';
+import { useEffect, useRef } from 'react';
+import { getBoardByID } from '../../redux/boards/operations';
 
 const ScreensPage = () => {
-  const boards = useSelector(state => state.boards.boards.items);
-  const activeBoard = useSelector(state => state.boards.boards.current);
+  const dispatch = useDispatch();
+  const activeBoardId = useSelector(state => state.boards.boards.current._id);
+  const activeBoard = useSelector(state =>
+    state.boards.boards.items.find(board => board._id === activeBoardId)
+  );
+  const previousBoardId = useRef(activeBoardId);
 
-  let boardToShow;
-  if (!activeBoard || Object.keys(activeBoard).length === 0) {
-    boardToShow = boards.length > 0 ? boards[0] : null;
-  } else {
-    boardToShow = activeBoard;
-  }
+  useEffect(() => {
+    if (activeBoardId && previousBoardId.current !== activeBoardId) {
+      previousBoardId.current = activeBoardId;
+      dispatch(getBoardByID(activeBoardId));
+    }
+  }, [dispatch, activeBoardId]);
 
   return (
     <main className={s.container}>
-      <HeaderDashboard activeBoard={boardToShow}></HeaderDashboard>
-      <MainDashboard></MainDashboard>
+      <HeaderDashboard activeBoard={activeBoard}></HeaderDashboard>
+      <MainDashboard activeBoard={activeBoard}></MainDashboard>
     </main>
   );
 };

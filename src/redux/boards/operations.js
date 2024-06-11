@@ -27,6 +27,18 @@ export const addBoard = createAsyncThunk(
   }
 );
 
+export const getBoardByID = createAsyncThunk(
+  'boards/getBoardById',
+  async (boardId, thunkAPI) => {
+    try {
+      const response = await axios.get(`/boards/${boardId}`);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
 export const editBoardById = createAsyncThunk(
   'boards/editBoardById',
   async (params, thunkAPI) => {

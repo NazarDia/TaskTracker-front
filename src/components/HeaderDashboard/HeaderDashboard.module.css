@@ -5,6 +5,7 @@
   margin-bottom: 10px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   background-color: var(--main-bg-color);
 }
 .baordTitle {
@@ -13,8 +14,6 @@
   font-size: var(--base-font-size);
   line-height: normal;
   letter-spacing: -0.0175em;
-  display: flex;
-  align-items: center;
 }
 .filterWrapper {
   display: flex;

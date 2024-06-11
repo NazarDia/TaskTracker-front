@@ -4,6 +4,7 @@ import {
   addBoard,
   deleteBoard,
   editBoardById,
+  getBoardByID,
 } from './operations.js';
 
 const boardsSlice = createSlice({
@@ -37,6 +38,14 @@ const boardsSlice = createSlice({
       .addCase(fetchBoards.rejected, (state, action) => {
         state.boards.isLoading = false;
         state.boards.error = action.payload;
+      })
+      .addCase(getBoardByID.pending, state => {
+        state.boards.isLoading = true;
+      })
+      .addCase(getBoardByID.fulfilled, (state, action) => {
+        state.boards.isLoading = false;
+        state.boards.error = null;
+        state.boards.current = action.payload;
       })
       .addCase(addBoard.pending, state => {
         state.boards.isLoading = true;
