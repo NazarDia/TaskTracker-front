@@ -46,12 +46,14 @@ export default function HomePage() {
       <div className={s.mainContent}>
         <Header handlerMenu={handleMenuToggle} />
 
-        <div className={s.loaderError}>
-          {isLoading && <Loader />}
-          {errorMessage && <ErrorMessage />}
-        </div>
+        <div>
+          <div className={s.loadError}>
+            {isLoading && <Loader />}
+            {errorMessage && <ErrorMessage />}
+          </div>
 
-        {!isLoading && !errorMessage && <ScreensPage />}
+          {!isLoading && !errorMessage && <ScreensPage />}
+        </div>
       </div>
     </div>
   );

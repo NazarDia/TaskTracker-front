@@ -1,11 +1,7 @@
-import s from './Loader.module.css';
+import { ThreeDots } from 'react-loader-spinner';
 
 const Loader = () => {
-  return (
-    <div className={s.container}>
-      <p>Loading data...</p>
-    </div>
-  );
+  return <ThreeDots color="var(--btn-bg-color)" width={42} height={42} />;
 };
 
 export default Loader;
