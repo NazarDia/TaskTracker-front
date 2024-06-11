@@ -1,7 +1,81 @@
-.editContactContainer {
-    width: 335px;
-    height: 522px;
+.modalOpen {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+  }
+  
+  .modalClosed {
+    display: none;
+  }
+  
+  .modalContent {
+    background: white;
+    padding: 20px;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    border-radius: 8px;
+  }
+  
+  .closeBtn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .title {
+    font-weight: 500;
+    font-size: 18px;
+    letter-spacing: -0.02em;
+    color: #fff;
+  }
+  
+  .form {
     display: flex;
     flex-direction: column;
-    gap: 8px;
-}
+  }
+  
+  .deadlineContainer {
+    margin-bottom: 20px;
+  }
+  
+  .priorityContainer {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+  }
+  
+  .high {
+    color: #8fa1d0;
+  }
+  
+  .medium {
+    color: #e09cb5;
+  }
+  
+  .low {
+    color: #bedbb0;
+  }
+  
+  .none {
+    color: rgba(255, 255, 255, 0.3);
+  }
+  
+  s.btn {
+    border-radius: 8px;
+    width: 302px;
+    height: 49px;
+    background-color: #bedbb0;
+    cursor: pointer;
+  }
+  
