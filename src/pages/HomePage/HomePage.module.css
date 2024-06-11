@@ -23,6 +23,10 @@
 }
 
 @media screen and (min-width: 1440px) {
+  .container {
+    display: flex;
+    width: 100%;
+  }
   .sidebar {
     display: flex;
     position: static;

@@ -1,3 +1,73 @@
 .container {
-  max-width: 1080px;
+  width: 335px;
+  background-color: var(--main-color);
+  padding: 14px 24px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+.contentWrapper {
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--aside-els-frame-color);
+  margin-bottom: 14px;
+}
+.cardTitle {
+  color: var(--text-color);
+  font-family: 'PoppinsSemiBold';
+  font-size: var(--base-font-size);
+  font-weight: 600;
+  letter-spacing: -0.0175em;
+  margin-bottom: 8px;
+}
+.taskDescr {
+  overflow: hidden;
+  color: var(--card-text-color);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: 'PoppinsRegular';
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.33; /* 133.333% */
+  letter-spacing: -0.015em;
+}
+.cardBottomnContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.cardextraWrapper {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+}
+.exraItem {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.cardBtnWrapper {
+  display: flex;
+  gap: 8px;
+}
+.icon {
+  stroke: var(--text-color-light);
+}
+.cardBtn {
+  background-color: transparent;
+  padding: 0;
+  border: none;
+}
+.extraItemTitle {
+  color: var(--text-color-light);
+  font-family: 'PoppinsRegular';
+  font-size: 8px;
+  font-weight: 400;
+
+  letter-spacing: -0.01em;
+}
+.extraItemContent {
+  color: var(--text-color);
+  font-family: 'PoppinsRegular';
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: -0.0125em;
 }

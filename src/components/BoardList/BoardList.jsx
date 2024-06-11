@@ -2,9 +2,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import SideBarCreateBoard from '../SideBarCreateBoard/SideBarCreateBoard';
 import s from './BoardList.module.css';
 import { setActiveBoard } from '../../redux/boards/boardSlice.js';
-import { getAllColumns } from '../../redux/columns/operations.js';
 import { useEffect } from 'react';
-import { fetchBoards } from '../../redux/boards/operations.js';
+import { fetchBoards, getBoardByID } from '../../redux/boards/operations.js';
 
 export default function BoardList() {
   const dispatch = useDispatch();
@@ -15,7 +14,7 @@ export default function BoardList() {
 
   const handleBoardClick = board => {
     dispatch(setActiveBoard(board));
-    dispatch(getAllColumns(board.id));
+    dispatch(getBoardByID(board._id));
   };
 
   return (
