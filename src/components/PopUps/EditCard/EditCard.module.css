@@ -56,26 +56,26 @@
   }
   
   .high {
-    color: #bedbb0;
+    color: var(--label-color-green);
   }
   
   .medium {
-    color: #e09cb5;
+    color: var(--label-color-pink);
   }
   
   .low {
-    color: #8fa1d0;
+    color: var(--label-color-blue);
   }
   
   .none {
-    color: rgba(255, 255, 255, 0.3);
+  color: var(--label-color-grey);
   }
   
   s.btn {
     border-radius: 8px;
     width: 302px;
     height: 49px;
-    background-color: #bedbb0;
+    background-color: var(--btn-bg-color);
     cursor: pointer;
   }
   
