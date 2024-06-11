@@ -1,11 +1,13 @@
 import s from './LoginForm.module.css';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Formik, Form } from 'formik';
 import { login } from '../../redux/auth/operations';
 import FormInput from '../FormInput/FormInput';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { loginUserSchema } from '../../Schemas/schema';
 import { useRef, useEffect, useId } from 'react';
+import { selectAuthError } from '../../redux/auth/selectors';
+import { resetAuthError } from '../../redux/auth/slice';
 
 export default function LoginForm() {
   const dispatch = useDispatch();
@@ -42,6 +44,13 @@ export default function LoginForm() {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [navigate]);
+
+  useEffect(() => {
+    return () => {
+      dispatch(resetAuthError());
+    };
+  }, [dispatch]);
+  const authError = useSelector(selectAuthError);
 
   return (
     <Formik
@@ -82,6 +91,7 @@ export default function LoginForm() {
               name="password"
               placeholder="Confirm a password"
             ></FormInput>
+            {authError && <div className={s.error}>{authError}</div>}
             <button type="submit" className={s.logBtn}>
               Log In Now
             </button>
