@@ -10,6 +10,7 @@ import GeneralModal from '../GeneralModal/GeneralModal';
 import { useState } from 'react';
 import EditColumn from '../PopUps/EditColumn/EditColumn';
 import { getBoardByID } from '../../redux/boards/operations';
+import PopUpAddCard from '../PopUps/AddCard/AddCard';
 
 const TaskColumn = ({ column }) => {
   const dispatch = useDispatch();
@@ -46,7 +47,7 @@ const TaskColumn = ({ column }) => {
         </div>
       </div>
       <CardsList column={column}></CardsList>
-      <CardButton btnText={'Add another card'}></CardButton>
+      <CardButton btnText={'Add another card'} onClick={openModal}></CardButton>
       <GeneralModal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
@@ -54,12 +55,16 @@ const TaskColumn = ({ column }) => {
       >
         <EditColumn onClose={closeModal} columnId={columnId} />
       </GeneralModal>
+
+      <GeneralModal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        contentLabel="Add another card"
+      >
+        <PopUpAddCard onClose={closeModal} column={column}></PopUpAddCard>
+      </GeneralModal>
     </>
   );
 };
 
 export default TaskColumn;
-
-<svg width={20} height={20} className={s.icon}>
-  <use href={`${sprite}#filter`}></use>
-</svg>;

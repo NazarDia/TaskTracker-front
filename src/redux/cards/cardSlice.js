@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { addCard, fetchCards, updateCard } from './operations';
+import { addCard, deleteCard, fetchCards, updateCard } from './operations';
 
 const cardsSlice = createSlice({
   name: 'cards',
@@ -44,12 +44,28 @@ const cardsSlice = createSlice({
       .addCase(updateCard.fulfilled, (state, action) => {
         state.loading = false;
         state.error = null;
-        const index = state.items.findIndex(card => card.id === action.payload.id);
+        const index = state.items.findIndex(
+          card => card.id === action.payload.id
+        );
         if (index !== -1) {
           state.items[index] = action.payload;
         }
       })
       .addCase(updateCard.rejected, state => {
+        state.loading = false;
+        state.error = true;
+      })
+      .addCase(deleteCard.pending, state => {
+        state.error = false;
+        state.loading = true;
+      })
+      .addCase(deleteCard.fulfilled, (state, action) => {
+        state.loading = false;
+        state.items = state.items.filter(
+          task => task._id !== action.payload.taskId
+        );
+      })
+      .addCase(deleteCard.rejected, state => {
         state.loading = false;
         state.error = true;
       }),

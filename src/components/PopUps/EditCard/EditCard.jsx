@@ -1,9 +1,8 @@
 import s from './EditCard.module.css';
-import React from 'react';
+// import React from 'react';
 import { Formik, Form } from 'formik';
 import FormInput from '../../FormInput/FormInput';
 import * as Yup from 'yup';
-import s from './EditCard.module.css';
 import toast from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
 import { nanoid } from 'nanoid';
