@@ -22,7 +22,7 @@ const CardSchema = Yup.object().shape({
 
 });
 
-const PopUpEditCard = ({ card, open,  onClose }) => {
+const EditCard = ({ card, open,  onClose }) => {
   const dispatch = useDispatch();
 
   const handleSubmit = (values, actions) => {
@@ -113,4 +113,4 @@ const PopUpEditCard = ({ card, open,  onClose }) => {
   );
 };
 
-export default PopUpEditCard;
+export default EditCard;
