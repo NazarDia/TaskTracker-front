@@ -79,3 +79,22 @@
 .helpSubmitBtn:hover {
     background-color: #7B7EDE;
 }
+@media screen and (min-width: 768px) {
+    .helpInput{
+        width: 352px;
+    }
+
+    .helpTextArea {
+     width: 352px;
+    }
+
+  .helpSubmitBtn {
+     width: 352px;
+    }
+    
+  .helpModalWrap {
+      width: 352px;
+
+  }
+}
+
