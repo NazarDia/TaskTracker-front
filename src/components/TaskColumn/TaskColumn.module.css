@@ -1,3 +1,37 @@
 .container {
-  max-width: 1080px;
+  width: 335px;
+  display: flex;
+  /* flex-direction: column; */
+  height: 100%;
+  gap: 8px;
+  justify-content: space-between;
+  background-color: transparent;
+  background-color: aquamarine;
+  padding: 18px 20px 17px 20px;
+  background-color: var(--main-color);
+  border-radius: 8px;
+  margin-bottom: 14px;
+}
+.columnTitle {
+  color: #161616;
+  font-family: 'PoppinsRegular';
+  font-size: var(--base-font-size);
+  font-weight: 500;
+  letter-spacing: -0.0175em;
+}
+.icon {
+  stroke: var(--text-color-light);
+}
+.btnWrapper {
+  display: flex;
+  gap: 8px;
+}
+.columnBtn {
+  background-color: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: start;
+  padding: 0px;
 }

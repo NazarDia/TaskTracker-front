@@ -1,9 +1,9 @@
-import styles from "./CardButton.module.css"; 
-import { FiPlus } from "react-icons/fi";
+import styles from './CardButton.module.css';
+import { FiPlus } from 'react-icons/fi';
 
-export const CardButton = ({ btnText }) => {
+export const CardButton = ({ btnText, onClick }) => {
   return (
-    <button type="submit" className={styles.addBtn}>
+    <button type="submit" className={styles.addBtn} onClick={onClick}>
       <div className={styles.iconWrapper}>
         <FiPlus className={styles.svg} />
       </div>

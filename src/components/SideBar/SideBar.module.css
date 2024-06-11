@@ -6,6 +6,7 @@
   height: 100vh;
   padding: 14px;
   background-color: var(--aside-bg-color);
+  overflow-y: auto;
 }
 
 @media screen and (min-width: 768px) {

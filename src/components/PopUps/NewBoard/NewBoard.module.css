@@ -13,6 +13,14 @@
     margin-bottom: 14px;
 }
 
+.title {
+    font-size: 14px;
+    text-align: left;
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 24px;
+    letter-spacing: -0.36px;
+}
 .input {
     width: 287px;
     padding: 14px 18px;
@@ -88,4 +96,10 @@
     justify-content: space-between;
     gap: 4px;
     margin-bottom: 40px;
+}
+
+@media screen and (min-width: 768px) {
+    .input {
+            width: 302px;
+        }
 }

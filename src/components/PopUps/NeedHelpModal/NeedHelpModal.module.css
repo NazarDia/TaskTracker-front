@@ -1,0 +1,100 @@
+.helpModalWrap {
+   width: 287px;
+  
+}
+
+.helpTitle {
+    font-size: 14px;
+        text-align: left;
+        font-size: 18px;
+        font-weight: 500;
+        margin-bottom: 24px;
+        letter-spacing: -0.36px;
+}
+
+.helpForm {
+    margin: 0;
+    position: relative;
+}
+
+.helpErrorMsg {
+    margin-bottom: 15px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #000;
+    text-align: center;
+}
+
+.helpInput {
+    width: 287px;
+    padding: 14px 18px;
+    font-size: 14px;
+    background-color: var(--main-bg-color);
+    border-radius: 8px;
+    margin-bottom: 24px;
+    opacity: 0.4;
+    transition: border var(--primary-transition);
+}
+
+.helpInput:focus {
+    opacity: 1;
+    outline: none;
+}
+
+.helpTextArea {
+    width: 287px;
+    padding: 14px 18px;
+    font-size: 14px;
+    background-color: var(--main-bg-color);
+    border-radius: 8px;
+    margin-bottom: 24px;
+    height: 120px;
+    opacity: 0.4;
+    transition: border var(--primary-transition);
+}
+
+.helpTextArea:focus {
+    opacity: 1;
+    outline: none;
+}
+
+.helpSubmitBtn {
+        display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 287px;
+            height: 49px;
+            background-color: #5255BC;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 0;
+            cursor: pointer;
+            transition: scale 250ms ease-in 0s;
+            font-weight: 500;
+                font-size: 14px;
+                letter-spacing: -0.02em;
+                color: #ffff;
+}
+
+.helpSubmitBtn:hover {
+    background-color: #7B7EDE;
+}
+@media screen and (min-width: 768px) {
+    .helpInput{
+        width: 352px;
+    }
+
+    .helpTextArea {
+     width: 352px;
+    }
+
+  .helpSubmitBtn {
+     width: 352px;
+    }
+    
+  .helpModalWrap {
+      width: 352px;
+
+  }
+}
+
