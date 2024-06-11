@@ -101,6 +101,7 @@ export default function NewBoard ({ closeModal }) {
     >
       {({ errors, touched, isSubmitting }) => (
         <form className={styles.form} onSubmit={handleSubmit}>
+           <h2 className={styles.title}>New board</h2>
           <label className={styles.label}>
             <Field
               className={`${styles.input} ${errors.titleBoard && touched.titleBoard ? styles.error : ''}`}
