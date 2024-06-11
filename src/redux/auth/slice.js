@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { register, login, logout, refreshUser, changeTheme, updateProfile } from './operations';
-import { toast } from 'react-hot-toast';
+
 
 const handlePending = state => {
   state.error = null;
@@ -11,7 +11,7 @@ const handleRejected = (state, action) => {
 };
 
 const initialState = {
-  user: { name: null, email: null },
+  user: { name: null, email: null, theme: 'Light'},
   token: localStorage.getItem('token') || null,
   isLoggedIn: false,
   isRefreshing: false,
@@ -47,7 +47,7 @@ const authSlice = createSlice({
 
       .addCase(logout.pending, handlePending)
       .addCase(logout.fulfilled, state => {
-        state.user = { name: null, email: null };
+        state.user = { name: null, email: null, theme: 'Light' };
         state.token = null;
         state.isLoggedIn = false;
       })
@@ -82,14 +82,12 @@ const authSlice = createSlice({
       .addCase(updateProfile.fulfilled, (state, { payload }) => {
         state.user = payload.user;
         state.isLoading = false;
-        toast.success(`Profile updated!`);
         if (payload.token === '') {
           state.isLoggedIn = false;
         }
       })
       .addCase(updateProfile.rejected, state => {
         state.isLoading = false;
-        toast.error(`Something went wrong`);
       })
 });
 export const authReducer = authSlice.reducer;

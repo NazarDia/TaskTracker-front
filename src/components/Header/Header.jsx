@@ -3,6 +3,8 @@ import s from './Header.module.css';
 import icon from '../../images/sprite/sprite-icon.svg';
 import UserInfo from '../../components/UserInfo/UserInfo';
 import ThemeSelect from '../ThemeSelect/ThemeSelect';
+import GeneralModal from '../GeneralModal/GeneralModal';
+import EditProfile from '../../components/PopUps/EditProfile/EditProfile';
 
 const Header = ({ handlerMenu }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -27,6 +29,13 @@ const Header = ({ handlerMenu }) => {
           <UserInfo onClick={handlerModalIsOpen} />
         </div>
       </div>
+      <GeneralModal
+        isOpen={modalIsOpen}
+        onRequestClose={handlerModalIsOpen}
+        contentLabel="Edit Profile"
+      >
+        <EditProfile onClose={handlerModalIsOpen} />
+      </GeneralModal>
     </header>
   );
 };
