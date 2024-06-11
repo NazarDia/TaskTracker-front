@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { fetchBoards } from '../../redux/boards/operations';
 import { selectIsLoading, selectError } from '../../redux/boards/selectors';
 
@@ -17,17 +17,34 @@ export default function HomePage() {
   const isLoading = useSelector(selectIsLoading);
   const errorMessage = useSelector(selectError);
 
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
   useEffect(() => {
     dispatch(fetchBoards());
   }, [dispatch]);
 
+  const handleMenuToggle = () => {
+    setIsSidebarOpen(prev => !prev);
+    document.body.style.overflow = isSidebarOpen ? 'auto' : 'hidden';
+  };
+
+  const handleCloseSidebar = () => {
+    setIsSidebarOpen(false);
+    document.body.style.overflow = 'auto';
+  };
+
   return (
     <div className={s.container}>
-      <div className={s.sidebar}>
+      <div className={`${s.sidebar} ${isSidebarOpen ? s.sidebarOpen : ''}`}>
         <Sidebar />
       </div>
+
+      {isSidebarOpen && (
+        <div className={s.overlay} onClick={handleCloseSidebar}></div>
+      )}
+
       <div className={s.mainContent}>
-        <Header />
+        <Header handlerMenu={handleMenuToggle} />
 
         <div className={s.loaderError}>
           {isLoading && <Loader />}
@@ -39,24 +56,3 @@ export default function HomePage() {
     </div>
   );
 }
-
-///////////////////////////////////////////////////////////////////
-
-// export default function HomePage() {
-//   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-
-//   const handleMenuClick = () => {
-//     setIsSidebarOpen(!isSidebarOpen);
-//   };
-
-//   return (
-//     <div className={s.container}>
-//       <Header openMenu={handleMenuClick} />
-//       {isSidebarOpen && <Sidebar />}
-//       <main>
-//         {/* Add your main page content here */}
-//         <h1>Welcome to HomePage</h1>
-//       </main>
-//     </div>
-//   );
-// }
