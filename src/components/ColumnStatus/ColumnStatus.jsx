@@ -23,7 +23,7 @@ const ColumnStatus = () => {
         onRequestClose={closeModal}
         contentLabel="Add another column"
       >
-        <AddColumn boardId={currentBoard._id} />
+        <AddColumn boardId={currentBoard._id} closeModal={closeModal} />
       </GeneralModal>
     </div>
   );
