@@ -1,3 +1,15 @@
 .container {
-  max-width: 1080px;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+}
+.columnList {
+  display: flex;
+  justify-content: flex-start;
+  align-items: start;
+  gap: 18px;
+  width: 335px;
+}
+.listItem {
+  width: 100%;
 }
