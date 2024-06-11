@@ -2,14 +2,20 @@ import s from './ColumnStatus.module.css';
 import AddColumn from '../PopUps/AddColumn/AddColumn';
 import { useState } from 'react';
 import GeneralModal from '../GeneralModal/GeneralModal';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { selectOneBoard } from '../../redux/boards/selectors';
 import { CardButton } from '../PopUps/CardButton/CardButton';
+import { getBoardByID } from '../../redux/boards/operations';
 
 const ColumnStatus = () => {
+  const dispatch = useDispatch();
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const openModal = () => setModalIsOpen(true);
-  const closeModal = () => setModalIsOpen(false);
+  // const closeModal = () => setModalIsOpen(false);
+  const closeModal = () => {
+    setModalIsOpen(false);
+    dispatch(getBoardByID(currentBoard._id));
+  };
   const currentBoard = useSelector(selectOneBoard);
 
   return (
