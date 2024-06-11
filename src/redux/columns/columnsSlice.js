@@ -63,7 +63,7 @@ const columnsSlice = createSlice({
       .addCase(deleteColumn.fulfilled, (state, action) => {
         state.loading = false;
         state.items = state.items.filter(
-          column => column.id !== action.payload.id
+          column => column._id !== action.payload.columnId
         );
       })
       .addCase(deleteColumn.rejected, state => {

@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { getBoardByID } from '../boards/operations';
 
 axios.defaults.baseURL = 'https://tasktracker-back.onrender.com/api';
 
@@ -41,9 +42,12 @@ export const editColumnById = createAsyncThunk(
 
 export const deleteColumn = createAsyncThunk(
   'columns/deleteColumn',
-  async (columnId, thunkAPI) => {
+  async ({ columnId, boardId }, thunkAPI) => {
     try {
-      const response = await axios.delete(`/columns/${columnId}`);
+      const response = await axios.delete(`/columns/${columnId}`, {
+        data: { boardId },
+      });
+      thunkAPI.dispatch(getBoardByID(boardId));
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
