@@ -3,17 +3,20 @@ import { useDispatch } from 'react-redux';
 import { Formik, Form } from 'formik';
 import { login } from '../../redux/auth/operations';
 import FormInput from '../FormInput/FormInput';
-import { useId } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { loginUserSchema } from '../../Schemas/schema';
+import { useRef, useEffect, useId } from 'react';
 
 export default function LoginForm() {
   const dispatch = useDispatch();
   const location = useLocation();
+  const navigate = useNavigate();
   const isLogin = location.pathname === '/auth/login';
 
   const emailFieldId = useId();
   const passwordFieldId = useId();
+
+  const containerRef = useRef();
 
   const initialValues = {
     email: '',
@@ -24,6 +27,22 @@ export default function LoginForm() {
     dispatch(login(values));
   };
 
+  useEffect(() => {
+    const handleClickOutside = event => {
+      if (
+        containerRef.current &&
+        !containerRef.current.contains(event.target)
+      ) {
+        navigate('/');
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [navigate]);
+
   return (
     <Formik
       initialValues={initialValues}
@@ -31,7 +50,7 @@ export default function LoginForm() {
       validationSchema={loginUserSchema}
     >
       <div className={s.loginPage}>
-        <div className={s.loginContainer}>
+        <div className={s.loginContainer} ref={containerRef}>
           <ul className={s.navBtns}>
             <li className={isLogin ? s.active : ''}>
               <Link

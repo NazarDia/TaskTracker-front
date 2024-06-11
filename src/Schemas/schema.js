@@ -1,13 +1,5 @@
 import * as yup from 'yup';
 
-export const loginUserSchema = yup.object().shape({
-  email: yup
-    .string()
-    .email('Incorrect Email, please enter correct email example@domain.com')
-    .required('Required, please insert the email'),
-  password: yup.string().required('Required, please insert the password'),
-});
-
 export const registerUserSchema = yup.object().shape({
   name: yup
     .string()
@@ -25,4 +17,12 @@ export const registerUserSchema = yup.object().shape({
     .trim()
     .min(4, 'Too short!')
     .required('Required, please insert the password'),
+});
+
+export const loginUserSchema = yup.object().shape({
+  email: yup
+    .string()
+    .email('Incorrect Email, please enter correct email example@domain.com')
+    .required('Required, please insert the email'),
+  password: yup.string().required('Required, please insert the password'),
 });

@@ -57,6 +57,12 @@
     color: #161616;
     margin-top: 10px;
   }
+  .error {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: red;
+  }
 }
 @media only screen and (min-width: 768px) and (max-width: 1439px) {
   .loginPage {
@@ -117,6 +123,12 @@
     color: #161616;
     margin-top: 10px;
   }
+  .error {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: red;
+  }
 }
 @media only screen and (min-width: 1440px) {
   .loginPage {
@@ -176,5 +188,11 @@
     text-align: center;
     color: #161616;
     margin-top: 10px;
+  }
+  .error {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: red;
   }
 }
