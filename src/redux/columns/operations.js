@@ -30,9 +30,13 @@ export const addNewColumn = createAsyncThunk(
 
 export const editColumnById = createAsyncThunk(
   'columns/editColumnById',
-  async (updColumn, thunkAPI) => {
+  async ({ columnId, boardId, columnTitle }, thunkAPI) => {
     try {
-      const response = await axios.put('/columns', updColumn);
+      const response = await axios.put(`/columns/${columnId}`, {
+        boardId,
+        title: columnTitle,
+      });
+
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

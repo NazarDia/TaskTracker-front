@@ -27,7 +27,7 @@ const TaskColumn = ({ column }) => {
 
   const deleteCol = () => dispatch(deleteColumn({ columnId, boardId }));
 
-  console.log(deleteCol);
+  // console.log(deleteCol);
 
   return (
     <>
@@ -53,7 +53,7 @@ const TaskColumn = ({ column }) => {
         onRequestClose={closeModal}
         contentLabel="Edit Column"
       >
-        <EditColumn onClose={closeModal} columnId={columnId} />
+        <EditColumn onClose={closeModal} column={column} />
       </GeneralModal>
 
       <GeneralModal
