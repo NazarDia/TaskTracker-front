@@ -1,9 +1,8 @@
 import s from './EditCard.module.css';
-import React from 'react';
-import { Formik, Form } from 'formik';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import Calendar from '../Calendar/Calendar';
 import FormInput from '../../FormInput/FormInput';
 import * as Yup from 'yup';
-import s from './EditCard.module.css';
 import toast from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
 import { nanoid } from 'nanoid';
@@ -18,18 +17,17 @@ const CardSchema = Yup.object().shape({
     .min(3, 'Too Short!')
     .max(500, 'Too Long!')
     .required('Required'),
+    priority: Yup.string().required('Required'),
+    deadline: Yup.date().required('Required').min(new Date(), 'Deadline cannot be in the past'),
+
 });
 
-const PopUpEditCard = ({ card, onClose }) => {
+const EditCard = ({ card, open,  onClose }) => {
   const dispatch = useDispatch();
 
   const handleSubmit = (values, actions) => {
     dispatch(
-      updateCard({
-        ...card,
-        title: values.title,
-        description: values.description,
-      })
+      updateCard(({ id: card.id, ...values }))
     )
       .unwrap()
       .then(() => {
@@ -44,19 +42,23 @@ const PopUpEditCard = ({ card, onClose }) => {
 
   const cardTitleId = nanoid();
   const cardDescriptionId = nanoid();
+  const cardPriorityId = nanoid();
 
   return (
-    <div className={s.editContactContainer}>
-      <button className={s.closeBtn} type="button">
+    <div className={open ? s.modalOpen : s.modalClosed}>
+      <div className={s.modalContent}>
+      <button className={s.closeBtn} type="button" onClick={onClose}>
             <svg   aria-label="close icon">
                 <use href="../../../images/sprite/sprite-icon.svg#close"></use>
             </svg>
         </button>
-        <h4 className={s.title}>Edit card</h4>
+        <h3 className={s.title}>Edit card</h3>
       <Formik
         initialValues={{
           title: card.title,
           description: card.description,
+          priority: card.priority,
+          deadline: card.deadline ? new Date(card.deadline) : new Date(),
         }}
         validationSchema={CardSchema}
         onSubmit={handleSubmit}
@@ -74,13 +76,41 @@ const PopUpEditCard = ({ card, onClose }) => {
             name="description"
             placeholder="Description"
           ></FormInput>
+          <div className={s.priorityContainer}>
+              <label htmlFor={cardPriorityId}>Label</label>
+              <div role="group" aria-labelledby="my-radio-group">
+                <label className={s.high}>
+                  <Field type="radio" name="priority" value="high" />
+                </label>
+                <label className={s.medium}>
+                  <Field type="radio" name="priority" value="medium" />
+                </label>
+                <label className={s.low}>
+                  <Field type="radio" name="priority" value="low" />
+                </label>
+                <label className={s.none}>
+                  <Field type="radio" name="priority" value="none" />
+                </label>
+              </div>
+              <p className={s.error}>
+                <ErrorMessage name="priority"  />
+              </p>
+            </div>
+            <div className={s.deadlineContainer}>
+              <label>Deadline</label>
+              <Field name="deadline" component={Calendar} />
+              <p className={s.error}>
+                <ErrorMessage name="deadline"/>
+              </p>
+            </div>
           <button type="submit" className={s.btn}>
-            Update Card
+            Edit
           </button>
         </Form>
       </Formik>
+      </div>
     </div>
   );
 };
 
-export default PopUpEditCard;
+export default EditCard;
