@@ -1,67 +1,164 @@
-import { Formik, Form, Field, ErrorMessage } from 'formik';
-import * as Yup from 'yup';
-
-import s from './AddCard.module.css';
-import toast from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
-import { nanoid } from 'nanoid';
 import { addCard } from '../../../redux/cards/operations';
+import toast from 'react-hot-toast';
+import { nanoid } from 'nanoid';
+import { Field, Form, Formik } from 'formik';
+import 'react-datepicker/dist/react-datepicker.css';
+import ReactDatePicker from 'react-datepicker';
+import css from './AddCard.module.css';
 
-const CardSchema = Yup.object().shape({
-  title: Yup.string()
-    .min(3, 'Too Short!')
-    .max(50, 'Too Long!')
-    .required('Required'),
-  description: Yup.string()
-    .min(3, 'Too Short!')
-    .max(500, 'Too Long!')
-    .required('Required'),
-});
-
-const PopUpAddCard = () => {
+export default function PopUpAddCard({ column, onClose }) {
   const dispatch = useDispatch();
-  const handleSubmit = (values, actions) => {
-    dispatch(addCard({ title: values.title, description: values.description }))
+
+  const initialValues = {
+    boardId: column.boardId,
+    columnId: column._id,
+    title: '',
+    description: '',
+    color: '',
+    deadline: new Date(),
+  };
+
+  const handleSubmit = values => {
+    const formattedValues = {
+      ...values,
+      deadline: values.deadline.toISOString().split('T')[0],
+    };
+    dispatch(addCard(formattedValues))
       .unwrap()
       .then(() => {
+        onClose();
         toast.success('Card saved');
       })
-      .catch(() => {
-        toast.error('Error, please reload page');
+      .catch(error => {
+        toast.error(`Error: ${error.message}`);
       });
-    actions.resetForm();
   };
 
   const cardTitleId = nanoid();
   const cardDescriptionId = nanoid();
+
   return (
-    <div className={s.addContactContainer}>
-      <Formik
-        initialValues={{
-          title: '',
-          description: '',
-        }}
-        validationSchema={CardSchema}
-        onSubmit={handleSubmit}
-      >
-        <Form className={s.form}>
-          <label htmlFor={cardTitleId}>Title</label>
-          <Field type="text" name="title" id={cardTitleId}></Field>
-          <p className={s.warning}>
-            <ErrorMessage name="title" />
-          </p>
-          <label htmlFor={cardDescriptionId}>Description</label>
-          <Field type="text" name="description" id={cardDescriptionId} />
-          <p className={s.warning}>
-            <ErrorMessage name="description" />
-          </p>
-          <button type="submit" className={s.btn}>
-            Add contact
-          </button>
-        </Form>
-      </Formik>
+    <div className={css.modal}>
+      <div className={css.modalContent}>
+        <span className={css.close} onClick={onClose}>
+          &times;
+        </span>
+        <h4 className={css.title}>Add card</h4>
+        <Formik initialValues={initialValues} onSubmit={handleSubmit}>
+          {({ setFieldValue, values }) => (
+            <Form className={css.modalForm}>
+              <label className={css.modalLabel} htmlFor={cardTitleId}>
+                Title
+              </label>
+              <Field
+                id={cardTitleId}
+                className={css.modalInputTitle}
+                type="text"
+                name="title"
+                placeholder="Title"
+              />
+              <label className={css.modalLabel} htmlFor={cardDescriptionId}>
+                Description
+              </label>
+              <Field
+                id={cardDescriptionId}
+                className={css.modalInputDescription}
+                type="text"
+                name="description"
+                placeholder="Description"
+              />
+              <p className={css.labelColor}>Label color</p>
+              <div className={css.customRadios}>
+                <div className={css.someColor}>
+                  <Field
+                    className={css.colorInput}
+                    type="radio"
+                    id="color1"
+                    name="color"
+                    value="8FA1D0"
+                  />
+                  <label htmlFor="color1">
+                    <span className={css.color1}>
+                      <img
+                        className={css.imgColor1}
+                        src="../../../public/check-icn.svg"
+                        alt="Checked Icon"
+                      />
+                    </span>
+                  </label>
+                </div>
+                <div>
+                  <Field
+                    className={css.colorInput}
+                    type="radio"
+                    id="color-2"
+                    name="color"
+                    value="F28B82"
+                  />
+                  <label htmlFor="color-2">
+                    <span className={css.color2}>
+                      <img
+                        className={css.imgColor2}
+                        src="../../../public/check-icn.svg"
+                        alt="Checked Icon"
+                      />
+                    </span>
+                  </label>
+                </div>
+                <div>
+                  <Field
+                    className={css.colorInput}
+                    type="radio"
+                    id="color-3"
+                    name="color"
+                    value="FBBC04"
+                  />
+                  <label htmlFor="color-3">
+                    <span className={css.color3}>
+                      <img
+                        className={css.imgColor3}
+                        src="../../../public/check-icn.svg"
+                        alt="Checked Icon"
+                      />
+                    </span>
+                  </label>
+                </div>
+                <div>
+                  <Field
+                    className={css.colorInput}
+                    type="radio"
+                    id="color-4"
+                    name="color"
+                    value="34A853"
+                  />
+                  <label htmlFor="color-4">
+                    <span className={css.color4}>
+                      <img
+                        className={css.imgColor4}
+                        src="../../../public/check-icn.svg"
+                        alt="Checked Icon"
+                      />
+                    </span>
+                  </label>
+                </div>
+              </div>
+              <div>
+                <p className={css.deadline}>Deadline</p>
+                <ReactDatePicker
+                  selected={values.deadline}
+                  onChange={date => setFieldValue('deadline', date)}
+                  dateFormat="yyyy/MM/dd"
+                  className={css.datePicker}
+                />
+              </div>
+              <button type="submit" className={css.modalBtn}>
+                Save
+              </button>
+            </Form>
+          )}
+        </Formik>
+      </div>
     </div>
   );
-};
-
-export default PopUpAddCard;
+}
