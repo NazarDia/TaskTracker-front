@@ -63,15 +63,3 @@ export const deleteBoard = createAsyncThunk(
     }
   }
 );
-
-// export const getBoardById = createAsyncThunk(
-//   "boards/getBoardById",
-//   async (boardId, thunkAPI) => {
-//     try {
-//       const response = await axios.get(`/boards/${boardId}`);
-//       return response.data;
-//     } catch (e) {
-//       return thunkAPI.rejectWithValue(e.message);
-//     }
-//   }
-// );

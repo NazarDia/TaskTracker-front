@@ -97,3 +97,14 @@ export const updateProfile = createAsyncThunk(
     }
   }
 );
+export const sendFeedback = createAsyncThunk(
+  'feedback/sendFeedback',
+  async ({ email, message }, thunkAPI) => { 
+    try {
+      const response = await axios.post('/users/feedback',{ email, message }); 
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);

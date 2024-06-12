@@ -50,8 +50,8 @@ export default function EditNewBoard({ boardId, closeModal }) {
   const boards = useSelector(selectBoards);
   const selectedBoard = boards.find((board) => board._id === boardId);
 
-  const [icon, setIcon] = useState("");
-  const [background, setBackground] = useState("");
+  const [icon, setIcon] = useState(selectedBoard ? selectedBoard.icon : "");
+  const [background, setBackground] = useState(selectedBoard ? selectedBoard.background : "");
 
   useEffect(() => {
     if (selectedBoard) {
@@ -75,11 +75,14 @@ export default function EditNewBoard({ boardId, closeModal }) {
       background: background,
     };
 
-    await dispatch(editBoardById({ boardId, updatedData }));
-    dispatch(getBoardByID(boardId));
-
-    resetForm();
-    closeModal();
+    try {
+      await dispatch(editBoardById({ boardId, updatedData }));
+      dispatch(getBoardByID(boardId));
+      resetForm();
+      closeModal();
+    } catch (error) {
+      console.error("Error editing board:", error);
+    }
   };
 
   if (!selectedBoard) {
@@ -90,8 +93,6 @@ export default function EditNewBoard({ boardId, closeModal }) {
     <Formik
       initialValues={{
         titleBoard: selectedBoard.titleBoard,
-        icon: selectedBoard.icon,
-        background: selectedBoard.background,
       }}
       validationSchema={formSchema}
       onSubmit={handleSubmit}
