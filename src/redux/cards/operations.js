@@ -1,5 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { getAllColumns } from '../columns/operations';
+import { getBoardByID } from '../boards/operations';
 
 axios.defaults.baseURL = 'https://tasktracker-back.onrender.com/api';
 
@@ -34,6 +36,21 @@ export const updateCard = createAsyncThunk(
   async (updatedCard, thunkAPI) => {
     try {
       const response = await axios.put(`/tasks/${updatedCard.id}`, updatedCard);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const deleteCard = createAsyncThunk(
+  'tasks/deleteCard',
+  async ({ taskId, columnId, boardId }, thunkAPI) => {
+    try {
+      const response = await axios.delete(`/tasks/${taskId}`, {
+        data: { columnId },
+      });
+      thunkAPI.dispatch(getBoardByID(boardId));
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

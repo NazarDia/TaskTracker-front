@@ -39,6 +39,7 @@
   --card-text-color: rgba(22, 22, 22, 0.7);
 
   --btn-bg-color: #bedbb0;
+  --btn-hover-color: #74a05e;
   --column-color-active: #9092d6;
 
   --label-color-blue: #8fa1d0;
@@ -61,7 +62,6 @@
   -webkit-text-size-adjust: 100%;
 }
 
-
 [data-theme='light'] {
   --main-color: #ffffff;
   --header-bg-color: #fcfcfc;
@@ -69,7 +69,7 @@
   --main-bg-color: #f6f6f7;
   --aside-bg-color: #ffffff;
   --aside-active-bg-color: rgba(246, 246, 247, 0.4);
-  --aside-help-bg-color:#F6F6F7;
+  --aside-help-bg-color: #f6f6f7;
   --aside-els-frame-color: rgba(22, 22, 22, 0.1);
 
   --text-color: #161616;
@@ -79,52 +79,54 @@
   --header-text-color: rgba(22, 22, 22, 0.8);
   --card-text-color: rgba(22, 22, 22, 0.7);
 
-  --btn-bg-color: #bedbb0; 
-  --column-color-active:#9092D6;
+  --btn-bg-color: #bedbb0;
+  --btn-hover-color: #74a05e;
+  --column-color-active: #9092d6;
 }
 
 [data-theme='dark'] {
   --main-color: #121212;
   --header-bg-color: #161616;
   --modal-bg-color: #151515;
-  --main-bg-color: #1F1F1F;
+  --main-bg-color: #1f1f1f;
   --aside-bg-color: #121212;
   --aside-active-bg-color: rgba(31, 31, 31, 0.4);
-  --aside-help-bg-color:#1F1F1F;
-  --aside-els-frame-color: rgba(255, 255, 255, 0.10);
+  --aside-help-bg-color: #1f1f1f;
+  --aside-els-frame-color: rgba(255, 255, 255, 0.1);
 
-  --text-color: #FFF;
-  --text-color-light: rgba(255, 255, 255, 0.50);
+  --text-color: #fff;
+  --text-color-light: rgba(255, 255, 255, 0.5);
   --text-color-modify: #bedbb0;
 
-  --header-text-color: rgba(255, 255, 255, 0.80);
-  --card-text-color: rgba(255, 255, 255, 0.50);
+  --header-text-color: rgba(255, 255, 255, 0.8);
+  --card-text-color: rgba(255, 255, 255, 0.5);
 
-  --btn-bg-color: #bedbb0; 
-  --column-color-active:#121212;
+  --btn-bg-color: #bedbb0;
+  --btn-hover-color: #74a05e;
+  --column-color-active: #121212;
 }
 
 [data-theme='violet'] {
-  --main-color: #5255BC;
-  --header-bg-color: #FFF;
-  --modal-bg-color: #FCFCFC;
-  --main-bg-color: #ECEDFD;
-  --aside-bg-color: #5255BC;
-  --aside-active-bg-color: rgba(255, 255, 255, 0.50);
-  --aside-help-bg-color:rgba(236, 237, 253, 0.40);
-  --aside-els-frame-color: rgba(255, 255, 255, 0.10);
+  --main-color: #5255bc;
+  --header-bg-color: #fff;
+  --modal-bg-color: #fcfcfc;
+  --main-bg-color: #ecedfd;
+  --aside-bg-color: #5255bc;
+  --aside-active-bg-color: rgba(255, 255, 255, 0.5);
+  --aside-help-bg-color: rgba(236, 237, 253, 0.4);
+  --aside-els-frame-color: rgba(255, 255, 255, 0.1);
 
-  --text-color: #FFF;
-  --text-color-light: rgba(255, 255, 255, 0.50);
-  --text-color-modify: #5255BC;
+  --text-color: #fff;
+  --text-color-light: rgba(255, 255, 255, 0.5);
+  --text-color-modify: #5255bc;
 
-  --header-text-color: rgba(22, 22, 22, 0.80);
-  --card-text-color: rgba(22, 22, 22, 0.70);
+  --header-text-color: rgba(22, 22, 22, 0.8);
+  --card-text-color: rgba(22, 22, 22, 0.7);
 
-  --btn-bg-color: #5255BC; 
-  --column-color-active:#FFF;
+  --btn-bg-color: #5255bc;
+  --btn-hover-color: #7b7ede;
+  --column-color-active: #fff;
 }
-
 
 .container {
   padding-left: 20px;
