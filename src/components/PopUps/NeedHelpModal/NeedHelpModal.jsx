@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-// import { requestHelp } from "../../redux/user/operations"; 
 import styles from "./NeedHelpModal.module.css";
+import { sendFeedback } from "../../../redux/auth/operations";
 
 const NeedHelpModal = () => {
   const dispatch = useDispatch();
@@ -13,22 +13,22 @@ const NeedHelpModal = () => {
 
     const form = evt.currentTarget;
     const email = form.elements.email.value;
-    const comment = form.elements.comment.value;
+    const message = form.elements.message.value;
 
     const validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);  
-    const validComment = comment.length > 0;
+    const validComment = message.length > 0;
 
     const formData = {
       email,
-      comment,
+      message,
     };
 
     if (validEmail && validComment) {
       try {
-        const responseText = await dispatch(requestHelp(formData)).unwrap();
+        const response = await dispatch(sendFeedback(formData)).unwrap();
         form.reset();
         setErrorMessage(""); 
-        setSuccessMessage(responseText); 
+        setSuccessMessage(response.message); // Якщо backend повертає об'єкт з полем message
       } catch (err) {
         setErrorMessage("Failed to submit request. Please try again.");
         setSuccessMessage(""); 
@@ -62,7 +62,7 @@ const NeedHelpModal = () => {
               className={styles.helpTextArea}
               cols="30"
               rows="10"
-              name="comment"
+              name="message"
               placeholder="Enter your message"
             ></textarea>
             <button className={styles.helpSubmitBtn} type="submit">
