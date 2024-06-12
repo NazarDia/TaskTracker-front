@@ -97,4 +97,18 @@
 
   }
 }
+.helpErrorMsg {
+    color: red;
+    margin-bottom: 10px;
+    font-size: 14px;
+    text-align: center;
+    width: 100%;
+}
 
+.helpSuccessMsg {
+    color: #5255BC;
+    margin-bottom: 10px;
+    font-size: 14px;
+    text-align: center;
+     width: 100%;
+}

@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { register, login, logout, refreshUser, changeTheme, updateProfile } from './operations';
+import { register, login, logout, refreshUser, changeTheme, updateProfile, sendFeedback } from './operations';
 
 
 const handlePending = state => {
@@ -89,6 +89,18 @@ const authSlice = createSlice({
       .addCase(updateProfile.rejected, state => {
         state.isLoading = false;
       })
+  
+  .addCase(sendFeedback.pending, state => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(sendFeedback.fulfilled, state => {
+        state.isLoading = false;
+      })
+      .addCase(sendFeedback.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      }),
 });
 export const authReducer = authSlice.reducer;
 export const { resetAuthError } = authSlice.actions;

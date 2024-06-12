@@ -20,6 +20,8 @@ export default function BoardList() {
 
   const boards = useSelector((state) => state.boards.boards.items);
 
+
+
   const handleBoardClick = (board) => {
     setSelectedBoard(board._id === selectedBoard ? null : board._id);
     dispatch(setActiveBoard(board));
@@ -27,9 +29,9 @@ export default function BoardList() {
   };
 
   const handleEditBoard = (board) => {
-    setBoardToEdit(board);
-    setModalIsOpen(true);
-  };
+  setBoardToEdit(board._id);
+  setModalIsOpen(true);
+};
 
   const handleDeleteBoard = async (board) => {
     await dispatch(deleteBoard(board._id));
@@ -80,7 +82,7 @@ export default function BoardList() {
           onRequestClose={closeModal}
           contentLabel="Edit board"
         >
-          <EditNewBoard board={boardToEdit} onClose={closeModal} />
+          <EditNewBoard boardId={boardToEdit} onClose={closeModal} />
         </GeneralModal>
       )}
     </>
