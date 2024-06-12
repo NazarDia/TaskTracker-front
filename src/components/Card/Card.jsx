@@ -1,7 +1,7 @@
 import s from './Card.module.css';
 import sprite from '../../images/sprite/sprite-icon.svg';
 import GeneralModal from '../../components/GeneralModal/GeneralModal';
-import EditCard from '../../components/EditCard/EditCard';
+import EditCard from '../PopUps/EditCard/EditCard';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { getBoardByID } from '../../redux/boards/operations';
