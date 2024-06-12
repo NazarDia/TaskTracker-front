@@ -1,7 +1,7 @@
 import s from './Card.module.css';
 import sprite from '../../images/sprite/sprite-icon.svg';
-
-import GeneralModal from '../GeneralModal/GeneralModal';
+import GeneralModal from '../../components/GeneralModal/GeneralModal';
+import EditCard from '../../components/EditCard/EditCard';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { getBoardByID } from '../../redux/boards/operations';
@@ -9,14 +9,21 @@ import PopUpEditCard from '../PopUps/EditCard/EditCard';
 import { deleteCard } from '../../redux/cards/operations';
 
 const Card = ({ task }) => {
-  const dispatch = useDispatch();
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-  const openModal = () => setModalIsOpen(true);
+  const [selectedCard, setSelectedCard] = useState(null);
+
+  const openModal = task => {
+    setSelectedCard(task);
+    setModalIsOpen(true);
+  };
 
   const closeModal = () => {
+    setSelectedCard(null);
     setModalIsOpen(false);
     dispatch(getBoardByID(task.boardId));
   };
+
+  const dispatch = useDispatch();
+  const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const backgroundColor = `#${task.color}`;
   const getPriority = color => {
@@ -55,7 +62,7 @@ const Card = ({ task }) => {
                 className={s.extraPriority}
                 style={{ backgroundColor: backgroundColor }}
               ></span>
-              <span className={s.extraItemContent}>{priority}</span>
+              <span className={s.extraItemContent}>{task.color}</span>
             </div>
           </div>
           <div className={s.exraItem}>
@@ -69,12 +76,21 @@ const Card = ({ task }) => {
               <use href={`${sprite}#broken-right`}></use>
             </svg>
           </button>
-          <button className={s.cardBtn} onClick={openModal}>
+          <button className={s.cardBtn} onClick={() => openModal(task)}>
             <svg width={16} height={16} className={s.icon}>
               <use href={`${sprite}#pencil`}></use>
             </svg>
           </button>
-          <button className={s.cardBtn} onClick={deleteTask}>
+          <GeneralModal
+            isOpen={modalIsOpen}
+            onRequestClose={closeModal}
+            contentLabel="Edit Card"
+          >
+            {selectedCard && (
+              <EditCard card={selectedCard} onClose={closeModal} />
+            )}
+          </GeneralModal>
+          <button className={s.cardBtn}>
             <svg width={16} height={16} className={s.icon}>
               <use href={`${sprite}#trash`}></use>
             </svg>
