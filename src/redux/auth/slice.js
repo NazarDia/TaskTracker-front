@@ -1,6 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { register, login, logout, refreshUser, changeTheme, updateProfile, sendFeedback } from './operations';
-
+import {
+  register,
+  login,
+  logout,
+  refreshUser,
+  changeTheme,
+  updateProfile,
+  sendFeedback,
+} from './operations';
 
 const handlePending = state => {
   state.error = null;
@@ -11,6 +18,7 @@ const handleRejected = (state, action) => {
 };
 
 const initialState = {
+
   user: { name: null, email: null, theme: 'Light', avatarURL: null },
   token: localStorage.getItem('token') || null,
   isLoggedIn: false,
@@ -70,7 +78,8 @@ const authSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(changeTheme.fulfilled, (state, { payload }) => {
-        state.user = payload.user;
+        console.log(payload);
+        state.user.theme = payload.theme;
         state.isLoading = false;
       })
       .addCase(changeTheme.rejected, state => {
@@ -89,8 +98,8 @@ const authSlice = createSlice({
       .addCase(updateProfile.rejected, state => {
         state.isLoading = false;
       })
-  
-  .addCase(sendFeedback.pending, state => {
+
+      .addCase(sendFeedback.pending, state => {
         state.isLoading = true;
         state.error = null;
       })

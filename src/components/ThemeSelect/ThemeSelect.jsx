@@ -32,8 +32,8 @@ const ThemeSelect = ({ option = [], placeholder }) => {
   const handlerSelectedOption = ({ target }) => {
     const newTheme = target.textContent;
     if (newTheme === userTheme) return;
-
     dispatch(changeTheme({ theme: newTheme }));
+    document.documentElement.setAttribute('data-theme', newTheme);
     localStorage.setItem('theme', newTheme);
 
     setIsOpen(false);

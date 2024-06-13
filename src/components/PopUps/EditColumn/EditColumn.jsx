@@ -4,7 +4,7 @@ import { editColumnById } from '../../../redux/columns/operations';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import { nanoid } from 'nanoid';
 import toast from 'react-hot-toast';
-import { useState } from 'react';
+// import { useState } from 'react';
 import * as Yup from 'yup';
 
 const ColumnsSchema = Yup.object().shape({

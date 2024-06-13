@@ -19,18 +19,15 @@ const CardSchema = Yup.object().shape({
     .min(3, 'Too Short!')
     .max(500, 'Too Long!')
     .required('Required'),
-    priority: Yup.string().required('Required'),
-    deadline: Yup.date().required('Required').min(new Date(), 'Deadline cannot be in the past'),
-
+  color: Yup.string().required('Required'),
+  deadline: Yup.date().required('Required').min(new Date(), "Deadline must be in the future"),
 });
 
-const EditCard = ({ card, open,  onClose }) => {
+const EditCard = ({ card, onClose }) => {
   const dispatch = useDispatch();
 
   const handleSubmit = (values, actions) => {
-    dispatch(
-      updateCard(({ id: card.id, ...values }))
-    )
+    dispatch(updateCard({ id: card._id, ...values }))
       .unwrap()
       .then(() => {
         toast.success('Card updated');
@@ -44,74 +41,90 @@ const EditCard = ({ card, open,  onClose }) => {
 
   const cardTitleId = nanoid();
   const cardDescriptionId = nanoid();
-  const cardPriorityId = nanoid();
 
   return (
-    <div className={open ? s.modalOpen : s.modalClosed}>
-      <div className={s.modalContent}>
-      <button className={s.closeBtn} type="button" onClick={onClose}>
-            <svg   aria-label="close icon">
-                <use href="../../../images/sprite/sprite-icon.svg#close"></use>
-            </svg>
-        </button>
-        <h3 className={s.title}>Edit card</h3>
-      <Formik
-        initialValues={{
-          title: card.title,
-          description: card.description,
-          priority: card.priority,
-          deadline: card.deadline ? new Date(card.deadline) : new Date(),
-        }}
-        validationSchema={CardSchema}
-        onSubmit={handleSubmit}
-      >
+    <Formik
+      initialValues={{
+        title: card.title,
+        description: card.description,
+        color: card.color,
+        deadline: card.deadline ? new Date(card.deadline) : new Date(),
+      }}
+      validationSchema={CardSchema}
+      onSubmit={handleSubmit}
+    >
+      {({ setFieldValue, values }) => (
         <Form className={s.form}>
+           <h3 className={s.title}>Edit card</h3>
           <FormInput
             id={cardTitleId}
             type="text"
             name="title"
             placeholder="Title"
-          ></FormInput>
+          />
           <FormInput
             id={cardDescriptionId}
             type="text"
             name="description"
             placeholder="Description"
-          ></FormInput>
-          <div className={s.priorityContainer}>
-              <label htmlFor={cardPriorityId}>Label</label>
-              <div role="group" aria-labelledby="my-radio-group">
-                <label className={s.high}>
-                  <Field type="radio" name="priority" value="high" />
-                </label>
-                <label className={s.medium}>
-                  <Field type="radio" name="priority" value="medium" />
-                </label>
-                <label className={s.low}>
-                  <Field type="radio" name="priority" value="low" />
-                </label>
-                <label className={s.none}>
-                  <Field type="radio" name="priority" value="none" />
-                </label>
-              </div>
-              <p className={s.error}>
-                <ErrorMessage name="priority"  />
-              </p>
+          />
+          <div className={s.colorContainer}>
+            <label>Label color</label>
+            <div role="group" aria-labelledby="priority-radio-group">
+              <label>
+                <Field
+                  type="radio"
+                  name="color"
+                  value="var(--label-color-green)"
+                  checked={values.color === 'var(--label-color-green)'}
+                  onChange={() => setFieldValue('color', 'var(--label-color-green)')}
+                />
+                High
+              </label>
+              <label>
+                <Field
+                  type="radio"
+                  name="color"
+                  value="var(--label-color-pink)"
+                  checked={values.color === 'var(--label-color-pink)'}
+                  onChange={() => setFieldValue('color', 'var(--label-color-pink)')}
+                />
+                Medium
+              </label>
+              <label>
+                <Field
+                  type="radio"
+                  name="color"
+                  value="var(--label-color-blue)"
+                  checked={values.color === 'var(--label-color-blue)'}
+                  onChange={() => setFieldValue('color', 'var(--label-color-blue)')}
+                />
+                Low
+              </label>
+              <label>
+                <Field
+                  type="radio"
+                  name="color"
+                  value="var(--label-color-grey)"
+                  checked={values.color === 'var(--label-color-grey)'}
+                  onChange={() => setFieldValue('color', 'var(--label-color-grey)')}
+                />
+                None
+              </label>
             </div>
-            <div className={s.deadlineContainer}>
-              <label>Deadline</label>
-              <Field name="deadline" component={Calendar} />
-              <p className={s.error}>
-                <ErrorMessage name="deadline"/>
-              </p>
-            </div>
+            <ErrorMessage name="color" component="div" className={s.error} />
+          </div>
+          <div className={s.deadlineContainer}>
+            <label>Deadline</label>
+            <Field name="deadline" component={Calendar} />
+            <ErrorMessage name="deadline" component="div" className={s.error} />
+          </div>
           <button type="submit" className={s.btn}>
             Edit
           </button>
         </Form>
-      </Formik>
-      </div>
-    </div>
+      )}
+    </Formik>
   );
 };
 

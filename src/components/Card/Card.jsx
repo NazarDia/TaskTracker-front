@@ -10,11 +10,18 @@ import { deleteCard } from '../../redux/cards/operations';
 
 const Card = ({ task }) => {
   const dispatch = useDispatch();
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-  const openModal = () => setModalIsOpen(true);
+  const [isModalEditOpen, setModaEditlIsOpen] = useState(false);
+  const [isModalMoveOpen, setModalMoveIsOpen] = useState(false);
+  const openEditModal = () => setModaEditlIsOpen(true);
 
-  const closeModal = () => {
-    setModalIsOpen(false);
+  const closeEditModal = () => {
+    setModaEditlIsOpen(false);
+    dispatch(getBoardByID(task.boardId));
+  };
+
+  const openMoveModal = () => setModalMoveIsOpen(true);
+  const closeMoveModal = () => {
+    setModalMoveIsOpen(false);
     dispatch(getBoardByID(task.boardId));
   };
 
@@ -65,11 +72,16 @@ const Card = ({ task }) => {
         </div>
         <div className={s.cardBtnWrapper}>
           <button className={s.cardBtn}>
-            <svg width={16} height={16} className={s.icon}>
+            <svg
+              width={16}
+              height={16}
+              className={s.icon}
+              onClick={openMoveModal}
+            >
               <use href={`${sprite}#broken-right`}></use>
             </svg>
           </button>
-          <button className={s.cardBtn} onClick={openModal}>
+          <button className={s.cardBtn} onClick={openEditModal}>
             <svg width={16} height={16} className={s.icon}>
               <use href={`${sprite}#pencil`}></use>
             </svg>
@@ -83,11 +95,18 @@ const Card = ({ task }) => {
       </div>
 
       <GeneralModal
-        isOpen={modalIsOpen}
-        onRequestClose={closeModal}
+        isOpen={isModalEditOpen}
+        onRequestClose={closeEditModal}
         contentLabel="Edit Task"
       >
-        <PopUpEditCard card={task} onClose={closeModal}></PopUpEditCard>
+        <PopUpEditCard card={task} onClose={closeEditModal}></PopUpEditCard>
+      </GeneralModal>
+      <GeneralModal
+        isOpen={isModalMoveOpen}
+        onRequestClose={closeMoveModal}
+        contentLabel="Edit Task"
+      >
+        <PopUpEditCard card={task} onClose={closeMoveModal}></PopUpEditCard>
       </GeneralModal>
     </div>
   );
