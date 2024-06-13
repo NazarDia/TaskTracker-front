@@ -15,11 +15,18 @@ import PopUpAddCard from '../PopUps/AddCard/AddCard';
 const TaskColumn = ({ column }) => {
   const dispatch = useDispatch();
 
-  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [isAddCardModalOpen, setIsAddCardModalOpen] = useState(false);
 
-  const openModal = () => setModalIsOpen(true);
-  const closeModal = () => {
-    setModalIsOpen(false);
+  const openEditModal = () => setIsEditModalOpen(true);
+  const closeEditModal = () => {
+    setIsEditModalOpen(false);
+    dispatch(getBoardByID(column.boardId));
+  };
+
+  const openAddCardModal = () => setIsAddCardModalOpen(true);
+  const closeAddCardModal = () => {
+    setIsAddCardModalOpen(false);
     dispatch(getBoardByID(column.boardId));
   };
   const columnId = column._id;
@@ -34,7 +41,7 @@ const TaskColumn = ({ column }) => {
       <div className={s.container}>
         <h4 className={s.columnTitle}>{column.title}</h4>
         <div className={s.btnWrapper}>
-          <button onClick={openModal} className={s.columnBtn}>
+          <button onClick={openEditModal} className={s.columnBtn}>
             <svg width={16} height={16} className={s.icon}>
               <use href={`${sprite}#pencil`}></use>
             </svg>
@@ -47,21 +54,24 @@ const TaskColumn = ({ column }) => {
         </div>
       </div>
       <CardsList column={column}></CardsList>
-      <CardButton btnText={'Add another card'} onClick={openModal}></CardButton>
+      <CardButton
+        btnText={'Add another card'}
+        onClick={openAddCardModal}
+      ></CardButton>
       <GeneralModal
-        isOpen={modalIsOpen}
-        onRequestClose={closeModal}
+        isOpen={isEditModalOpen}
+        onRequestClose={closeEditModal}
         contentLabel="Edit Column"
       >
-        <EditColumn onClose={closeModal} column={column} />
+        <EditColumn onClose={closeEditModal} column={column} />
       </GeneralModal>
 
       <GeneralModal
-        isOpen={modalIsOpen}
-        onRequestClose={closeModal}
+        isOpen={isAddCardModalOpen}
+        onRequestClose={closeAddCardModal}
         contentLabel="Add another card"
       >
-        <PopUpAddCard onClose={closeModal} column={column}></PopUpAddCard>
+        <PopUpAddCard onClose={closeAddCardModal} column={column} />
       </GeneralModal>
     </>
   );
