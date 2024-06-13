@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { getAllColumns } from '../columns/operations';
+// import { getAllColumns } from '../columns/operations';
 import { getBoardByID } from '../boards/operations';
 
 axios.defaults.baseURL = 'https://tasktracker-back.onrender.com/api';

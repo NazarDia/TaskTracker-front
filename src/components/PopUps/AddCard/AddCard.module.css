@@ -1,0 +1,203 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modalContent {
+  width: 335px;
+  border-radius: 8px;
+  border: 1px solid rgba(190, 219, 176, 0.5);
+
+  background: #151515;
+  padding: 24px;
+  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); */
+  position: relative;
+}
+.title {
+  color: #ffffff;
+  text-align: left;
+}
+.close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  cursor: pointer;
+  font-size: 24px;
+  padding: 0px;
+  line-height: 0.5rem;
+  color: #888;
+}
+
+.close:hover {
+  color: #0056b3;
+}
+
+.modalForm {
+  margin-top: 24px;
+}
+
+/* .modalLabel {
+  display: block;
+   margin-bottom: 6px;
+} */
+
+.modalInputTitle {
+  width: 287px;
+  padding: 14px 18px;
+  border-radius: 8px;
+  border: 1px solid #bedbb0;
+  opacity: 0.4;
+  background: #1f1f1f;
+  box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08);
+
+  color: #fff;
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.28px;
+}
+
+.modalInputDescription {
+  margin-top: 14px;
+  width: 287px;
+  height: 154px;
+  padding: 14px 18px;
+  border-radius: 8px;
+  border: 1px solid #bedbb0;
+  opacity: 0.4;
+  background: #1f1f1f;
+  box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08);
+
+  color: #fff;
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.28px;
+  text-align: start;
+
+  resize: none; /* Запобігти зміні розміру */
+  vertical-align: top; /* Вирівнювання по верху */
+  overflow: auto;
+}
+
+.modalBtn {
+  margin-top: 40px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  background: #bedbb0;
+  width: 100%;
+}
+
+.modalBtn:hover {
+  background-color: #0056b3;
+}
+
+.customRadios {
+  display: flex;
+}
+
+.colorInput {
+  display: none;
+}
+
+.labelColor {
+  margin-top: 24px;
+  margin-bottom: 4px;
+  text-align: left;
+  color: rgba(255, 255, 255, 0.5);
+  font-family: Poppins;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.24px;
+}
+
+.customRadios input[type='radio'] + label {
+  color: #333;
+  font-family: Arial, sans-serif;
+  font-size: 6px;
+}
+
+.color1,
+.color2,
+.color3,
+.color4 {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  margin: -1px 4px 0 0;
+  vertical-align: middle;
+  cursor: pointer;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);
+  background-repeat: no-repeat;
+  background-position: center;
+  text-align: center;
+  line-height: 20px;
+}
+
+.imgColor1,
+.imgColor2,
+.imgColor3,
+.imgColor4 {
+  width: 10px;
+  height: 10px;
+  display: inline-block;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.color1 {
+  background-color: #8fa1d0;
+}
+
+.color2 {
+  background-color: #e09cb5;
+}
+
+.color3 {
+  background-color: #bedbb0;
+}
+.color4 {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.customRadios input[type='radio']:checked + label span img {
+  display: inline-block;
+  opacity: 1;
+}
+
+/* .customRadios input[type="radio"] + label span .imgColor4 {
+  display: none;
+  opacity: 0;
+} */
+/* .customRadios input[type="radio"]:checked + label span .imgColor4 {
+  display: inline-block;
+  opacity: 1;
+  fill: #000000;
+} */
+
+.deadline {
+  margin-top: 14px;
+  text-align: left;
+  color: rgba(255, 255, 255, 0.5);
+  font-family: Poppins;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.24px;
+}

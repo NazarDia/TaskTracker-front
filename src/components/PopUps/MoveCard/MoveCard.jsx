@@ -1,4 +1,4 @@
-import s from './MoveCardDropdown.module.css';
+import s from './MoveCard.module.css';
 import sprite from '../../../images/sprite/sprite-icon.svg'
 
 const MoveCard = ({ columns, onMoveCard }) => {
