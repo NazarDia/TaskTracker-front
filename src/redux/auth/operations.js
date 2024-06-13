@@ -77,7 +77,7 @@ export const changeTheme = createAsyncThunk(
   'auth/usertheme',
   async (userTheme, thunkAPI) => {
     try {
-      const response = await axios.post('/users/theme', userTheme);
+      const response = await axios.patch('/users/theme', userTheme);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -99,9 +99,9 @@ export const updateProfile = createAsyncThunk(
 );
 export const sendFeedback = createAsyncThunk(
   'feedback/sendFeedback',
-  async ({ email, message }, thunkAPI) => { 
+  async ({ email, message }, thunkAPI) => {
     try {
-      const response = await axios.post('/users/feedback',{ email, message }); 
+      const response = await axios.post('/users/feedback', { email, message });
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
