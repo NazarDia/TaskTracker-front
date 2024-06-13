@@ -57,3 +57,16 @@ export const deleteCard = createAsyncThunk(
     }
   }
 );
+
+// MOVE
+
+export const moveCard = createAsyncThunk(
+  'cards/moveCard',
+  async ({ taskId, targetColumnId, targetColumnName }) => {
+    const response = await axios.patch(`/tasks/${taskId}`, {
+      targetColumnId,
+      targetColumnName
+    });
+    return response.data;
+  }
+);
