@@ -1,7 +1,7 @@
 import s from './Card.module.css';
 import sprite from '../../images/sprite/sprite-icon.svg';
-import GeneralModal from '../../components/GeneralModal/GeneralModal';
-import EditCard from '../PopUps/EditCard/EditCard';
+
+import GeneralModal from '../GeneralModal/GeneralModal';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { getBoardByID } from '../../redux/boards/operations';
@@ -9,21 +9,21 @@ import PopUpEditCard from '../PopUps/EditCard/EditCard';
 import { deleteCard } from '../../redux/cards/operations';
 
 const Card = ({ task }) => {
-  const [selectedCard, setSelectedCard] = useState(null);
+  const dispatch = useDispatch();
+  const [isModalEditOpen, setModaEditlIsOpen] = useState(false);
+  const [isModalMoveOpen, setModalMoveIsOpen] = useState(false);
+  const openEditModal = () => setModaEditlIsOpen(true);
 
-  const openModal = task => {
-    setSelectedCard(task);
-    setModalIsOpen(true);
-  };
-
-  const closeModal = () => {
-    setSelectedCard(null);
-    setModalIsOpen(false);
+  const closeEditModal = () => {
+    setModaEditlIsOpen(false);
     dispatch(getBoardByID(task.boardId));
   };
 
-  const dispatch = useDispatch();
-  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const openMoveModal = () => setModalMoveIsOpen(true);
+  const closeMoveModal = () => {
+    setModalMoveIsOpen(false);
+    dispatch(getBoardByID(task.boardId));
+  };
 
   const backgroundColor = `#${task.color}`;
   const getPriority = color => {
@@ -62,7 +62,7 @@ const Card = ({ task }) => {
                 className={s.extraPriority}
                 style={{ backgroundColor: backgroundColor }}
               ></span>
-              <span className={s.extraItemContent}>{task.color}</span>
+              <span className={s.extraItemContent}>{priority}</span>
             </div>
           </div>
           <div className={s.exraItem}>
@@ -72,25 +72,21 @@ const Card = ({ task }) => {
         </div>
         <div className={s.cardBtnWrapper}>
           <button className={s.cardBtn}>
-            <svg width={16} height={16} className={s.icon}>
+            <svg
+              width={16}
+              height={16}
+              className={s.icon}
+              onClick={openMoveModal}
+            >
               <use href={`${sprite}#broken-right`}></use>
             </svg>
           </button>
-          <button className={s.cardBtn} onClick={() => openModal(task)}>
+          <button className={s.cardBtn} onClick={openEditModal}>
             <svg width={16} height={16} className={s.icon}>
               <use href={`${sprite}#pencil`}></use>
             </svg>
           </button>
-          <GeneralModal
-            isOpen={modalIsOpen}
-            onRequestClose={closeModal}
-            contentLabel="Edit Card"
-          >
-            {selectedCard && (
-              <EditCard card={selectedCard} onClose={closeModal} />
-            )}
-          </GeneralModal>
-          <button className={s.cardBtn}>
+          <button className={s.cardBtn} onClick={deleteTask}>
             <svg width={16} height={16} className={s.icon}>
               <use href={`${sprite}#trash`}></use>
             </svg>
@@ -99,11 +95,18 @@ const Card = ({ task }) => {
       </div>
 
       <GeneralModal
-        isOpen={modalIsOpen}
-        onRequestClose={closeModal}
+        isOpen={isModalEditOpen}
+        onRequestClose={closeEditModal}
         contentLabel="Edit Task"
       >
-        <PopUpEditCard card={task} onClose={closeModal}></PopUpEditCard>
+        <PopUpEditCard card={task} onClose={closeEditModal}></PopUpEditCard>
+      </GeneralModal>
+      <GeneralModal
+        isOpen={isModalMoveOpen}
+        onRequestClose={closeMoveModal}
+        contentLabel="Edit Task"
+      >
+        <PopUpEditCard card={task} onClose={closeMoveModal}></PopUpEditCard>
       </GeneralModal>
     </div>
   );
