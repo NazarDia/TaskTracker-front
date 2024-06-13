@@ -16,7 +16,7 @@ export default function SideBarCreateBoard() {
     <div className={s.container}>
       <p className={s.text}>Create a new board</p>
       <button className={s.btn} onClick={openModal}>
-        <svg width={20} height={20} stroke="#121212">
+        <svg width={20} height={20} stroke="var(--sidebar-btn-icon)">
           <use href={`${sprite}#icon-plus`}></use>
         </svg>
       </button>
