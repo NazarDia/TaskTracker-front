@@ -94,7 +94,7 @@ export default function PopUpAddCard({ column, onClose }) {
                     type="radio"
                     id="color-2"
                     name="color"
-                    value="F28B82"
+                    value="E09CB5"
                   />
                   <label htmlFor="color-2">
                     <span className={css.color2}>
@@ -112,7 +112,7 @@ export default function PopUpAddCard({ column, onClose }) {
                     type="radio"
                     id="color-3"
                     name="color"
-                    value="FBBC04"
+                    value="BEDBB0"
                   />
                   <label htmlFor="color-3">
                     <span className={css.color3}>
@@ -130,7 +130,7 @@ export default function PopUpAddCard({ column, onClose }) {
                     type="radio"
                     id="color-4"
                     name="color"
-                    value="34A853"
+                    value="B9B9B9"
                   />
                   <label htmlFor="color-4">
                     <span className={css.color4}>
