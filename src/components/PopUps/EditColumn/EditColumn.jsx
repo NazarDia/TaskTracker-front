@@ -4,12 +4,15 @@ import { editColumnById } from '../../../redux/columns/operations';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import { nanoid } from 'nanoid';
 import toast from 'react-hot-toast';
-// import { useState } from 'react';
 import * as Yup from 'yup';
 
+import { CardButton } from '../CardButton/CardButton';
+
 const ColumnsSchema = Yup.object().shape({
-  title: Yup.string().min(3, 'Too Short!').max(25, 'Too Long!'),
-  // .required('Required'),
+  title: Yup.string()
+    .min(3, 'Too Short!')
+    .max(25, 'Too Long!')
+    .required('Required'),
 });
 const EditColumn = ({ column, onClose }) => {
   // const [title, setTitle] = useState(column.title);
@@ -56,15 +59,18 @@ const EditColumn = ({ column, onClose }) => {
   const columnTitleId = nanoid();
 
   return (
-    <div className={s.addContactContainer}>
-      <div className={s.modalAddColumnContainer}>
+    <div className={s.editModalContainer}>
+      <h3 className={s.titleModal}>Edit column</h3>
+      <div className={s.modalEditColumnContainer}>
         <Formik
           validationSchema={ColumnsSchema}
           initialValues={{ title: column.title }}
           onSubmit={handleSubmit}
         >
           <Form className={s.form}>
-            <label htmlFor={columnTitleId}>Title</label>
+            <label className={s.labelModal} htmlFor={columnTitleId}>
+              Title
+            </label>
             <Field
               id={columnTitleId}
               className={s.modalInputTitle}
@@ -76,9 +82,7 @@ const EditColumn = ({ column, onClose }) => {
               <ErrorMessage name="title" />
             </p>
 
-            <button type="submit" className={s.btn}>
-              Save
-            </button>
+            <CardButton type="submit" btnText="Edit" />
           </Form>
         </Formik>
       </div>
