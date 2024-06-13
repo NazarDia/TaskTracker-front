@@ -20,8 +20,8 @@ export default function NeedHelp() {
         resources or reach out to our customer support team.
       </p>
       <button className={s.btn} onClick={openModal}>
-        <svg width={20} height={20} stroke="#161616">
-          <use href={`${sprite}#help_circle`}></use>
+        <svg width={20} height={20}>
+          <use href={`${sprite}#need-help`}></use>
         </svg>
         <p>Need help?</p>
       </button>

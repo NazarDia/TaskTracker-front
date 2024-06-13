@@ -39,8 +39,16 @@
   --card-text-color: rgba(22, 22, 22, 0.7);
 
   --btn-bg-color: #bedbb0;
-  --btn-hover-color: #74a05e;
+  --btn-hover-color: #9dc888;
   --column-color-active: #9092d6;
+
+  --sidebar-icon-bgc: #1f1f1f;
+  --sidebar-icon: #ffffff;
+  --sidebar-btn-icon: #121212;
+  --sidebar-btn-board: #bedbb0;
+  --sidebar-btn-hover-board: #9dc888;
+  --sidebar-btn-logout: #bedbb0;
+  --sidebar-btn-hover-logout: #9dc888;
 
   --label-color-blue: #8fa1d0;
   --label-color-pink: #e09cb5;
@@ -62,7 +70,6 @@
   -webkit-text-size-adjust: 100%;
 }
 
-
 [data-theme='Light'] {
   --main-color: #ffffff;
   --header-bg-color: #fcfcfc;
@@ -83,6 +90,14 @@
   --btn-bg-color: #bedbb0;
   --btn-hover-color: #74a05e;
   --column-color-active: #9092d6;
+
+  --sidebar-icon-bgc: #1f1f1f;
+  --sidebar-icon: #ffffff;
+  --sidebar-btn-icon: #121212;
+  --sidebar-btn-board: #bedbb0;
+  --sidebar-btn-hover-board: #9dc888;
+  --sidebar-btn-logout: #bedbb0;
+  --sidebar-btn-hover-logout: #9dc888;
 
   --stroke-icon-color: #161616;
 }
@@ -108,7 +123,15 @@
   --btn-hover-color: #74a05e;
   --column-color-active: #121212;
 
-  --stroke-icon-color: #FFF;
+  --sidebar-icon-bgc: #1f1f1f;
+  --sidebar-icon: #ffffff;
+  --sidebar-btn-icon: #121212;
+  --sidebar-btn-board: #bedbb0;
+  --sidebar-btn-hover-board: #9dc888;
+  --sidebar-btn-logout: #bedbb0;
+  --sidebar-btn-hover-logout: #9dc888;
+
+  --stroke-icon-color: #fff;
 }
 
 [data-theme='Violet'] {
@@ -131,6 +154,14 @@
   --btn-bg-color: #5255bc;
   --btn-hover-color: #7b7ede;
   --column-color-active: #fff;
+
+  --sidebar-icon-bgc: #ecedfd;
+  --sidebar-icon: #5255bc;
+  --sidebar-btn-icon: #ffffff;
+  --sidebar-btn-board: #b8bcfd;
+  --sidebar-btn-hover-board: #979cea;
+  --sidebar-btn-logout: #ffffff;
+  --sidebar-btn-hover-logout: #b8bcfd;
 
   --stroke-icon-color: #161616;
 }

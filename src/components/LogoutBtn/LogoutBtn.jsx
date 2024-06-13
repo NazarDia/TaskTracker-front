@@ -13,7 +13,7 @@ export default function LogoutBtn() {
       type="button"
       onClick={() => dispatch(logout())}
     >
-      <svg width={32} height={32} stroke={'var(--btn-bg-color)'}>
+      <svg width={32} height={32}>
         <use href={`${sprite}#log-out`}></use>
       </svg>
       <p>Log out</p>

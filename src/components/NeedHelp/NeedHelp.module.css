@@ -32,6 +32,7 @@
   line-height: 1.33;
   letter-spacing: -0.02em;
   color: var(--text-color);
+  font-family: 'PoppinsRegular', sans-serif;
 }
 
 .text span {
@@ -49,6 +50,8 @@
   font-size: 12px;
   letter-spacing: -0.02em;
   color: var(--text-color);
+  stroke: var(--text-color);
+  transition: 400ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 @media screen and (min-width: 768px) {
@@ -62,5 +65,13 @@
     width: 172px;
     font-size: 14px;
     line-height: 1.42;
+  }
+}
+
+@media screen and (min-width: 1040px) {
+  .btn:hover,
+  .btn:focus {
+    color: var(--text-color-modify);
+    stroke: var(--text-color-modify);
   }
 }
