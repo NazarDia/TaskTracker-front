@@ -11,7 +11,7 @@ const handleRejected = (state, action) => {
 };
 
 const initialState = {
-  user: { name: null, email: null, theme: 'Light'},
+  user: { name: null, email: null, theme: 'Light', avatarURL: null },
   token: localStorage.getItem('token') || null,
   isLoggedIn: false,
   isRefreshing: false,
@@ -47,7 +47,7 @@ const authSlice = createSlice({
 
       .addCase(logout.pending, handlePending)
       .addCase(logout.fulfilled, state => {
-        state.user = { name: null, email: null, theme: 'Light' };
+        state.user = { name: null, email: null, theme: 'Light', avatarURL: null };
         state.token = null;
         state.isLoggedIn = false;
       })

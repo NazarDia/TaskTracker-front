@@ -88,15 +88,20 @@ export const changeTheme = createAsyncThunk(
 export const updateProfile = createAsyncThunk(
   'auth/updateprofile',
   async (formData, thunkAPI) => {
+    console.log(formData);
     try {
-      const { data } = await axios.put('/users/update', formData);
-      console.log(data);
-      return data;
+      const response = await axios.put('/users/profile', formData, {
+        headers: {
+          "Content-Type": 'multipart/form-data',
+        },
+      });
+      return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
+
 export const sendFeedback = createAsyncThunk(
   'feedback/sendFeedback',
   async ({ email, message }, thunkAPI) => { 

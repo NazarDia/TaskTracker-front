@@ -9,8 +9,7 @@ const EditProfile = ({ onClose }) => {
   const user = useUserData();
   const dispatch = useDispatch();
 
-  const [avatar, setAvatar] = useState(user.avatarURL);
-  const [avatarUploaded, setAvatarUploaded] = useState(false);
+  const [avatar, setAvatar] = useState(null);
   const [name, setName] = useState(user.name);
   const [email, setEmail] = useState(user.email);
   const [password, setPassword] = useState('');
@@ -22,45 +21,30 @@ const EditProfile = ({ onClose }) => {
 
   const handleChangeAvatar = event => {
     setAvatar(event.target.files[0]);
-    setAvatarUploaded(event.target.files[0]);
   };
 
   const handleChange = ({ target: { name, value } }) => {
-    switch (name) {
-      case 'name':
-        return setName(value);
-      case 'email':
-        return setEmail(value);
-      case 'password':
-        return setPassword(value);
-      default:
-        return;
-    }
-  };
-
-  const modalClose = event => {
-    onClose();
+    if (name === 'name') setName(value);
+    if (name === 'email') setEmail(value);
+    if (name === 'password') setPassword(value);
   };
 
   const handleFormSubmit = e => {
     e.preventDefault();
+    const formData = new FormData();
 
-    if (name === '' || email === '') {
-      return alert('Name and email are required!');
+    formData.append('name', name);
+    formData.append('email', email);
+    if (password) formData.append('password', password);
+    if (avatar) formData.append('avatar', avatar);
+
+    // Логування вмісту formData
+    for (let pair of formData.entries()) {
+      console.log(`${pair[0]}: ${pair[1]}`);
     }
 
-    let updatedProfile = { name, email };
-
-    if (avatarUploaded) {
-      updatedProfile.avatar = avatar;
-    }
-
-    if (password) {
-      updatedProfile.password = password;
-    }
-
-    dispatch(updateProfile(updatedProfile));
-    modalClose();
+    dispatch(updateProfile(formData));
+    onClose();
   };
 
   return (
@@ -73,12 +57,12 @@ const EditProfile = ({ onClose }) => {
             type="file"
             onChange={handleChangeAvatar}
           />
-          {user.avatarURL === '' ? (
+          {user.avatarURL ? (
+            <img src={user.avatarURL} className={s.imgUser} alt="avatar" />
+          ) : (
             <svg width="68" height="68" className={s.img}>
               <use xlinkHref={`${sprite}#icon-user-ico`} />
             </svg>
-          ) : (
-            <img src={user.avatarURL} className={s.imgUser} alt="avatar" />
           )}
         </label>
         <label className={s.labelStyle}>

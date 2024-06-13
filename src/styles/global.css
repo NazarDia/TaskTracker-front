@@ -82,6 +82,8 @@
   --btn-bg-color: #bedbb0;
   --btn-hover-color: #74a05e;
   --column-color-active: #9092d6;
+
+  --stroke-icon-color: #161616;
 }
 
 [data-theme='dark'] {
@@ -104,6 +106,8 @@
   --btn-bg-color: #bedbb0;
   --btn-hover-color: #74a05e;
   --column-color-active: #121212;
+
+  --stroke-icon-color: #FFF;
 }
 
 [data-theme='violet'] {
@@ -126,6 +130,8 @@
   --btn-bg-color: #5255bc;
   --btn-hover-color: #7b7ede;
   --column-color-active: #fff;
+
+  --stroke-icon-color: #161616;
 }
 
 .container {

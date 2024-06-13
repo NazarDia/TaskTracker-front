@@ -27,7 +27,7 @@
 
 .select_item {
   color: var(--text-color);
-
+  background-color: var(--header-bg-color);
   text-align: center;
   transition: all 200ms linear;
   cursor: pointer;
@@ -44,4 +44,10 @@
 .selected_item {
   transform: scale(1.1);
   color: var(--main-color);
+}
+
+.svg {
+  width: 16px;
+  height: 16px;
+  stroke: var(--stroke-icon-color);
 }
