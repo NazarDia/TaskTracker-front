@@ -1,112 +1,40 @@
-.modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.editModalContainer {
+  background-color: var(--modal-bg-color);
 }
 
-.modalContent {
-  width: 335px;
-  border-radius: 8px;
-  border: 1px solid rgba(190, 219, 176, 0.5);
-
-  background: #151515;
-  padding: 24px;
-  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); */
-  position: relative;
-}
-.title {
-  color: #ffffff;
-  text-align: left;
-}
-.close {
-  position: absolute;
-  top: 14px;
-  right: 14px;
-  cursor: pointer;
-  font-size: 24px;
-  padding: 0px;
-  line-height: 0.5rem;
-  color: #888;
+.titleModal {
+  color: var(--text-color);
+  font-family: 'PoppinsMedium';
+  font-size: 18px;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: -0.36px;
+  margin-bottom: 24px;
 }
 
-.close:hover {
-  color: #0056b3;
+.labelModal {
+  display: none;
 }
-
-.modalForm {
-  margin-top: 24px;
-}
-
-/* .modalLabel {
-  display: block;
-   margin-bottom: 6px;
-} */
 
 .modalInputTitle {
   width: 287px;
   padding: 14px 18px;
+  align-items: center;
+  color: var(--text-color);
+
   border-radius: 8px;
-  border: 1px solid #bedbb0;
-  opacity: 0.4;
-  background: #1f1f1f;
-  box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08);
-
-  color: #fff;
-  font-family: Poppins;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  letter-spacing: -0.28px;
+  border: 1px solid var(--btn-bg-color);
+  /* opacity: 0.4; */
+  background-color: var(--modal-bg-color);
+  box-shadow: 0px 4px 16px 0px var(--label-color-grey);
+  margin-bottom: 24px;
 }
 
-.modalInputDescription {
-  margin-top: 14px;
-  width: 287px;
-  height: 154px;
-  padding: 14px 18px;
+.modalInputTitle:active,
+.modalInputTitle:focus {
   border-radius: 8px;
-  border: 1px solid #bedbb0;
-  opacity: 0.4;
-  background: #1f1f1f;
-  box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08);
-
-  color: #fff;
-  font-family: Poppins;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  letter-spacing: -0.28px;
-  text-align: start;
-
-  resize: none; /* Запобігти зміні розміру */
-  vertical-align: top; /* Вирівнювання по верху */
-  overflow: auto;
-}
-
-.modalBtn {
-  margin-top: 40px;
-  padding: 10px 20px;
-  border-radius: 8px;
-  background: #bedbb0;
-  width: 100%;
-}
-
-.modalBtn:hover {
-  background-color: #0056b3;
-}
-
-.customRadios {
-  display: flex;
-}
-
-.colorInput {
-  display: none;
+  border: 1px solid var(--btn-bg-color);
+  background-color: var(--modal-bg-color);
+  box-shadow: 0px 4px 16px 0px var(--header-text-color);
+  outline: var(--btn-bg-color);
 }

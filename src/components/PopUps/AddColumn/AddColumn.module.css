@@ -1,3 +1,40 @@
-.addContactContainer {
-  width: 335px;
+.editModalContainer {
+  background-color: var(--modal-bg-color);
+}
+
+.titleModal {
+  color: var(--text-color);
+  font-family: 'PoppinsMedium';
+  font-size: 18px;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: -0.36px;
+  margin-bottom: 24px;
+}
+
+.labelModal {
+  display: none;
+}
+
+.modalInputTitle {
+  width: 287px;
+  padding: 14px 18px;
+  align-items: center;
+  color: var(--text-color);
+
+  border-radius: 8px;
+  border: 1px solid var(--btn-bg-color);
+  /* opacity: 0.4; */
+  background-color: var(--modal-bg-color);
+  box-shadow: 0px 4px 16px 0px var(--label-color-grey);
+  margin-bottom: 24px;
+}
+
+.modalInputTitle:active,
+.modalInputTitle:focus {
+  border-radius: 8px;
+  border: 1px solid var(--btn-bg-color);
+  background-color: var(--modal-bg-color);
+  box-shadow: 0px 4px 16px 0px var(--header-text-color);
+  outline: var(--btn-bg-color);
 }

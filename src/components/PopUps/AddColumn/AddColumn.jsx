@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 import * as Yup from 'yup';
 import { addNewColumn } from '../../../redux/columns/operations';
 import toast from 'react-hot-toast';
+import { CardButton } from '../CardButton/CardButton';
 
 const ColumnsSchema = Yup.object().shape({
   title: Yup.string()
@@ -33,7 +34,8 @@ const AddColumn = ({ boardId, closeModal }) => {
   const columnTitleId = nanoid();
 
   return (
-    <div className={s.addContactContainer}>
+    <div className={s.addModalContainer}>
+      <h3 className={s.titleModal}>Add column</h3>
       <div className={s.modalAddColumnContainer}>
         <Formik
           initialValues={{
@@ -44,15 +46,20 @@ const AddColumn = ({ boardId, closeModal }) => {
           onSubmit={handleSubmit}
         >
           <Form className={s.form}>
-            <label htmlFor={columnTitleId}>Title</label>
-            <Field type="text" name="title" id={columnTitleId}></Field>
+            <label className={s.labelModal} htmlFor={columnTitleId}>
+              Title
+            </label>
+            <Field
+              className={s.modalInputTitle}
+              type="text"
+              name="title"
+              id={columnTitleId}
+            ></Field>
             <p className={s.warning}>
               <ErrorMessage name="title" />
             </p>
 
-            <button type="submit" className={s.btn}>
-              Add column
-            </button>
+            <CardButton type="submit" btnText="Add column" />
           </Form>
         </Formik>
       </div>
