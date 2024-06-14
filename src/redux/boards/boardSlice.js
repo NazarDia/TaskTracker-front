@@ -5,6 +5,7 @@ import {
   deleteBoard,
   editBoardById,
   getBoardByID,
+  fetchBackgrounds
 } from './operations.js';
 
 const boardsSlice = createSlice({
@@ -13,6 +14,7 @@ const boardsSlice = createSlice({
     boards: {
       current: {},
       items: [],
+      backgrounds: [],
       isLoading: false,
       error: null,
     },
@@ -91,6 +93,18 @@ const boardsSlice = createSlice({
         );
       })
       .addCase(deleteBoard.rejected, (state, action) => {
+        state.boards.isLoading = false;
+        state.boards.error = action.payload;
+      })
+      .addCase(fetchBackgrounds.pending, state => {
+        state.boards.isLoading = true;
+      })
+      .addCase(fetchBackgrounds.fulfilled, (state, action) => {
+        state.boards.isLoading = false;
+        state.boards.error = null;
+        state.boards.backgrounds = action.payload;
+      })
+      .addCase(fetchBackgrounds.rejected, (state, action) => {
         state.boards.isLoading = false;
         state.boards.error = action.payload;
       });

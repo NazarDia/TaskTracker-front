@@ -3,8 +3,8 @@ import * as Yup from "yup";
 import sprite from "../../../images/sprite/sprite-icon.svg";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { editBoardById, getBoardByID } from "../../../redux/boards/operations";
-import { selectBoards } from "../../../redux/boards/selectors";
+import { editBoardById, getBoardByID, fetchBackgrounds } from "../../../redux/boards/operations";
+import { selectBoards, selectBackgrounds } from "../../../redux/boards/selectors";
 import styles from "./EditBoard.module.css";
 import { CardButton } from "../CardButton/CardButton";
 
@@ -26,32 +26,18 @@ const icons = [
   "hexagon",
 ];
 
-const backgrounds = [
-  "default",
-  "flowers",
-  "night",
-  "pink-tree",
-  "moon",
-  "plant",
-  "clouds",
-  "rocks",
-  "unsplash",
-  "full-moon",
-  "ship",
-  "balloon",
-  "gorge",
-  "ocean",
-  "kapadokia",
-  "milky-way",
-];
-
-export default function EditNewBoard({ boardId, closeModal }) {
+export default function EditBoard({ boardId, closeModal }) {
   const dispatch = useDispatch();
   const boards = useSelector(selectBoards);
   const selectedBoard = boards.find((board) => board._id === boardId);
+  const backgrounds = useSelector(selectBackgrounds);
 
   const [icon, setIcon] = useState(selectedBoard ? selectedBoard.icon : "");
   const [background, setBackground] = useState(selectedBoard ? selectedBoard.background : "");
+
+  useEffect(() => {
+    dispatch(fetchBackgrounds());
+  }, [dispatch]);
 
   useEffect(() => {
     if (selectedBoard) {
@@ -147,35 +133,49 @@ export default function EditNewBoard({ boardId, closeModal }) {
               ))}
             </div>
           </div>
+
           <div className={styles.smallTitle}>Background</div>
-          <div id="my-backgrounds-radio-group"><div
-              className={styles.backgroundsWrapper}
-              role="group"
-              aria-labelledby="my-backgrounds-radio-group"
-            >
-              {backgrounds.map((name) => (
-                <label className={styles.backgroundLabel} key={name}>
-                  <input
-                    className={styles.backgroundField}
-                    onChange={handleRadioChangeBackground}
-                    checked={background === name}
-                    type="radio"
-                    name="background"
-                    value={name}
-                  />
-                  {name === "default" ? (
-                    <div className={styles.defaultIconWrapper}>
-                      <svg className={styles.defaultIcon} width="16" height="16">
-                        <use href={`${sprite}#icon-default`} />
-                      </svg>
-                    </div>
-                  ) : (
-                    <div className={styles.iconBackground}>
-                      {/* Placeholder for future background images */}
-                    </div>
-                  )}
-                </label>
-              ))}
+          <div id="my-backgrounds-radio-group">
+            <div className={styles.backgroundsWrapper} role="group" aria-labelledby="my-backgrounds-radio-group">
+              {/* Default background option */}
+              <label className={`${styles.backgroundLabel} ${!background ? styles.selected : ''}`}>
+  <input
+    className={styles.backgroundField}
+    onChange={() => setBackground('')}
+    checked={!background}
+    type="radio"
+    name="background"
+    value=""
+  />
+  <div className={`${styles.iconBackground} ${background === '' ? styles.checked : ''}`}>
+    <div className={styles.iconContainer}>
+      <svg className={styles.iconDefault} width="32" height="32">
+        <use href={`${sprite}#no-background`} />
+      </svg>
+    </div>
+  </div>
+</label>
+
+{backgrounds.map((bg) => {
+  const key = Object.keys(bg).find((key) => key !== '_id');
+  const url = bg[key];
+  return (
+    <label className={`${styles.backgroundLabel} ${background === key ? styles.selected : ''}`} key={bg._id}>
+      <input
+        className={styles.backgroundField}
+        onChange={handleRadioChangeBackground}
+        checked={background === key}
+        type="radio"
+        name="background"
+        value={key}
+      />
+      <div className={`${styles.iconBackground} ${background === key ? styles.checked : ''}`}>
+        <img src={url} alt={key} />
+      </div>
+    </label>
+  );
+})}
+
             </div>
           </div>
 
