@@ -6,16 +6,21 @@ import { Field, Form, Formik } from 'formik';
 import 'react-datepicker/dist/react-datepicker.css';
 import ReactDatePicker from 'react-datepicker';
 import css from './AddCard.module.css';
+import { CardButton } from '../CardButton/CardButton';
+import { TiTick } from 'react-icons/ti';
+import { format } from 'date-fns';
+import { useState } from 'react';
 
 export default function PopUpAddCard({ column, onClose }) {
   const dispatch = useDispatch();
+  const [showDatePicker, setShowDatePicker] = useState(false);
 
   const initialValues = {
     boardId: column.boardId,
     columnId: column._id,
     title: '',
     description: '',
-    color: '',
+    color: 'B9B9B9',
     deadline: new Date(),
   };
 
@@ -39,11 +44,8 @@ export default function PopUpAddCard({ column, onClose }) {
   const cardDescriptionId = nanoid();
 
   return (
-    <div className={css.modal}>
+    <div className={css.addCardModal}>
       <div className={css.modalContent}>
-        <span className={css.close} onClick={onClose}>
-          &times;
-        </span>
         <h4 className={css.title}>Add card</h4>
         <Formik initialValues={initialValues} onSubmit={handleSubmit}>
           {({ setFieldValue, values }) => (
@@ -64,7 +66,7 @@ export default function PopUpAddCard({ column, onClose }) {
               <Field
                 id={cardDescriptionId}
                 className={css.modalInputDescription}
-                type="text"
+                as="textarea"
                 name="description"
                 placeholder="Description"
               />
@@ -80,11 +82,7 @@ export default function PopUpAddCard({ column, onClose }) {
                   />
                   <label htmlFor="color1">
                     <span className={css.color1}>
-                      <img
-                        className={css.imgColor1}
-                        src="../../../public/check-icn.svg"
-                        alt="Checked Icon"
-                      />
+                      <TiTick className={css.svg} />
                     </span>
                   </label>
                 </div>
@@ -98,11 +96,7 @@ export default function PopUpAddCard({ column, onClose }) {
                   />
                   <label htmlFor="color-2">
                     <span className={css.color2}>
-                      <img
-                        className={css.imgColor2}
-                        src="../../../public/check-icn.svg"
-                        alt="Checked Icon"
-                      />
+                      <TiTick className={css.svg} />
                     </span>
                   </label>
                 </div>
@@ -116,11 +110,7 @@ export default function PopUpAddCard({ column, onClose }) {
                   />
                   <label htmlFor="color-3">
                     <span className={css.color3}>
-                      <img
-                        className={css.imgColor3}
-                        src="../../../public/check-icn.svg"
-                        alt="Checked Icon"
-                      />
+                      <TiTick className={css.svg} />
                     </span>
                   </label>
                 </div>
@@ -134,27 +124,39 @@ export default function PopUpAddCard({ column, onClose }) {
                   />
                   <label htmlFor="color-4">
                     <span className={css.color4}>
-                      <img
-                        className={css.imgColor4}
-                        src="../../../public/check-icn.svg"
-                        alt="Checked Icon"
-                      />
+                      <TiTick className={css.svg} />
                     </span>
                   </label>
                 </div>
               </div>
-              <div>
+              <div className={css.datePickerWrapper}>
                 <p className={css.deadline}>Deadline</p>
-                <ReactDatePicker
-                  selected={values.deadline}
-                  onChange={date => setFieldValue('deadline', date)}
-                  dateFormat="yyyy/MM/dd"
-                  className={css.datePicker}
-                />
+                <p
+                  className={css.deadlineDisplay}
+                  onClick={() => setShowDatePicker(!showDatePicker)}
+                >
+                  {values.deadline
+                    ? format(values.deadline, 'eeee, MMMM d')
+                    : 'Select date'}
+                </p>
+                {showDatePicker && (
+                  <div className={css.datePickerOverlay}>
+                    <ReactDatePicker
+                      selected={values.deadline}
+                      onChange={date => {
+                        setFieldValue('deadline', date);
+                        setShowDatePicker(false);
+                      }}
+                      dateFormat="dd/MM/yyyy"
+                      className={css.datePicker}
+                      inline
+                    />
+                  </div>
+                )}
               </div>
-              <button type="submit" className={css.modalBtn}>
-                Save
-              </button>
+              <div className={css.btn}>
+                <CardButton type="submit" btnText="Add" />
+              </div>
             </Form>
           )}
         </Formik>

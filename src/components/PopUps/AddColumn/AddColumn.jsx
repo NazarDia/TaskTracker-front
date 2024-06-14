@@ -55,11 +55,12 @@ const AddColumn = ({ boardId, closeModal }) => {
               name="title"
               id={columnTitleId}
             ></Field>
-            <p className={s.warning}>
+            <div className={s.warning}>
               <ErrorMessage name="title" />
-            </p>
-
-            <CardButton type="submit" btnText="Add column" />
+            </div>
+            <div className={s.btn}>
+              <CardButton type="submit" btnText="Add column" />
+            </div>
           </Form>
         </Formik>
       </div>

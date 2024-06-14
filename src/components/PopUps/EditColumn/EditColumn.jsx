@@ -15,13 +15,7 @@ const ColumnsSchema = Yup.object().shape({
     .required('Required'),
 });
 const EditColumn = ({ column, onClose }) => {
-  // const [title, setTitle] = useState(column.title);
-
   const dispatch = useDispatch();
-
-  // const handleChange = e => {
-  //   setTitle(e.target.value);
-  // };
 
   const handleSubmit = (values, actions) => {
     const updatedColumn = {
@@ -48,11 +42,10 @@ const EditColumn = ({ column, onClose }) => {
         toast.success('Column saved');
       })
       .catch(error => {
-        // Обробка помилок
         console.error('Error while editing column:', error);
       })
       .finally(() => {
-        actions.setSubmitting(false); // Позначаємо завершення відправлення форми
+        actions.setSubmitting(false);
       });
   };
 
