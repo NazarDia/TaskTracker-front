@@ -5,7 +5,7 @@ import { register } from '../../redux/auth/operations';
 import FormInput from '../FormInput/FormInput';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { registerUserSchema } from '../../Schemas/schema';
-import { useId, useRef, useEffect } from 'react';
+import { useId, useRef, useEffect, useState } from 'react';
 
 export default function RegistrationForm() {
   const dispatch = useDispatch();
@@ -18,6 +18,11 @@ export default function RegistrationForm() {
   const passwordFieldId = useId();
 
   const containerRef = useRef();
+
+  const [showPassword, setShowPassword] = useState(false);
+  const togglePasswordVisibility = () => {
+    setShowPassword(prevShowPassword => !prevShowPassword);
+  };
 
   const initialValues = {
     name: '',
@@ -88,9 +93,11 @@ export default function RegistrationForm() {
 
             <FormInput
               id={passwordFieldId}
-              type="password"
+              type={showPassword ? 'text' : 'password'}
               name="password"
               placeholder="Create a password"
+              showPassword={showPassword}
+              togglePasswordVisibility={togglePasswordVisibility}
             ></FormInput>
             <button type="submit" className={s.regBtn}>
               Register Now

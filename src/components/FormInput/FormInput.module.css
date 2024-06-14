@@ -21,6 +21,26 @@
     font-size: 12px;
     color: red;
   }
+  .form {
+    position: relative;
+  }
+  .passwordWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  .passwordIcon {
+    cursor: pointer;
+    position: absolute;
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 18px;
+    height: 18px;
+    stroke: #ffffff4d;
+    fill: #ffffff4d;
+  }
 }
 @media only screen and (min-width: 768px) and (max-width: 1439px) {
   .fieldInput {
@@ -44,6 +64,26 @@
     justify-content: center;
     font-size: 12px;
     color: red;
+  }
+  .form {
+    position: relative;
+  }
+  .passwordWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  .passwordIcon {
+    cursor: pointer;
+    position: absolute;
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 18px;
+    height: 18px;
+    stroke: #ffffff4d;
+    fill: #ffffff4d;
   }
 }
 @media only screen and (min-width: 1440px) {
@@ -69,20 +109,24 @@
     font-size: 12px;
     color: red;
   }
-}
-.test {
-  position: relative;
-}
-.passwordWrapper {
-  display: flex;
-  align-items: center;
-}
-.passwordToggleIcon {
-  cursor: pointer;
-  position: absolute;
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 20px;
-  height: 20px;
+  .form {
+    position: relative;
+  }
+  .passwordWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  .passwordIcon {
+    cursor: pointer;
+    position: absolute;
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 18px;
+    height: 18px;
+    stroke: #ffffff4d;
+    fill: #ffffff4d;
+  }
 }

@@ -12,7 +12,7 @@ export default function FormInput({
   togglePasswordVisibility,
 }) {
   return (
-    <div className={s.test}>
+    <div className={s.form}>
       <label htmlFor={id}>{children}</label>
       <div className={s.passwordWrapper}>
         <Field
@@ -23,10 +23,7 @@ export default function FormInput({
           className={s.fieldInput}
         ></Field>
         {name === 'password' && (
-          <svg
-            onClick={togglePasswordVisibility}
-            className={s.passwordToggleIcon}
-          >
+          <svg onClick={togglePasswordVisibility} className={s.passwordIcon}>
             <use href={`${icons}#${showPassword ? 'icon-eye-off' : 'eye'}`} />
           </svg>
         )}
