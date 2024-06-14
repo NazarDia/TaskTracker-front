@@ -4,7 +4,7 @@
   justify-content: space-between;
   width: 197px;
   height: 70px;
-  margin-bottom: 40px;
+  /* margin-bottom: 40px; */
   border-top: 1px solid var(--aside-els-frame-color);
   border-bottom: 1px solid var(--aside-els-frame-color);
 }

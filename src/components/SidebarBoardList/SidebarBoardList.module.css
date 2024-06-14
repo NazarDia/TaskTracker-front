@@ -1,37 +1,46 @@
-.container .active {
-  width: 100%;
-  background-color: rgba(246, 246, 247, 1);
-  height: 61px;
-  margin-bottom: 10px;
+.container {
+  margin: 18px -14px;
 }
+
+.boardList {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.active {
+  background-color: var(--sidebar-boardItem-bgc);
+  opacity: 0.4;
+}
+
 .boardItem {
+  width: 100%;
+  height: 61px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 24px 20px;
+  padding: 20px 14px;
+  opacity: 1;
   cursor: pointer;
   gap: 4px;
 }
 
 .boardItem.active .boardIcon,
 .boardItem.active .boardTitle {
-  color: #000;
+  color: var(--text-color);
 }
 
 .boardIcon {
-  margin-right: 8px;
   fill: none;
   stroke: currentColor;
-  stroke-width: 2;
-  color: rgba(22, 22, 22, 0.5);
+  color: var(--text-color-light);
 }
 
 .boardTitle {
-  color: rgba(22, 22, 22, 0.5);
+  color: var(--text-color-light);
   font-size: 14px;
-  font-weight: 500;
-  letter-spacing: -0.28px;
+  letter-spacing: -0.02em;
   flex: 1;
+  font-family: 'PoppinsMedium', sans-serif;
 }
 
 .iconButtons {
@@ -41,11 +50,62 @@
 
 .editButton,
 .deleteButton {
+  display: flex;
+  align-items: center;
   background: none;
   border: none;
   cursor: pointer;
-  padding: 4px;
-  display: flex;
-  align-items: center;
-  stroke: #999;
+  padding: 0px;
+  stroke: var(--text-color-light);
+  transition: 400ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.boardItem.active {
+  position: relative;
+}
+
+.boardItem.active:before,
+.boardItem.active:after {
+  content: '';
+  position: absolute;
+  right: 0;
+  width: 4px;
+  background-color: var(--sidebar-boardMarker-bgc);
+}
+
+.boardItem.active:before {
+  top: 0;
+  height: 50%;
+  border-top-left-radius: 4px;
+}
+
+.boardItem.active:after {
+  bottom: 0;
+  height: 50%;
+  border-bottom-left-radius: 4px;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    margin: 18px -24px;
+  }
+
+  .boardItem {
+    padding: 20px 24px;
+    gap: 8px;
+  }
+}
+
+@media screen and (min-width: 1040px) {
+  .editButton,
+  .deleteButton {
+    transition: 400ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .editButton:hover,
+  .editButton:focus,
+  .deleteButton:hover,
+  .deleteButton:focus {
+    stroke: var(--text-color);
+  }
 }
