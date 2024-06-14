@@ -95,7 +95,7 @@ export default function SidebarBoardList() {
             ))}
           </ul>
         ) : (
-          <div className={s.noBoards}>No boards available</div>
+          <div></div>
         )}
       </div>
       {modalIsOpen && (
