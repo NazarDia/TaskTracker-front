@@ -63,3 +63,11 @@ export const deleteBoard = createAsyncThunk(
     }
   }
 );
+
+export const fetchBackgrounds = createAsyncThunk(
+  'boards/fetchBackgrounds',
+  async () => {
+    const response = await axios.get('/boards/backgrounds');
+    return response.data;
+  }
+);
