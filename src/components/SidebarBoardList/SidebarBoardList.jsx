@@ -36,15 +36,14 @@ export default function SidebarBoardList() {
   }, [boards, dispatch]);
 
   const handleBoardClick = board => {
-    const boardId = board._id === selectedBoard ? null : board._id;
-    setSelectedBoard(boardId);
-    if (boardId) {
-      dispatch(setActiveBoard(board));
-      dispatch(getBoardByID(boardId));
-      localStorage.setItem('activeBoard', boardId);
-    } else {
-      localStorage.removeItem('activeBoard');
+    if (board._id === selectedBoard) {
+      return;
     }
+    const boardId = board._id;
+    setSelectedBoard(boardId);
+    dispatch(setActiveBoard(board));
+    dispatch(getBoardByID(boardId));
+    localStorage.setItem('activeBoard', boardId);
   };
 
   const handleEditBoard = (e, board) => {
