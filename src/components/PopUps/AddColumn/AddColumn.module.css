@@ -24,10 +24,18 @@
 
   border-radius: 8px;
   border: 1px solid var(--btn-bg-color);
-  /* opacity: 0.4; */
+
   background-color: var(--modal-bg-color);
   box-shadow: 0px 4px 16px 0px var(--label-color-grey);
-  margin-bottom: 24px;
+}
+
+.warning {
+  color: red;
+  font-size: 14px;
+  margin-top: -15px;
+  text-align: center;
+  margin-bottom: 8px;
+  height: 14px;
 }
 
 .modalInputTitle:active,
@@ -37,4 +45,7 @@
   background-color: var(--modal-bg-color);
   box-shadow: 0px 4px 16px 0px var(--header-text-color);
   outline: var(--btn-bg-color);
+}
+.btn {
+  margin-top: 24px;
 }
