@@ -1,5 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { addCard, deleteCard, fetchCards, updateCard, moveCard } from './operations';
+import {
+  addCard,
+  deleteCard,
+  fetchCards,
+  updateCard,
+  moveCard,
+} from './operations';
 
 const cardsSlice = createSlice({
   name: 'cards',
@@ -76,7 +82,8 @@ const cardsSlice = createSlice({
       .addCase(moveCard.fulfilled, (state, action) => {
         state.loading = false;
         state.error = null;
-        const { cardId, targetColumnId } = action.payload;
+        const cardId = action.payload._id;
+        const targetColumnId = action.payload.columnId;
         const card = state.items.find(card => card._id === cardId);
         if (card) {
           card.columnId = targetColumnId;
