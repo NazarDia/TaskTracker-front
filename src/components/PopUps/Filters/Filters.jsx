@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { setPriorityFilter, selectPriorityFilter } from '../../redux/filtersSlice';
+import { setPriorityFilter } from '../../../redux/filters/slice';
+import { selectPriorityFilter } from '../../../redux/filters/selector';
 import s from './Filters.module.css';
 
 const Filters = ({ onRequestClose }) => {
