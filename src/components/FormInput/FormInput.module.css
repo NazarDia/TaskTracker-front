@@ -70,3 +70,19 @@
     color: red;
   }
 }
+.test {
+  position: relative;
+}
+.passwordWrapper {
+  display: flex;
+  align-items: center;
+}
+.passwordToggleIcon {
+  cursor: pointer;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+}

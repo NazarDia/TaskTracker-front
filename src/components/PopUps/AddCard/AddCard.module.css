@@ -144,12 +144,12 @@
 .color4 {
   background-color: rgba(255, 255, 255, 0.3);
 }
-svg {
+/* svg {
   display: inline-block;
   opacity: 0;
   font-size: 14px;
   color: #000;
-}
+} */
 .customRadios input[type='radio']:checked + label span .svg {
   display: inline-block;
   opacity: 1;

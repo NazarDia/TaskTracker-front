@@ -5,7 +5,7 @@ import { login } from '../../redux/auth/operations';
 import FormInput from '../FormInput/FormInput';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { loginUserSchema } from '../../Schemas/schema';
-import { useRef, useEffect, useId } from 'react';
+import { useRef, useEffect, useId, useState } from 'react';
 import { selectAuthError } from '../../redux/auth/selectors';
 import { resetAuthError } from '../../redux/auth/slice';
 
@@ -19,6 +19,11 @@ export default function LoginForm() {
   const passwordFieldId = useId();
 
   const containerRef = useRef();
+
+  const [showPassword, setShowPassword] = useState(false);
+  const togglePasswordVisibility = () => {
+    setShowPassword(prevShowPassword => !prevShowPassword);
+  };
 
   const initialValues = {
     email: '',
@@ -87,9 +92,11 @@ export default function LoginForm() {
             ></FormInput>
             <FormInput
               id={passwordFieldId}
-              type="password"
+              type={showPassword ? 'text' : 'password'}
               name="password"
               placeholder="Confirm a password"
+              showPassword={showPassword}
+              togglePasswordVisibility={togglePasswordVisibility}
             ></FormInput>
             {authError && <div className={s.error}>{authError}</div>}
             <button type="submit" className={s.logBtn}>
