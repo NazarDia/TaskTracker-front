@@ -5,7 +5,7 @@ display: flex;
 }
 
 .profile { 
-  color: #161616;
+  color: var(--text-color);
 }
 
 .profile_btn {

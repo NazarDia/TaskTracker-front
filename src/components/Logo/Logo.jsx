@@ -5,7 +5,7 @@ export default function Logo() {
   return (
     <div className={s.container}>
       <svg width={32} height={32}>
-        <use href={`${sprite}#logo`}></use>
+        <use href={`${sprite}#sidebar-logo`}></use>
       </svg>
       <p className={s.logoName}>Task Pro</p>
     </div>

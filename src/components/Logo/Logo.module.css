@@ -7,7 +7,7 @@
 }
 
 .logoName {
-  font-weight: 600;
+  font-family: 'PoppinsSemiBold', sans-serif;
   font-size: 16px;
   letter-spacing: -0.04em;
   color: var(--text-color);

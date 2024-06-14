@@ -43,7 +43,7 @@ const ThemeSelect = ({ option = [], placeholder }) => {
     <div className={s.select} ref={ref}>
       <button className={s.select_btn} onClick={handlerIsOpen}>
         {placeholder}
-        <svg width={16} height={16}>
+        <svg width="16" height="16" className={s.svg}>
           <use href={`${icon}#chevron-down`}></use>
         </svg>
       </button>

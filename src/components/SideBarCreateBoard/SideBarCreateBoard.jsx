@@ -13,10 +13,10 @@ export default function SideBarCreateBoard() {
   const closeModal = () => setModalIsOpen(false);
 
   return (
-    <div className={s.createBoard}>
+    <div className={s.container}>
       <p className={s.text}>Create a new board</p>
       <button className={s.btn} onClick={openModal}>
-        <svg width={20} height={20} stroke="#121212">
+        <svg width={20} height={20} stroke="var(--sidebar-btn-icon)">
           <use href={`${sprite}#icon-plus`}></use>
         </svg>
       </button>

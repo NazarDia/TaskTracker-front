@@ -7,6 +7,8 @@ import { useDispatch } from 'react-redux';
 import { getBoardByID } from '../../redux/boards/operations';
 import PopUpEditCard from '../PopUps/EditCard/EditCard';
 import { deleteCard } from '../../redux/cards/operations';
+import MoveCard from '../PopUps/MoveCard/MoveCard';
+import { getAllColumns } from '../../redux/columns/operations';
 
 const Card = ({ task }) => {
   const dispatch = useDispatch();
@@ -19,7 +21,11 @@ const Card = ({ task }) => {
     dispatch(getBoardByID(task.boardId));
   };
 
-  const openMoveModal = () => setModalMoveIsOpen(true);
+  const openMoveModal = () => {
+    dispatch(getAllColumns());
+    setModalMoveIsOpen(true);
+  };
+
   const closeMoveModal = () => {
     setModalMoveIsOpen(false);
     dispatch(getBoardByID(task.boardId));
@@ -104,9 +110,9 @@ const Card = ({ task }) => {
       <GeneralModal
         isOpen={isModalMoveOpen}
         onRequestClose={closeMoveModal}
-        contentLabel="Edit Task"
+        contentLabel="Move Task"
       >
-        <PopUpEditCard card={task} onClose={closeMoveModal}></PopUpEditCard>
+        <MoveCard card={task} onClose={closeMoveModal}></MoveCard>
       </GeneralModal>
     </div>
   );
