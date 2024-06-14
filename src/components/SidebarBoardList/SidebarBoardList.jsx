@@ -23,20 +23,41 @@ export default function SidebarBoardList() {
 
   const boards = useSelector(state => state.boards.boards.items);
 
+  useEffect(() => {
+    const activeBoardId = localStorage.getItem('activeBoard');
+    if (activeBoardId && Array.isArray(boards)) {
+      const activeBoard = boards.find(board => board._id === activeBoardId);
+      if (activeBoard) {
+        setSelectedBoard(activeBoardId);
+        dispatch(setActiveBoard(activeBoard));
+        dispatch(getBoardByID(activeBoardId));
+      }
+    }
+  }, [boards, dispatch]);
+
   const handleBoardClick = board => {
-    setSelectedBoard(board._id === selectedBoard ? null : board._id);
-    dispatch(setActiveBoard(board));
-    dispatch(getBoardByID(board._id));
+    const boardId = board._id === selectedBoard ? null : board._id;
+    setSelectedBoard(boardId);
+    if (boardId) {
+      dispatch(setActiveBoard(board));
+      dispatch(getBoardByID(boardId));
+      localStorage.setItem('activeBoard', boardId);
+    } else {
+      localStorage.removeItem('activeBoard');
+    }
   };
 
-  const handleEditBoard = board => {
+  const handleEditBoard = (e, board) => {
+    e.stopPropagation();
     setBoardToEdit(board._id);
     setModalIsOpen(true);
   };
 
-  const handleDeleteBoard = async board => {
+  const handleDeleteBoard = async (e, board) => {
+    e.stopPropagation();
     await dispatch(deleteBoard(board._id));
     dispatch(fetchBoards());
+    localStorage.removeItem('activeBoard');
   };
 
   const closeModal = () => {
@@ -47,7 +68,7 @@ export default function SidebarBoardList() {
   return (
     <>
       <div className={s.container}>
-        {boards.length > 0 ? (
+        {boards && boards.length > 0 ? (
           <ul className={s.boardList}>
             {boards.map(board => (
               <li
@@ -70,20 +91,16 @@ export default function SidebarBoardList() {
                 {selectedBoard === board._id && (
                   <div className={s.iconButtons}>
                     <button
-                      onClick={() => handleEditBoard(board)}
-                      className={`${s.editButton} ${
-                        selectedBoard === board._id ? s.checked : ''
-                      }`}
+                      onClick={e => handleEditBoard(e, board)}
+                      className={s.editButton}
                     >
                       <svg width="16" height="16">
                         <use href={`${sprite}#pencil`} />
                       </svg>
                     </button>
                     <button
-                      onClick={() => handleDeleteBoard(board)}
-                      className={`${s.deleteButton} ${
-                        selectedBoard === board._id ? s.checked : ''
-                      }`}
+                      onClick={e => handleDeleteBoard(e, board)}
+                      className={s.deleteButton}
                     >
                       <svg width="16" height="16">
                         <use href={`${sprite}#trash`} />
