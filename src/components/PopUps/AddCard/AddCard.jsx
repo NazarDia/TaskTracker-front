@@ -82,7 +82,7 @@ export default function PopUpAddCard({ column, onClose }) {
                   />
                   <label htmlFor="color1">
                     <span className={css.color1}>
-                      <TiTick className={css.svg} />
+                      <TiTick className={css.svgAccept} />
                     </span>
                   </label>
                 </div>
@@ -96,7 +96,7 @@ export default function PopUpAddCard({ column, onClose }) {
                   />
                   <label htmlFor="color-2">
                     <span className={css.color2}>
-                      <TiTick className={css.svg} />
+                      <TiTick className={css.svgAccept} />
                     </span>
                   </label>
                 </div>
@@ -110,7 +110,7 @@ export default function PopUpAddCard({ column, onClose }) {
                   />
                   <label htmlFor="color-3">
                     <span className={css.color3}>
-                      <TiTick className={css.svg} />
+                      <TiTick className={css.svgAccept} />
                     </span>
                   </label>
                 </div>
@@ -124,7 +124,7 @@ export default function PopUpAddCard({ column, onClose }) {
                   />
                   <label htmlFor="color-4">
                     <span className={css.color4}>
-                      <TiTick className={css.svg} />
+                      <TiTick className={css.svgAccept} />
                     </span>
                   </label>
                 </div>
