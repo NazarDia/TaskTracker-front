@@ -26,7 +26,7 @@ export default function SideBarCreateBoard() {
         onRequestClose={closeModal}
         contentLabel="New board"
       >
-        <NewBoard />
+        <NewBoard closeModal={closeModal} />
       </GeneralModal>
     </div>
   );
