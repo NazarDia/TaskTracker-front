@@ -2,7 +2,7 @@ import { useDispatch } from 'react-redux';
 import { addCard } from '../../../redux/cards/operations';
 import toast from 'react-hot-toast';
 import { nanoid } from 'nanoid';
-import { Field, Form, Formik } from 'formik';
+import { ErrorMessage, Field, Form, Formik } from 'formik';
 import 'react-datepicker/dist/react-datepicker.css';
 import ReactDatePicker from 'react-datepicker';
 import css from './AddCard.module.css';
@@ -10,10 +10,22 @@ import { CardButton } from '../CardButton/CardButton';
 import { TiTick } from 'react-icons/ti';
 import { format } from 'date-fns';
 import { useState } from 'react';
+import * as Yup from 'yup';
 
 export default function PopUpAddCard({ column, onClose }) {
   const dispatch = useDispatch();
   const [showDatePicker, setShowDatePicker] = useState(false);
+
+  const cardsSchema = Yup.object().shape({
+    title: Yup.string()
+      .min(3, 'Too Short!')
+      .max(25, 'Too Long!')
+      .required('Required'),
+    description: Yup.string()
+      .min(3, 'Too Short!')
+      .max(500, 'Too Long! Max symbols is 500')
+      .required('Required'),
+  });
 
   const initialValues = {
     boardId: column.boardId,
@@ -47,7 +59,11 @@ export default function PopUpAddCard({ column, onClose }) {
     <div className={css.addCardModal}>
       <div className={css.modalContent}>
         <h4 className={css.title}>Add card</h4>
-        <Formik initialValues={initialValues} onSubmit={handleSubmit}>
+        <Formik
+          validationSchema={cardsSchema}
+          initialValues={initialValues}
+          onSubmit={handleSubmit}
+        >
           {({ setFieldValue, values }) => (
             <Form className={css.modalForm}>
               <label className={css.modalLabel} htmlFor={cardTitleId}>
@@ -60,6 +76,9 @@ export default function PopUpAddCard({ column, onClose }) {
                 name="title"
                 placeholder="Title"
               />
+              <div className={css.warning}>
+                <ErrorMessage name="title" />
+              </div>
               <label className={css.modalLabel} htmlFor={cardDescriptionId}>
                 Description
               </label>
@@ -70,6 +89,9 @@ export default function PopUpAddCard({ column, onClose }) {
                 name="description"
                 placeholder="Description"
               />
+              <div className={css.warning}>
+                <ErrorMessage name="description" />
+              </div>
               <p className={css.labelColor}>Label color</p>
               <div className={css.customRadios}>
                 <div className={css.someColor}>
@@ -154,6 +176,7 @@ export default function PopUpAddCard({ column, onClose }) {
                   </div>
                 )}
               </div>
+
               <div className={css.btn}>
                 <CardButton type="submit" btnText="Add" />
               </div>
