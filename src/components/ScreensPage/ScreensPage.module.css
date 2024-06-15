@@ -4,7 +4,9 @@
   background-color: var(--main-bg-color);
   padding: 14px 20px;
   height: calc(100vh - 60px);
-  min-width: 1180px;
+
+  background-size: cover;
+  background-position: center;
 }
 
 @media screen and (min-width: 768px) {

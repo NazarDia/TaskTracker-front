@@ -44,7 +44,7 @@ export const editBoardById = createAsyncThunk(
   async ({ boardId, ...updatedData }, { rejectWithValue }) => {
     try {
       const response = await axios.put(`/boards/${boardId}`, updatedData);
-      return response.data; 
+      return response.data;
     } catch (error) {
       return rejectWithValue(error.response.data);
     }
@@ -64,8 +64,12 @@ export const deleteBoard = createAsyncThunk(
 
 export const fetchBackgrounds = createAsyncThunk(
   'boards/fetchBackgrounds',
-  async () => {
-    const response = await axios.get('/boards/backgrounds');
-    return response.data;
+  async (_, thunkAPI) => {
+    try {
+      const response = await axios.get('/boards/backgrounds');
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
   }
 );
