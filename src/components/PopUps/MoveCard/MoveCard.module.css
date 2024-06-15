@@ -29,11 +29,13 @@
     color: var(--text-color-modify);
   }
   
-  .arrowIcon {
-    fill: var(--text-color);
-    transition: fill 0.3s;
+  .icon {
+    stroke: var(--text-color-light); ;
+    transition: stroke 0.3s;
   }
+
   
-  .dropdown li:hover .arrowIcon {
-    fill: var(--text-color-modify);
+  
+  .dropdown li:hover .icon {
+    stroke: var(--text-color-modify);
   }
