@@ -53,8 +53,24 @@ const Card = ({ task }) => {
 
   const deleteTask = () => dispatch(deleteCard({ taskId, columnId, boardId }));
 
+  const hoverStyle = {
+    boxShadow: `2px 6px 8px ${backgroundColor}`,
+    transform: 'scale(101%)',
+  };
+
   return (
-    <div className={s.container}>
+    <div
+      className={`${s.container} ${s.hoverEffect}`}
+      style={{ borderLeftColor: backgroundColor }}
+      onMouseEnter={e => {
+        e.currentTarget.style.boxShadow = hoverStyle.boxShadow;
+        e.currentTarget.style.transform = hoverStyle.transform;
+      }}
+      onMouseLeave={e => {
+        e.currentTarget.style.boxShadow = '';
+        e.currentTarget.style.transform = '';
+      }}
+    >
       <div className={s.contentWrapper}>
         <h3 className={s.cardTitle}>{task.title}</h3>
         <p className={s.taskDescr}>{task.description}</p>
