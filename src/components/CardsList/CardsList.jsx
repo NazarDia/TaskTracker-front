@@ -5,16 +5,17 @@ import { selectFilteredCards } from '../../redux/filters/selector';
 
 const CardsList = ({ column }) => {
   // const currentPriority = useSelector(selectFilteredCards);
-  // const tasks = column.tasks;
+  const tasks = column.tasks;
 
   console.log(column);
+  console.log(tasks);
 
   return (
     <div className={s.container}>
       <ul className={s.columnList}>
-        {column.map(task => (
+        {tasks.map((task, index) => (
           <li key={task._id} className={s.listItem}>
-            <Card task={task} />
+            <Card task={task} index={index} />
           </li>
         ))}
       </ul>

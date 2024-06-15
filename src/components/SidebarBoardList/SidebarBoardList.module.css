@@ -22,6 +22,7 @@
   opacity: 1;
   cursor: pointer;
   gap: 4px;
+  position: relative;
 }
 
 .boardItem.active .boardIcon,
@@ -44,7 +45,7 @@
 }
 
 .iconButtons {
-  display: flex;
+  display: none; /* приховані за замовчуванням */
   gap: 8px;
 }
 
@@ -96,7 +97,11 @@
   }
 }
 
-@media screen and (min-width: 1040px) {
+@media screen and (min-width: 1440px) {
+  .iconButtons.alwaysVisible {
+    display: flex; /* завжди відображені для активної дошки */
+  }
+
   .editButton,
   .deleteButton {
     transition: 400ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -107,5 +112,86 @@
   .deleteButton:hover,
   .deleteButton:focus {
     stroke: var(--text-color);
+  }
+
+  .boardItem:hover .iconButtons {
+    display: flex; /* відображаємо при ховері для неактивних дошок */
+  }
+
+  .activeBoardContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .arrow {
+    color: var(--sidebar-btn-hover-board);
+    width: 18px;
+    height: 18px;
+  }
+
+  .showAllBoards {
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 20px 24px;
+    font-size: 14px;
+    font-family: 'PoppinsMedium', sans-serif;
+    letter-spacing: -0.02em;
+    color: var(--text-color-light);
+    margin-right: -4px;
+  }
+
+  .allBoardsMenu {
+    position: absolute;
+    top: -8px;
+    left: 100%;
+    background-color: var(--aside-bg-color);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    z-index: 9999;
+    width: 260px;
+    max-height: 390px;
+    overflow-y: auto;
+    border-top-right-radius: 24px;
+    border-bottom-right-radius: 10px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 24px;
+  }
+
+  .boardItem:hover {
+    background-color: var(--sidebar-boardItem-bgc);
+    color: var(--text-color);
+  }
+
+  .boardItem:hover .boardIcon,
+  .boardItem:hover .boardTitle {
+    color: var(--text-color);
+  }
+
+  .boardItem:hover .iconButtons {
+    display: flex;
+  }
+
+  .allBoardsMenu::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .allBoardsMenu::-webkit-scrollbar-track {
+    background: var(--sidebar-boardItem-bgc);
+  }
+
+  .allBoardsMenu::-webkit-scrollbar-thumb {
+    background-color: var(--sidebar-boardMarker-bgc);
+    border-radius: 4px;
+  }
+
+  .allBoardsMenu::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+  }
+
+  .allBoardsMenu::-webkit-scrollbar-button:start {
+    margin-left: -8px;
   }
 }

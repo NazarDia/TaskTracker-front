@@ -9,31 +9,33 @@
   border-radius: 8px;
   padding: 10px 0;
   cursor: pointer;
-  transition: scale 250ms ease-in 0s;
+  transition: all 250ms ease-in;
 }
 
 .addBtn:hover {
   background-color: var(--btn-hover-color);
+  scale: 101%;
 }
 
 .iconWrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 28px;
-    height: 28px;
-    border-radius: 6px;
-    background-color: #ffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  background-color: var(--mini-btn-color);
 }
 
 .svg {
-    font-size: 14px;
-    color: #000;
+  font-size: 14px;
+
+  stroke: var(--mini-btn-stroke);
 }
 
 .btnTextWrap {
   font-weight: 500;
   font-size: 14px;
   letter-spacing: -0.02em;
-  color: var(--text-color);
+  color: var(--mini-btn-color);
 }

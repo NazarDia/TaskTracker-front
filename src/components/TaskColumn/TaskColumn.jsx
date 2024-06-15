@@ -34,7 +34,6 @@ const TaskColumn = ({ column }) => {
 
   const deleteCol = () => dispatch(deleteColumn({ columnId, boardId }));
   console.log(column);
-  // console.log(deleteCol);
 
   return (
     <div className={s.columnWrapper}>
