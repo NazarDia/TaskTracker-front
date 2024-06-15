@@ -7,14 +7,15 @@ const Filters = ({ onRequestClose }) => {
   const dispatch = useDispatch();
   const currentPriority = useSelector(selectPriorityFilter);
 
-  const handlePriorityChange = (priority) => {
+  const handlePriorityChange = priority => {
+    console.log(priority);
     dispatch(setPriorityFilter(priority));
-    onRequestClose(); 
+    onRequestClose();
   };
 
   const handleShowAll = () => {
     dispatch(setPriorityFilter('all'));
-    onRequestClose(); 
+    onRequestClose();
   };
 
   return (

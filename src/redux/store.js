@@ -1,6 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { authReducer } from './auth/slice';
 import { boardsReducer } from './boards/boardSlice';
+
 import columnsReducer from './columns/columnsSlice.js';
 
 import {
@@ -14,6 +15,8 @@ import {
   REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+import { filtersReducer } from './filters/slice.js';
+import { cardsReduser } from './cards/cardSlice.js';
 
 const authPersistConfig = {
   key: 'authSlice',
@@ -28,6 +31,8 @@ export const store = configureStore({
     auth: persistedAuthReducer,
     boards: boardsReducer,
     columns: columnsReducer,
+    tasks: cardsReduser,
+    filters: filtersReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({

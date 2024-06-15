@@ -95,4 +95,4 @@ const cardsSlice = createSlice({
       }),
 });
 
-export default cardsSlice.reducer;
+export const cardsReduser = cardsSlice.reducer;
