@@ -1,12 +1,18 @@
 .container {
   box-sizing: border-box;
   width: 335px;
-  background-color: var(--main-color);
+  background-color: var(--card-bg-color);
   padding: 14px 24px;
   border-left: 4px solid;
   border-radius: 8px;
   margin-bottom: 8px;
-  transition: box-shadow 0.3s ease-in, transform 0.3s ease-in;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: box-shadow 0.3s ease-in, transform 0.8s ease-in, opacity 0.8s ease;
+}
+.container.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .contentWrapper {
@@ -15,17 +21,20 @@
   margin-bottom: 14px;
 }
 .cardTitle {
-  color: var(--text-color);
+  color: var(--card-title-color);
   font-family: 'PoppinsSemiBold';
   font-size: var(--base-font-size);
   letter-spacing: -0.0175em;
   margin-bottom: 8px;
 }
 .taskDescr {
+  height: 38px;
   overflow: hidden;
   color: var(--card-text-color);
   text-overflow: ellipsis;
+  /* text-wrap: wrap; */
   white-space: nowrap;
+
   font-family: 'PoppinsRegular';
   font-size: 12px;
   font-weight: 400;
@@ -52,26 +61,25 @@
   gap: 8px;
 }
 .icon {
-  stroke: var(--text-color-light);
+  stroke: var(--card-text-color);
+  transition: all 0.3s ease-in-out;
 }
 .cardBtn {
   background-color: transparent;
   padding: 0;
   border: none;
+  transition: all 0.4s ease-in-out;
 }
 .extraItemTitle {
-  color: var(--text-color-light);
+  color: var(--card-text-color);
   font-family: 'PoppinsRegular';
   font-size: 8px;
-  font-weight: 400;
-
   letter-spacing: -0.01em;
 }
 .extraItemContent {
-  color: var(--text-color);
+  color: var(--card-title-color);
   font-family: 'PoppinsRegular';
   font-size: 10px;
-  font-weight: 400;
   letter-spacing: -0.0125em;
   text-transform: capitalize;
 }
@@ -108,11 +116,16 @@
 
 @media screen and (min-width: 1280px) {
   .container:hover .cardBell {
-    stroke: var(--label-color-green);
+    stroke: var(--label-color-pink);
     animation: swingBell 0.6s ease-in-out forwards;
   }
   .hoverEffect {
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  }
+  .cardBtn:hover .icon {
+    transform: scale(110%);
+    stroke: var(--btn-hover-color);
   }
 }
 @media screen and (max-width: 1440px) {
