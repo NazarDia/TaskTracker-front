@@ -6,8 +6,8 @@ import { selectFilteredCards } from '../../redux/filters/selector';
 const CardsList = ({ column }) => {
   const currentPriority = useSelector(selectFilteredCards);
   const tasks = column.tasks;
-  console.log(currentPriority);
-  console.log(column.tasks);
+  // console.log(currentPriority);
+  // console.log(column.tasks);
 
   return (
     <div className={s.container}>

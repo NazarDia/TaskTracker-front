@@ -12,14 +12,29 @@ import {
   selectIsLoading,
 } from '../../redux/boards/selectors';
 
+import { selectFilteredCards } from '../../redux/filters/selector';
+
 const TaskColumnsList = () => {
   const columns = useSelector(selectColumnsByBoardId);
+  const filteredTasks = useSelector(selectFilteredCards);
   const loading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
+
+  console.log('Columns:', columns);
+  console.log('Filtered Tasks:', filteredTasks);
+
+  const getFilteredTasksForColumn = column => {
+    return filteredTasks.filter(task => task.columnId === column._id);
+  };
 
   if (loading) return <Loader />;
   if (error) return <Error />;
   if (!Array.isArray(columns)) return <div>No columns available</div>;
+
+  const filteredColumns = columns.map(column => ({
+    ...column,
+    tasks: getFilteredTasksForColumn(column),
+  }));
 
   return (
     <div className={s.container}>
@@ -27,7 +42,7 @@ const TaskColumnsList = () => {
         <ColumnStatus />
       ) : (
         <ul className={s.columnList}>
-          {columns.map(column => (
+          {filteredColumns.map(column => (
             <li key={column._id} className={s.listItem}>
               <TaskColumn column={column} />
             </li>
