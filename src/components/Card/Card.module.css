@@ -85,11 +85,31 @@
   align-items: center;
   gap: 4px;
 }
+.cardBell {
+  transition: all 0.4s ease-in;
+}
+
+@keyframes swingBell {
+  0% {
+    transform: rotateZ(-10deg) translateX(3px);
+  }
+  33% {
+    transform: rotateZ(10deg) translateX(-3px);
+  }
+  75% {
+    transform: rotateZ(-10deg) translateX(3px);
+  }
+  100% {
+    transform: rotateZ(0deg) translateX(0px);
+  }
+}
 @media screen and (min-width: 768px) {
 }
 
 @media screen and (min-width: 1280px) {
-  .container:hover {
+  .container:hover .cardBell {
+    stroke: var(--label-color-green);
+    animation: swingBell 0.6s ease-in-out forwards;
   }
   .hoverEffect {
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
