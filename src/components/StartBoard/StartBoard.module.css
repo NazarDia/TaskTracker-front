@@ -1,5 +1,4 @@
 .textInner {
-  height: 100vh;
   min-width: 335px;
   max-width: 468px;
   display: flex;
@@ -8,7 +7,20 @@
   text-align: center;
 }
 .startWrapper {
-  width: 100%;
+  max-width: 100%;
   display: flex;
   justify-content: center;
+  height: calc(100vh - 60px);
+}
+
+@media (min-width: 375px) {
+}
+
+@media (min-width: 768px) {
+  .startWrapper {
+    height: calc(100vh - 110px);
+  }
+}
+
+@media (min-width: 1440px) {
 }

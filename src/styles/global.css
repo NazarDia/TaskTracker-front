@@ -57,6 +57,12 @@
   --label-color-green: #bedbb0;
   --label-color-grey: rgba(22, 22, 22, 0.3);
 
+  --select-text: #161616;
+  --select-text-hover: #bedbb0;
+  --select-bg-border: #bedbb0;
+  --select-bg-color: #fcfcfc;
+  --user-text-color: #161616;
+
   /* base fs 14px */
   --base-font-size: 0.875em;
   --extraSml-font-size: 0.5em;
@@ -105,6 +111,12 @@
   --sidebar-boardItem-bgc: #f6f6f7;
   --sidebar-boardMarker-bgc: #bedbb0;
 
+  --select-text: #161616;
+  --select-text-hover: #bedbb0;
+  --select-bg-border: #bedbb0;
+  --select-bg-color: #fcfcfc;
+  --user-text-color: #161616;
+
   --stroke-icon-color: #161616;
 }
 
@@ -139,6 +151,12 @@
   --sidebar-boardItem-bgc: #1f1f1f;
   --sidebar-boardMarker-bgc: #bedbb0;
 
+  --select-text: rgba(255, 255, 255, 0.5);
+  --select-text-hover: #bedbb0;
+  --select-bg-border: #bedbb0;
+  --select-bg-color: #151515;
+  --user-text-color: #fff;
+
   --stroke-icon-color: #fff;
 }
 
@@ -172,6 +190,12 @@
   --sidebar-btn-hover-logout: #b8bcfd;
   --sidebar-boardItem-bgc: rgba(255, 255, 255, 0.5);
   --sidebar-boardMarker-bgc: #ffffff;
+
+  --select-text: #161616;
+  --select-text-hover: #5255bc;
+  --select-bg-border: #ecedfd;
+  --select-bg-color: #fcfcfc;
+  --user-text-color: #161616;
 
   --stroke-icon-color: #161616;
 }

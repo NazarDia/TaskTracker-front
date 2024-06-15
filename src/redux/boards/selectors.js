@@ -12,3 +12,5 @@ export const selectColumnsByBoardId = state =>
 export const selectBackgrounds = state => state.boards.boards.backgrounds;
 
 export const selectCurrentBoard = state => state.boards.boards.current;
+
+export const selectBoardById = state => state.boards.boards.current._id;
