@@ -78,7 +78,7 @@ const authSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(changeTheme.fulfilled, (state, { payload }) => {
-        console.log(payload);
+        // console.log(payload);
         state.user.theme = payload.theme;
         state.isLoading = false;
       })
