@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import styles from "./NeedHelpModal.module.css";
 import { sendFeedback } from "../../../redux/auth/operations";
 
-const NeedHelpModal = () => {
+const NeedHelpModal = ({closeModal}) => {
   const dispatch = useDispatch();
   const [errorMessage, setErrorMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
@@ -28,7 +28,8 @@ const NeedHelpModal = () => {
         const response = await dispatch(sendFeedback(formData)).unwrap();
         form.reset();
         setErrorMessage(""); 
-        setSuccessMessage(response.message); // Якщо backend повертає об'єкт з полем message
+        setSuccessMessage(response.message); 
+        closeModal();
       } catch (err) {
         setErrorMessage("Failed to submit request. Please try again.");
         setSuccessMessage(""); 
