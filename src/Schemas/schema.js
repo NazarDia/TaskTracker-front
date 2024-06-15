@@ -22,7 +22,7 @@ export const registerUserSchema = yup.object().shape({
 export const loginUserSchema = yup.object().shape({
   email: yup
     .string()
-    .email('Incorrect Email, please enter correct email example@domain.com')
+    .email('Enter correct email example@domain.com')
     .required('Required, please insert the email'),
   password: yup.string().required('Required, please insert the password'),
 });

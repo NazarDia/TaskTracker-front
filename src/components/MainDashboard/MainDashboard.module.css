@@ -1,9 +1,10 @@
 .contentWrapper {
   /* min-width: 100%; */
-  overflow-x: scroll;
+  overflow-x: auto;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  min-width: 1180px;
 }
 
 @media screen and (min-width: 768px) {

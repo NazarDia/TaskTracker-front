@@ -31,7 +31,7 @@ export default function NeedHelp() {
         onRequestClose={closeModal}
         contentLabel="Need help"
       >
-        <NeedHelpModal />
+        <NeedHelpModal closeModal={closeModal}/>
       </GeneralModal>
     </div>
   );

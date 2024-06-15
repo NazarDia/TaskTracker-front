@@ -89,16 +89,12 @@ const authSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(updateProfile.fulfilled, (state, { payload }) => {
-        state.user = payload.user;
+        state.user = payload; // Оновлено збереження даних користувача
         state.isLoading = false;
-        if (payload.token === '') {
-          state.isLoggedIn = false;
-        }
       })
       .addCase(updateProfile.rejected, state => {
         state.isLoading = false;
       })
-
       .addCase(sendFeedback.pending, state => {
         state.isLoading = true;
         state.error = null;

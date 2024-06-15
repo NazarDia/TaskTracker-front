@@ -14,7 +14,6 @@ const cardsSlice = createSlice({
     loading: false,
     error: null,
   },
-
   extraReducers: builder =>
     builder
       .addCase(fetchCards.pending, state => {
@@ -82,11 +81,12 @@ const cardsSlice = createSlice({
       .addCase(moveCard.fulfilled, (state, action) => {
         state.loading = false;
         state.error = null;
+        console.log('action.payload', action.payload);
         const cardId = action.payload._id;
-        const targetColumnId = action.payload.columnId;
+        const targetBoardId = action.payload.boardId;
         const card = state.items.find(card => card._id === cardId);
         if (card) {
-          card.columnId = targetColumnId;
+          card.boardId = targetBoardId;
         }
       })
       .addCase(moveCard.rejected, state => {

@@ -6,6 +6,7 @@ import FormInput from '../FormInput/FormInput';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { registerUserSchema } from '../../Schemas/schema';
 import { useId, useRef, useEffect, useState } from 'react';
+import Loader from '../Loader/Loader';
 
 export default function RegistrationForm() {
   const dispatch = useDispatch();
@@ -18,6 +19,7 @@ export default function RegistrationForm() {
   const passwordFieldId = useId();
 
   const containerRef = useRef();
+  const [isLoading, setIsLoading] = useState(false);
 
   const [showPassword, setShowPassword] = useState(false);
   const togglePasswordVisibility = () => {
@@ -30,8 +32,11 @@ export default function RegistrationForm() {
     password: '',
   };
 
-  const handleSubmit = values => {
-    dispatch(register(values));
+  const handleSubmit = async values => {
+    setIsLoading(true);
+    await dispatch(register(values));
+    setIsLoading(false);
+    navigate('/home');
   };
 
   useEffect(() => {
@@ -83,14 +88,12 @@ export default function RegistrationForm() {
               name="name"
               placeholder="Enter your name"
             ></FormInput>
-
             <FormInput
               id={emailFieldId}
               type="email"
               name="email"
               placeholder="Enter your email"
             ></FormInput>
-
             <FormInput
               id={passwordFieldId}
               type={showPassword ? 'text' : 'password'}
@@ -102,6 +105,7 @@ export default function RegistrationForm() {
             <button type="submit" className={s.regBtn}>
               Register Now
             </button>
+            <div className={s.loaderWrapper}>{isLoading && <Loader />}</div>
           </Form>
         </div>
       </div>
