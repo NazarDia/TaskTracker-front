@@ -78,6 +78,8 @@ export const changeTheme = createAsyncThunk(
   async (userTheme, thunkAPI) => {
     try {
       const response = await axios.patch('/users/theme', userTheme);
+      const { theme } = response.data;
+      localStorage.setItem('theme', theme);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -88,7 +90,6 @@ export const changeTheme = createAsyncThunk(
 export const updateProfile = createAsyncThunk(
   'auth/updateprofile',
   async (formData, thunkAPI) => {
-    console.log(formData);
     try {
       const response = await axios.put('/users/profile', formData, {
         headers: {
