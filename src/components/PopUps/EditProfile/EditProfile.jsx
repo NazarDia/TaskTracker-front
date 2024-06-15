@@ -39,9 +39,9 @@ const EditProfile = ({ onClose }) => {
     if (avatar) formData.append('avatar', avatar);
 
     // Логування вмісту formData
-    for (let pair of formData.entries()) {
-      console.log(`${pair[0]}: ${pair[1]}`);
-    }
+    // for (let pair of formData.entries()) {
+    //   console.log(`${pair[0]}: ${pair[1]}`);
+    // }
 
     dispatch(updateProfile(formData));
     onClose();

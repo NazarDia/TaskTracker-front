@@ -1,3 +1,10 @@
+.columnWrapper {
+  display: flex;
+  z-index: 1;
+  flex: 1 1 auto;
+  flex-direction: column;
+  height: 100%;
+}
 .container {
   width: 335px;
   display: flex;
@@ -13,7 +20,7 @@
   margin-bottom: 14px;
 }
 .columnTitle {
-  color: #161616;
+  color: var(--text-color);
   font-family: 'PoppinsRegular';
   font-size: var(--base-font-size);
   font-weight: 500;

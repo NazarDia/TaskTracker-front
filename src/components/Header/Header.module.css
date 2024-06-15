@@ -48,5 +48,5 @@
 .profile_container {
   display: flex;
   align-items: baseline;
-  gap: 14px;
+  gap: 8px;
 }

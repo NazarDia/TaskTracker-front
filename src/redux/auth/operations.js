@@ -21,6 +21,9 @@ export const register = createAsyncThunk(
       setAuthHeader(token);
       return response.data;
     } catch (e) {
+      if (e.response && e.response.status === 409) {
+        return thunkAPI.rejectWithValue('This email already used');
+      }
       return thunkAPI.rejectWithValue(e.message);
     }
   }

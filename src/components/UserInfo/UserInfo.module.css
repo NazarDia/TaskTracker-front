@@ -1,16 +1,16 @@
 .userInfoContainer {
-display: flex;
-  gap: 8px;
+ display: flex;
+ gap: 8px;
   align-items: center;
 }
 
 .profile { 
-  color: var(--text-color);
+  color: var(--user-text-color);
 }
 
 .profile_btn {
   width: 32px;
-  height: 29px;
+  height: 32px;
   padding: 0;
   border: none;
   background: none;

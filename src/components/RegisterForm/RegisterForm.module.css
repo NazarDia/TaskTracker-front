@@ -63,6 +63,12 @@
     align-items: center;
     justify-content: center;
   }
+  .errorMessage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: red;
+  }
 }
 @media only screen and (min-width: 768px) and (max-width: 1439px) {
   .registerPage {
@@ -128,6 +134,12 @@
     align-items: center;
     justify-content: center;
   }
+  .errorMessage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: red;
+  }
 }
 @media only screen and (min-width: 1440px) {
   .registerPage {
@@ -192,5 +204,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+  .errorMessage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: red;
   }
 }

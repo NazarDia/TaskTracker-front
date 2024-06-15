@@ -56,7 +56,6 @@ const ScreensPage = () => {
             ? activeBoardBG.mobl2x
             : activeBoardBG.mobl;
       }
-      console.log(bgImageUrl);
       setBackgroundImage(bgImageUrl);
     }
   }, [activeBoard]);

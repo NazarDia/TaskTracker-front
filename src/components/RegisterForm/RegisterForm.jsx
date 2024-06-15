@@ -1,5 +1,5 @@
 import s from './RegisterForm.module.css';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Formik, Form } from 'formik';
 import { register } from '../../redux/auth/operations';
 import FormInput from '../FormInput/FormInput';
@@ -7,12 +7,15 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { registerUserSchema } from '../../Schemas/schema';
 import { useId, useRef, useEffect, useState } from 'react';
 import Loader from '../Loader/Loader';
+import { selectAuthError } from '../../redux/auth/selectors';
 
 export default function RegistrationForm() {
   const dispatch = useDispatch();
   const location = useLocation();
   const navigate = useNavigate();
   const isRegister = location.pathname === '/auth/register';
+
+  const authError = useSelector(selectAuthError);
 
   const nameFieldId = useId();
   const emailFieldId = useId();
@@ -34,9 +37,11 @@ export default function RegistrationForm() {
 
   const handleSubmit = async values => {
     setIsLoading(true);
-    await dispatch(register(values));
+    const result = await dispatch(register(values));
     setIsLoading(false);
-    navigate('/home');
+    if (!result.error) {
+      navigate('/home');
+    }
   };
 
   useEffect(() => {
@@ -106,6 +111,7 @@ export default function RegistrationForm() {
               Register Now
             </button>
             <div className={s.loaderWrapper}>{isLoading && <Loader />}</div>
+            {authError && <div className={s.errorMessage}>{authError}</div>}
           </Form>
         </div>
       </div>
