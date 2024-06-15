@@ -66,20 +66,19 @@ const boardsSlice = createSlice({
         state.boards.error = action.payload;
       })
       .addCase(editBoardById.pending, (state) => {
-        state.isLoading = true;
+        state.boards.isLoading = true;
       })
-     .addCase(editBoardById.fulfilled, (state, action) => {
-        state.loading = false;
-        const updatedBoardsIndex = state.items.findIndex(
-         board => board.id === action.payload.id
-        );
-        if (updatedBoardsIndex !== -1) {
-          state.items[updatedBoardsIndex] = action.payload;
+      .addCase(editBoardById.fulfilled, (state, action) => {
+        state.boards.isLoading = false;
+        const updatedBoardIndex = state.boards.items.findIndex((board) => board._id === action.payload._id);
+        if (updatedBoardIndex !== -1) {
+          state.boards.items[updatedBoardIndex] = action.payload;
         }
+        state.boards.current = action.payload; 
       })
       .addCase(editBoardById.rejected, (state, action) => {
-        state.isLoading = false;
-        state.error = action.error.message; 
+        state.boards.isLoading = false;
+        state.boards.error = action.error.message;
       })
       .addCase(deleteBoard.pending, state => {
         state.boards.isLoading = true;

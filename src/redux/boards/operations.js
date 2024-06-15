@@ -39,19 +39,17 @@ export const getBoardByID = createAsyncThunk(
   }
 );
 
-
 export const editBoardById = createAsyncThunk(
   'boards/editBoardById',
-  async ({ boardId, updatedData }, { rejectWithValue }) => {
+  async ({ boardId, ...updatedData }, { rejectWithValue }) => {
     try {
       const response = await axios.put(`/boards/${boardId}`, updatedData);
-      return response.data;
+      return response.data; 
     } catch (error) {
       return rejectWithValue(error.response.data);
     }
   }
 );
-
 export const deleteBoard = createAsyncThunk(
   'boards/deleteBoard',
   async (boardId, thunkAPI) => {
