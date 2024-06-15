@@ -18,6 +18,7 @@
   background-color: var(--main-color);
   border-radius: 8px;
   margin-bottom: 14px;
+  transition: all 0.4s ease;
 }
 .columnTitle {
   color: var(--text-color);
@@ -28,6 +29,7 @@
 }
 .icon {
   stroke: var(--text-color-light);
+  transition: all 0.3s ease;
 }
 .btnWrapper {
   display: flex;
@@ -41,4 +43,21 @@
   justify-content: center;
   align-self: start;
   padding: 0px;
+  transition: all 0.4s ease;
+}
+
+@media screen and (min-width: 768px) {
+}
+
+@media screen and (min-width: 1280px) {
+  .columnBtn:hover .icon {
+    transform: scale(110%);
+    stroke: var(--btn-hover-color);
+  }
+  .container:hover {
+    box-shadow: 0px 2px 8px var(--btn-hover-color);
+  }
+}
+
+@media screen and (max-width: 1440px) {
 }

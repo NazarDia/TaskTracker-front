@@ -2,7 +2,7 @@ import s from './Card.module.css';
 import sprite from '../../images/sprite/sprite-icon.svg';
 
 import GeneralModal from '../GeneralModal/GeneralModal';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { getBoardByID } from '../../redux/boards/operations';
 import PopUpEditCard from '../PopUps/EditCard/EditCard';
@@ -10,7 +10,17 @@ import { deleteCard } from '../../redux/cards/operations';
 import MoveCard from '../PopUps/MoveCard/MoveCard';
 import { getAllColumns } from '../../redux/columns/operations';
 
-const Card = ({ task }) => {
+const Card = ({ task, index }) => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setIsVisible(true);
+    }, index * 100);
+
+    return () => clearTimeout(timeout);
+  }, [index]);
+
   const dispatch = useDispatch();
   const [isModalEditOpen, setModaEditlIsOpen] = useState(false);
   const [isModalMoveOpen, setModalMoveIsOpen] = useState(false);
@@ -69,7 +79,9 @@ const Card = ({ task }) => {
 
   return (
     <div
-      className={`${s.container} ${s.hoverEffect}`}
+      className={`${s.container} ${isVisible ? s.visible : ''} ${
+        s.hoverEffect
+      }`}
       style={{ borderLeftColor: backgroundColor }}
       onMouseEnter={e => {
         e.currentTarget.style.boxShadow = hoverStyle.boxShadow;

@@ -37,9 +37,12 @@
 
   --header-text-color: rgba(22, 22, 22, 0.8);
   --card-text-color: rgba(22, 22, 22, 0.7);
+  --card-title-color: #161616;
+  --card-bg-color: #fff;
 
   --btn-bg-color: #bedbb0;
   --btn-hover-color: #9dc888;
+  --mini-btn-color: #161616;
   --column-color-active: #9092d6;
 
   --sidebar-icon-bgc: #1f1f1f;
@@ -96,9 +99,13 @@
 
   --header-text-color: rgba(22, 22, 22, 0.8);
   --card-text-color: rgba(22, 22, 22, 0.7);
+  --card-title-color: #161616;
+  --card-bg-color: #fff;
 
   --btn-bg-color: #bedbb0;
   --btn-hover-color: #74a05e;
+  --mini-btn-color: #161616;
+  --mini-btn-stroke: #fff;
   --column-color-active: #9092d6;
 
   --sidebar-icon-bgc: #1f1f1f;
@@ -136,9 +143,13 @@
 
   --header-text-color: rgba(255, 255, 255, 0.8);
   --card-text-color: rgba(255, 255, 255, 0.5);
+  --card-title-color: #fff;
+  --card-bg-color: #121212;
 
   --btn-bg-color: #bedbb0;
   --btn-hover-color: #74a05e;
+  --mini-btn-color: #161616;
+  --mini-btn-stroke: #fff;
   --column-color-active: #121212;
 
   --sidebar-icon-bgc: #1f1f1f;
@@ -176,9 +187,13 @@
 
   --header-text-color: rgba(22, 22, 22, 0.8);
   --card-text-color: rgba(22, 22, 22, 0.7);
+  --card-title-color: #161616;
+  --card-bg-color: #fff;
 
   --btn-bg-color: #5255bc;
   --btn-hover-color: #7b7ede;
+  --mini-btn-color: #fff;
+  --mini-btn-stroke: #161616;
   --column-color-active: #fff;
 
   --sidebar-icon-bgc: #ecedfd;

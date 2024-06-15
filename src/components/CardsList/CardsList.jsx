@@ -6,9 +6,9 @@ const CardsList = ({ column }) => {
   return (
     <div className={s.container}>
       <ul className={s.columnList}>
-        {tasks.map(task => (
+        {tasks.map((task, index) => (
           <li key={task._id} className={s.listItem}>
-            <Card task={task} />
+            <Card task={task} index={index} />
           </li>
         ))}
       </ul>
