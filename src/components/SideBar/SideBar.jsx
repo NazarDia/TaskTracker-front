@@ -5,12 +5,12 @@ import LogoutBtn from '../LogoutBtn/LogoutBtn';
 
 import s from './SideBar.module.css';
 
-export default function SideBar() {
+export default function SideBar({ onClose }) {
   return (
     <div className={s.container}>
       <div>
         <Logo />
-        <BoardList />
+        <BoardList onClose={onClose} />
       </div>
       <div>
         <NeedHelp />

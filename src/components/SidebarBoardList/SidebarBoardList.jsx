@@ -11,7 +11,7 @@ import GeneralModal from '../GeneralModal/GeneralModal';
 import EditNewBoard from '../PopUps/EditBoard/EditBoard';
 import s from './SidebarBoardList.module.css';
 
-export default function SidebarBoardList() {
+export default function SidebarBoardList({ onClose }) {
   const dispatch = useDispatch();
   const [selectedBoard, setSelectedBoard] = useState(null);
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -44,6 +44,9 @@ export default function SidebarBoardList() {
     dispatch(setActiveBoard(board));
     dispatch(getBoardByID(boardId));
     localStorage.setItem('activeBoard', boardId);
+    if (onClose) {
+      onClose();
+    }
   };
 
   const handleEditBoard = (e, board) => {
