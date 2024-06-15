@@ -13,4 +13,5 @@ const filtersSlice = createSlice({
 });
 
 export const { setPriorityFilter } = filtersSlice.actions;
+
 export const filtersReducer = filtersSlice.reducer;

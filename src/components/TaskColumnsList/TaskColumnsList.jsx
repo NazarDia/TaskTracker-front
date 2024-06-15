@@ -12,37 +12,49 @@ import {
   selectIsLoading,
 } from '../../redux/boards/selectors';
 
-import { selectFilteredCards } from '../../redux/filters/selector';
+import {
+  // selectFilteredCards,
+  selectPriorityFilter,
+} from '../../redux/filters/selector';
 
 const TaskColumnsList = () => {
   const columns = useSelector(selectColumnsByBoardId);
-  const filteredTasks = useSelector(selectFilteredCards);
+
+  // const filteredTasks = useSelector(selectFilteredCards);
+
+  const filterValue = useSelector(selectPriorityFilter);
+
   const loading = useSelector(selectIsLoading);
+
   const error = useSelector(selectError);
 
-  console.log('Columns:', columns);
-  console.log('Filtered Tasks:', filteredTasks);
+  const cardLists = columns ? columns.find(column => column.tasks).tasks : [];
 
-  const getFilteredTasksForColumn = column => {
-    return filteredTasks.filter(task => task.columnId === column._id);
-  };
+  // console.log(cardLists.tasks);
+  console.log('Values:', filterValue);
+  console.log(cardLists);
+
+  const filteredCards = cardLists.filter(
+    list => `#${list.color}` === filterValue.toUpperCase()
+  );
+
+  console.log(filteredCards);
+
+  // const filteredColumns = columns
+  //   ? columns.filter(() => `#${cardLists.color}` === filterValue.toUpperCase())
+  //   : [];
 
   if (loading) return <Loader />;
   if (error) return <Error />;
   if (!Array.isArray(columns)) return <div>No columns available</div>;
 
-  const filteredColumns = columns.map(column => ({
-    ...column,
-    tasks: getFilteredTasksForColumn(column),
-  }));
-
   return (
     <div className={s.container}>
-      {columns.length === 0 ? (
+      {filteredCards.length === 0 ? (
         <ColumnStatus />
       ) : (
         <ul className={s.columnList}>
-          {filteredColumns.map(column => (
+          {filteredCards.map(column => (
             <li key={column._id} className={s.listItem}>
               <TaskColumn column={column} />
             </li>
