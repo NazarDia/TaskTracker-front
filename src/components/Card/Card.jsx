@@ -58,6 +58,15 @@ const Card = ({ task }) => {
     transform: 'scale(101%)',
   };
 
+  const toDeadLine = date => {
+    const deadline = new Date(date);
+    const now = new Date();
+    const timeDifference = deadline - now;
+    const daysLeft = timeDifference / (1000 * 3600 * 24);
+
+    return daysLeft;
+  };
+
   return (
     <div
       className={`${s.container} ${s.hoverEffect}`}
@@ -93,6 +102,13 @@ const Card = ({ task }) => {
           </div>
         </div>
         <div className={s.cardBtnWrapper}>
+          {toDeadLine(task.deadline) <= 1 && (
+            <div className={s.cardBtn}>
+              <svg width={16} height={16} className={`${s.icon} ${s.cardBell}`}>
+                <use href={`${sprite}#bell`}></use>
+              </svg>
+            </div>
+          )}
           <button className={s.cardBtn}>
             <svg
               width={16}
