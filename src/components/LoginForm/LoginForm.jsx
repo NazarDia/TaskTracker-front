@@ -32,11 +32,14 @@ export default function LoginForm() {
     password: '',
   };
 
-  const handleSubmit = async values => {
+  const handleSubmit = async (values, { setSubmitting }) => {
     setIsLoading(true);
-    await dispatch(login(values));
+    const resultAction = await dispatch(login(values));
+    if (login.fulfilled.match(resultAction)) {
+      navigate('/home');
+    }
     setIsLoading(false);
-    navigate('/home');
+    setSubmitting(false);
   };
 
   useEffect(() => {
