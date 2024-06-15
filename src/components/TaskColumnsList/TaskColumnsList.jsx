@@ -12,15 +12,10 @@ import {
   selectIsLoading,
 } from '../../redux/boards/selectors';
 
-import {
-  // selectFilteredCards,
-  selectPriorityFilter,
-} from '../../redux/filters/selector';
+import { selectPriorityFilter } from '../../redux/filters/selector';
 
 const TaskColumnsList = () => {
   const columns = useSelector(selectColumnsByBoardId);
-
-  // const filteredTasks = useSelector(selectFilteredCards);
 
   const filterValue = useSelector(selectPriorityFilter);
 
@@ -30,7 +25,6 @@ const TaskColumnsList = () => {
 
   const cardLists = columns ? columns.find(column => column.tasks).tasks : [];
 
-  // console.log(cardLists.tasks);
   console.log('Values:', filterValue);
   console.log(cardLists);
 
@@ -39,10 +33,6 @@ const TaskColumnsList = () => {
   );
 
   console.log(filteredCards);
-
-  // const filteredColumns = columns
-  //   ? columns.filter(() => `#${cardLists.color}` === filterValue.toUpperCase())
-  //   : [];
 
   if (loading) return <Loader />;
   if (error) return <Error />;

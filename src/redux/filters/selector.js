@@ -7,9 +7,9 @@ export const selectPriorityFilter = state => state.filters.priority;
 // Мапа кольорів до значень пріоритетів
 const priorityColorMap = {
   all: 'rgba(255, 255, 255, 0.3)',
-  high: '#8fa1d0',
+  high: '#bedbb0',
   medium: '#e09cb5',
-  low: '#bedbb0',
+  low: '#8fa1d0',
 };
 
 // Селектор для фільтрації карток за кольором (пріоритетом)
