@@ -7,7 +7,7 @@ import Loader from '../../components/Loader/Loader';
 import ErrorMessage from '../../components/Error/Error';
 
 import Header from '../../components/Header/Header';
-import Sidebar from '../../components/SideBar/SideBar';
+import SideBar from '../../components/SideBar/SideBar';
 import ScreensPage from '../../components/ScreensPage/ScreensPage';
 
 import s from './HomePage.module.css';
@@ -36,7 +36,7 @@ export default function HomePage() {
   return (
     <div className={s.container}>
       <div className={`${s.sidebar} ${isSidebarOpen ? s.sidebarOpen : ''}`}>
-        <Sidebar />
+        <SideBar onClose={handleCloseSidebar} />
       </div>
 
       {isSidebarOpen && (
