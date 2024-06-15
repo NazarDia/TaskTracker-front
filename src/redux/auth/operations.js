@@ -62,8 +62,8 @@ export const refreshUser = createAsyncThunk(
     }
 
     setAuthHeader(token);
-
-    return { token };
+    const response = await axios.get('/users/current');
+    return response.data;
   },
   {
     condition: (_, { getState }) => {
@@ -92,7 +92,7 @@ export const updateProfile = createAsyncThunk(
     try {
       const response = await axios.put('/users/profile', formData, {
         headers: {
-          "Content-Type": 'multipart/form-data',
+          'Content-Type': 'multipart/form-data',
         },
       });
       return response.data;
