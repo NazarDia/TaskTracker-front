@@ -6,7 +6,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #ffffff49;
+  background-color: var(--header-bg-color);
   /* background: transparent; */
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
@@ -14,8 +14,8 @@
   z-index: 0;
   border-radius: 8px;
 }
-.baordTitle {
-  color: var(--text-color);
+.boardTitle {
+  color: var(--header-text-color);
   font-family: 'PoppinsMedium';
   font-size: var(--base-font-size);
   line-height: normal;
@@ -26,7 +26,7 @@
   height: 100%;
 }
 .icon {
-  stroke: rgba(22, 22, 22, 0.8);
+  stroke: var(--stroke-icon-color);
   display: block;
   align-self: center;
 }
@@ -34,7 +34,7 @@
 .filtersPar {
   margin-left: 10px;
   height: 100%;
-  color: rgba(22, 22, 22, 0.8);
+  color: var(--header-text-color);
   font-family: 'PoppinsMedium';
   font-size: var(--base-font-size);
   line-height: normal;
