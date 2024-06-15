@@ -1,7 +1,6 @@
 import s from './MoveCard.module.css';
 import sprite from '../../../images/sprite/sprite-icon.svg';
 import { useDispatch, useSelector } from 'react-redux';
-// import { getAllColumns } from '../../../redux/columns/operations';
 import { selectColumns } from '../../../redux/columns/selectors';
 import { moveCard } from '../../../redux/cards/operations';
 
@@ -9,19 +8,30 @@ const MoveCard = ({ card, onClose }) => {
   const dispatch = useDispatch();
   const columns = useSelector(selectColumns);
 
-  const onMoveCard = (columnId, targetColumnName) => {
+  const currentBoardId = card.boardId;
+
+  const filteredColumns = columns.filter(
+    column => column.boardId === currentBoardId
+  );
+
+  const onMoveCard = (columnId, targetColumnName, boardId) => {
     const taskId = card._id;
-    dispatch(moveCard(taskId, columnId, targetColumnName));
-    onClose();
-    console.log(columns, taskId, columnId, targetColumnName);
+    dispatch(moveCard({ taskId, boardId, targetColumnName }))
+      .then(() => {
+        onClose();
+      })
+      .catch(error => {
+        console.error('Error moving card:', error);
+      });
   };
+
   return (
     <ul className={s.dropdown}>
-      {columns.map(column => (
+      {filteredColumns.map(column => (
         <li
           className={s.dropdownItem}
           key={column._id}
-          onClick={() => onMoveCard(column._id, column.title)}
+          onClick={() => onMoveCard(column._id, column.title, column.boardId)}
         >
           {column.title}
           <svg width={16} height={16} className={s.icon}>
