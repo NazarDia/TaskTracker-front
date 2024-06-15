@@ -1,13 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { changeTheme } from '../../redux/auth/operations';
-import { useTheme } from '../../hooks/useTheme';
 import s from './ThemeSelect.module.css';
 import icon from '../../images/sprite/sprite-icon.svg';
 
 const ThemeSelect = ({ option = [], placeholder }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const userTheme = useTheme();
+  const userTheme = useSelector(state => state.auth.user.theme);
 
   const dispatch = useDispatch();
   const ref = useRef(null);
@@ -38,6 +37,10 @@ const ThemeSelect = ({ option = [], placeholder }) => {
 
     setIsOpen(false);
   };
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', userTheme);
+  }, [userTheme]);
 
   return (
     <div className={s.select} ref={ref}>

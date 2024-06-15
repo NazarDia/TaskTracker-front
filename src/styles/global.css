@@ -65,6 +65,8 @@
   --lg-font-size: 1em;
   --extraLg-font-size: 1.125em;
 
+  --stroke-icon-color: #161616;
+
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
