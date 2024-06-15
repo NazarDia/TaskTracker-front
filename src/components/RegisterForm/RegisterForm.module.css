@@ -58,6 +58,11 @@
     color: #161616;
     margin-top: 10px;
   }
+  .loaderWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
 @media only screen and (min-width: 768px) and (max-width: 1439px) {
   .registerPage {
@@ -118,6 +123,11 @@
     color: #161616;
     margin-top: 10px;
   }
+  .loaderWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
 @media only screen and (min-width: 1440px) {
   .registerPage {
@@ -177,5 +187,10 @@
     text-align: center;
     color: #161616;
     margin-top: 10px;
+  }
+  .loaderWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }

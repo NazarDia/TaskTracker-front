@@ -63,6 +63,11 @@
     justify-content: center;
     color: red;
   }
+  .loaderWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
 @media only screen and (min-width: 768px) and (max-width: 1439px) {
   .loginPage {
@@ -129,6 +134,11 @@
     justify-content: center;
     color: red;
   }
+  .loaderWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
 @media only screen and (min-width: 1440px) {
   .loginPage {
@@ -194,5 +204,10 @@
     align-items: center;
     justify-content: center;
     color: red;
+  }
+  .loaderWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }

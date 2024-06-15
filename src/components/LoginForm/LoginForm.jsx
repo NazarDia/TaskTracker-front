@@ -8,6 +8,7 @@ import { loginUserSchema } from '../../Schemas/schema';
 import { useRef, useEffect, useId, useState } from 'react';
 import { selectAuthError } from '../../redux/auth/selectors';
 import { resetAuthError } from '../../redux/auth/slice';
+import Loader from '../Loader/Loader';
 
 export default function LoginForm() {
   const dispatch = useDispatch();
@@ -19,6 +20,7 @@ export default function LoginForm() {
   const passwordFieldId = useId();
 
   const containerRef = useRef();
+  const [isLoading, setIsLoading] = useState(false);
 
   const [showPassword, setShowPassword] = useState(false);
   const togglePasswordVisibility = () => {
@@ -30,8 +32,11 @@ export default function LoginForm() {
     password: '',
   };
 
-  const handleSubmit = values => {
-    dispatch(login(values));
+  const handleSubmit = async values => {
+    setIsLoading(true);
+    await dispatch(login(values));
+    setIsLoading(false);
+    navigate('/home');
   };
 
   useEffect(() => {
@@ -102,6 +107,7 @@ export default function LoginForm() {
             <button type="submit" className={s.logBtn}>
               Log In Now
             </button>
+            <div className={s.loaderWrapper}>{isLoading && <Loader />}</div>
           </Form>
         </div>
       </div>
