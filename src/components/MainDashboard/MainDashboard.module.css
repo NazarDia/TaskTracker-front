@@ -5,6 +5,8 @@
   flex-direction: column;
   justify-content: space-between;
   min-width: 1180px;
+  scrollbar-color: var(--btn-hover-color) var(--btn-bg-color);
+  scrollbar-width: thin;
 }
 
 @media screen and (min-width: 768px) {

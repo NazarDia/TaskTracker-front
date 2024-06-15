@@ -37,7 +37,7 @@ const TaskColumn = ({ column }) => {
   // console.log(deleteCol);
 
   return (
-    <>
+    <div className={s.columnWrapper}>
       <div className={s.container}>
         <h4 className={s.columnTitle}>{column.title}</h4>
         <div className={s.btnWrapper}>
@@ -73,7 +73,7 @@ const TaskColumn = ({ column }) => {
       >
         <PopUpAddCard onClose={closeAddCardModal} column={column} />
       </GeneralModal>
-    </>
+    </div>
   );
 };
 

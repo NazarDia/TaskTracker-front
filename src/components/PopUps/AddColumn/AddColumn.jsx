@@ -16,9 +16,7 @@ const ColumnsSchema = Yup.object().shape({
 
 const AddColumn = ({ boardId, closeModal }) => {
   const dispatch = useDispatch();
-  console.log('AddColumn boardId', boardId);
   const handleSubmit = (values, actions) => {
-    console.log('values', values);
     dispatch(addNewColumn({ title: values.title, boardId: boardId }))
       .unwrap()
       .then(() => {
