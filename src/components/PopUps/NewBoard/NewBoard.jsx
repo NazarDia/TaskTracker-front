@@ -34,7 +34,6 @@ export default function NewBoard({ closeModal, initialIcon }) {
 
   const [icon, setIcon] = useState(initialIcon || icons[0]);
   const [background, setBackground] = useState('');
-  const [titleError, setTitleError] = useState('');
 
   useEffect(() => {
     dispatch(fetchBackgrounds());
@@ -48,12 +47,11 @@ export default function NewBoard({ closeModal, initialIcon }) {
     setBackground(e.target.value);
   };
 
-  const handleSubmit = async (values, { resetForm }) => {
-    const isBoardExists = boards.find((board) => board.titleBoard === values.titleBoard);
-    setTitleError('');
+  const handleSubmit = async (values, { setFieldError, resetForm }) => {
+    const isBoardExists = boards.find((board) => board.title === values.titleBoard);
 
     if (isBoardExists) {
-      setTitleError('The board with this title already exists');
+      setFieldError('titleBoard', 'The board with this title already exists');
       return;
     }
 
@@ -68,7 +66,6 @@ export default function NewBoard({ closeModal, initialIcon }) {
       await dispatch(fetchBoards());
       resetForm();
       closeModal();
-     
     } catch (error) {
       console.error('Error creating the board:', error);
     }
@@ -97,7 +94,6 @@ export default function NewBoard({ closeModal, initialIcon }) {
             />
           </label>
           <ErrorMessage name="titleBoard" component="div" className={styles.errorMessage} />
-          {titleError && <div className={styles.errorMessage}>{titleError}</div>}
 
           <div className={styles.smallTitle}>Icons</div>
           <div id="my-radio-group">

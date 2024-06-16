@@ -15,6 +15,7 @@ export const fetchBoards = createAsyncThunk(
   }
 );
 
+
 export const addBoard = createAsyncThunk(
   'boards/addBoard',
   async (board, thunkAPI) => {
@@ -26,6 +27,7 @@ export const addBoard = createAsyncThunk(
     }
   }
 );
+
 
 export const getBoardByID = createAsyncThunk(
   'boards/getBoardById',
