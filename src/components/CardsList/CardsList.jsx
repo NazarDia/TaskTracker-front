@@ -24,22 +24,3 @@ const CardsList = ({ column }) => {
 };
 
 export default CardsList;
-
-// const CardsList = ({ column }) => {
-//   const tasks = useSelector(selectFilteredCards);
-//   console.log(tasks);
-
-//   return (
-//     <div className={s.container}>
-//       <ul className={s.columnList}>
-//         {tasks.map(task => (
-//           <li key={task._id} className={s.listItem}>
-//             <Card task={task} />
-//           </li>
-//         ))}
-//       </ul>
-//     </div>
-//   );
-// };
-
-// export default CardsList;
