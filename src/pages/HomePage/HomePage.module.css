@@ -1,6 +1,7 @@
 .container {
   display: flex;
   position: relative;
+  overflow: hidden;
 }
 
 .sidebar {

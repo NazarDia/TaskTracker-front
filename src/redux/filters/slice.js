@@ -7,7 +7,9 @@ const filtersSlice = createSlice({
   },
   reducers: {
     setPriorityFilter(state, action) {
+      // console.log(state.priority);
       state.priority = action.payload;
+      // console.log(state.priority);
     },
   },
 });

@@ -6,6 +6,10 @@
 
 .profile { 
   color: var(--user-text-color);
+  font-family: 'PoppinsMedium';
+  font-size: 16px;
+  letter-spacing: -0.02em;
+  text-align: left;
 }
 
 .profile_btn {

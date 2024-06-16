@@ -5,7 +5,9 @@
   align-items: center;
   justify-content: center;
   text-align: center;
+  color: var(--card-text-color);
 }
+
 .startWrapper {
   max-width: 100%;
   display: flex;

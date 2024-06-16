@@ -15,10 +15,7 @@ import {
 import { selectPriorityFilter } from '../../redux/filters/selector';
 
 const TaskColumnsList = () => {
-  const columns = useSelector(selectColumnsByBoardId);
-
-  const filterValue = useSelector(selectPriorityFilter);
-
+  const columns = useSelector(selectColumnsByBoardId) || [];
   const loading = useSelector(selectIsLoading);
 
   const error = useSelector(selectError);

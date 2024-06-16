@@ -1,33 +1,28 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import HeaderDashboard from '../HeaderDashboard/HeaderDashboard';
 import MainDashboard from '../MainDashboard/MainDashboard';
 
 import StartBoard from '../StartBoard/StartBoard';
 import s from './ScreensPage.module.css';
-import { useEffect, useState } from 'react';
-import { getBoardByID } from '../../redux/boards/operations';
+import { useEffect, useMemo, useState } from 'react';
+
 import { selectBoardById, selectBoards } from '../../redux/boards/selectors';
 
 const ScreensPage = () => {
-  const dispatch = useDispatch();
   const boards = useSelector(selectBoards);
-  const activeBoardId = useSelector(selectBoardById);
-  const activeBoard = useSelector(state =>
-    state.boards.boards.items.find(board => board._id === activeBoardId)
-  );
-
-  useEffect(() => {
-    if (boards.length > 0) {
-      if (!activeBoardId) {
-        const defaultBoardId = boards[0]._id;
-        dispatch(getBoardByID(defaultBoardId));
-      }
-    } else if (activeBoardId) {
-      dispatch(getBoardByID(activeBoardId));
-    }
-  }, [dispatch, activeBoardId, boards]);
+  let activeBoardId = useSelector(selectBoardById);
 
   const [backgroundImage, setBackgroundImage] = useState('');
+
+  const activeBoard = useMemo(() => {
+    if (boards.length > 0) {
+      if (!activeBoardId) {
+        return boards[0];
+      }
+      return boards.find(board => board._id === activeBoardId);
+    }
+    return null;
+  }, [boards, activeBoardId]);
 
   useEffect(() => {
     if (activeBoard && activeBoard.background) {
@@ -69,8 +64,8 @@ const ScreensPage = () => {
     >
       <HeaderDashboard activeBoard={activeBoard}></HeaderDashboard>
 
-      {activeBoard ? (
-        <MainDashboard activeBoard={activeBoard} />
+      {activeBoard || (boards.length > 0 && !activeBoardId) ? (
+        <MainDashboard activeBoard={activeBoard || boards[0]} />
       ) : (
         <StartBoard />
       )}

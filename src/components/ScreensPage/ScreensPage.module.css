@@ -4,7 +4,7 @@
   background-color: var(--main-bg-color);
   padding: 14px 20px;
   height: calc(100vh - 60px);
-
+  overflow: hidden;
   background-size: cover;
   background-position: top center;
   background-repeat: no-repeat;

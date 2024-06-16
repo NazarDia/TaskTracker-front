@@ -1,8 +1,8 @@
 import s from './MoveCard.module.css';
-import sprite from '../../../images/sprite/sprite-icon.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectColumns } from '../../../redux/columns/selectors';
 import { moveCard } from '../../../redux/cards/operations';
+import sprite from '../../../images/sprite/sprite-icon.svg';
 
 const MoveCard = ({ card, onClose }) => {
   const dispatch = useDispatch();
@@ -10,8 +10,11 @@ const MoveCard = ({ card, onClose }) => {
 
   const currentBoardId = card.boardId;
 
+  // const filteredColumns = columns.filter(
+  //   column => column.boardId === currentBoardId
+  // );
   const filteredColumns = columns.filter(
-    column => column.boardId === currentBoardId
+    column => column.boardId === currentBoardId && column._id !== card.columnId
   );
 
   const onMoveCard = (columnId, targetColumnName, boardId) => {

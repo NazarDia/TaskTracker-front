@@ -20,7 +20,6 @@ const Filters = ({ onRequestClose }) => {
     dispatch(setPriorityFilter('all'));
     onRequestClose();
   };
-
   return (
     <div className={s.filtersModal}>
       <h3 className={s.title}>Filters</h3>
