@@ -20,6 +20,7 @@
 .container.visible {
   opacity: 1;
   transform: translateY(0);
+  z-index: 12;
 }
 
 .contentWrapper {
@@ -100,8 +101,24 @@
   align-items: center;
   gap: 4px;
 }
+.cardBellWrapper {
+  position: relative;
+}
 .cardBell {
   transition: all 0.4s ease-in;
+}
+.bellSpan {
+  position: absolute;
+  display: block;
+  width: 4px;
+  left: 45%;
+  top: 45%;
+  box-shadow: 0 0 14px 5px var(--text-color-modify);
+  transition: all 0.4s ease-in;
+}
+.disabled {
+  stroke: rgb(143, 143, 141);
+  cursor: context-menu;
 }
 
 @keyframes swingBell {
@@ -126,6 +143,9 @@
     stroke: var(--label-color-pink);
     animation: swingBell 0.6s ease-in-out forwards;
   }
+  .container:hover .bellSpan {
+    box-shadow: 0 0 0 0 transparent;
+  }
   .hoverEffect {
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
@@ -133,6 +153,10 @@
   .cardBtn:hover .icon {
     transform: scale(110%);
     stroke: var(--btn-hover-color);
+  }
+  .disabled:hover .icon {
+    transform: scale(1);
+    stroke: rgb(143, 143, 141);
   }
 }
 @media screen and (max-width: 1440px) {

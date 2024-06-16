@@ -3,14 +3,17 @@ import sprite from '../../images/sprite/sprite-icon.svg';
 
 import GeneralModal from '../GeneralModal/GeneralModal';
 import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getBoardByID } from '../../redux/boards/operations';
 import PopUpEditCard from '../PopUps/EditCard/EditCard';
 import { deleteCard } from '../../redux/cards/operations';
 import MoveCard from '../PopUps/MoveCard/MoveCard';
 import { getAllColumns } from '../../redux/columns/operations';
+import { selectColumns } from '../../redux/columns/selectors';
 
 const Card = ({ task, index }) => {
+  const columns = useSelector(selectColumns);
+  console.log(columns.length);
   const dispatch = useDispatch();
   const [isVisible, setIsVisible] = useState(false);
 
@@ -114,13 +117,18 @@ const Card = ({ task, index }) => {
         </div>
         <div className={s.cardBtnWrapper}>
           {toDeadLine(task.deadline) <= 1 && (
-            <div className={s.cardBtn}>
+            <div className={`${s.cardBtn} ${s.cardBellWrapper}`}>
               <svg width={16} height={16} className={`${s.icon} ${s.cardBell}`}>
                 <use href={`${sprite}#bell`}></use>
               </svg>
+              <span className={s.bellSpan}></span>
             </div>
           )}
-          <button className={s.cardBtn} onClick={toggleDropdown}>
+          <button
+            className={`${s.cardBtn} ${columns.length < '2' ? s.disabled : ''}`}
+            disabled={columns.length < '2'}
+            onClick={toggleDropdown}
+          >
             <svg width={16} height={16} className={s.icon}>
               <use href={`${sprite}#broken-right`}></use>
             </svg>
