@@ -24,14 +24,14 @@ const TaskColumnsList = () => {
 
   const cardLists = columns ? columns.find(column => column.tasks).tasks : [];
 
-  console.log('Values:', filterValue);
+  // console.log('Values:', filterValue);
   console.log(cardLists);
 
-  const filteredCards = cardLists.filter(
-    list => `#${list.color}` === filterValue.toUpperCase()
-  );
+  // const filteredCards = cardLists.filter(
+  //   list => `#${list.color}` === filterValue.toUpperCase()
+  // );
 
-  console.log(filteredCards);
+  // console.log(filteredCards);
 
   if (loading) return <Loader />;
   if (error) return <Error />;
@@ -39,11 +39,11 @@ const TaskColumnsList = () => {
 
   return (
     <div className={s.container}>
-      {filteredCards.length === 0 ? (
+      {columns.length === 0 ? (
         <ColumnStatus />
       ) : (
         <ul className={s.columnList}>
-          {filteredCards.map(column => (
+          {columns.map(column => (
             <li key={column._id} className={s.listItem}>
               <TaskColumn column={column} />
             </li>

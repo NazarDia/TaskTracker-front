@@ -14,15 +14,7 @@ const CardsList = ({ column }) => {
     const columnTasks = column.tasks.filter(el => el.color === normalizedColor);
     return columnTasks;
   }, [column, currentPriority]);
-  // const tasksArr = tasks
-  //   .map(task => {
-  //     if (currentPriority === 'ALL') {
-  //       return task;
-  //     }
-  //     return task.color === currentPriority ? task : null;
-  //   })
-  //   .filter(task => task !== null);
-  // console.log(tasksArr);
+
   return (
     <div className={s.container}>
       <ul className={s.columnList}>
