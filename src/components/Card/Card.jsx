@@ -11,6 +11,7 @@ import MoveCard from '../PopUps/MoveCard/MoveCard';
 import { getAllColumns } from '../../redux/columns/operations';
 
 const Card = ({ task, index }) => {
+  const dispatch = useDispatch();
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -21,23 +22,21 @@ const Card = ({ task, index }) => {
     return () => clearTimeout(timeout);
   }, [index]);
 
-  const dispatch = useDispatch();
   const [isModalEditOpen, setModaEditlIsOpen] = useState(false);
-  const [isModalMoveOpen, setModalMoveIsOpen] = useState(false);
-  const openEditModal = () => setModaEditlIsOpen(true);
 
+  const openEditModal = () => setModaEditlIsOpen(true);
   const closeEditModal = () => {
     setModaEditlIsOpen(false);
     dispatch(getBoardByID(task.boardId));
   };
 
-  const openMoveModal = () => {
+  const [isDropdownOpen, setDropdownOpen] = useState(false);
+  const toggleDropdown = () => {
     dispatch(getAllColumns());
-    setModalMoveIsOpen(true);
+    setDropdownOpen(!isDropdownOpen);
   };
-
-  const closeMoveModal = () => {
-    setModalMoveIsOpen(false);
+  const closeDropdown = () => {
+    setDropdownOpen(false);
     dispatch(getBoardByID(task.boardId));
   };
 
@@ -121,13 +120,8 @@ const Card = ({ task, index }) => {
               </svg>
             </div>
           )}
-          <button className={s.cardBtn}>
-            <svg
-              width={16}
-              height={16}
-              className={s.icon}
-              onClick={openMoveModal}
-            >
+          <button className={s.cardBtn} onClick={toggleDropdown}>
+            <svg width={16} height={16} className={s.icon}>
               <use href={`${sprite}#broken-right`}></use>
             </svg>
           </button>
@@ -142,6 +136,11 @@ const Card = ({ task, index }) => {
             </svg>
           </button>
         </div>
+        {isDropdownOpen && (
+          <div className={s.dropdownWrapper}>
+            <MoveCard card={task} onClose={closeDropdown} />
+          </div>
+        )}
       </div>
 
       <GeneralModal
@@ -150,13 +149,6 @@ const Card = ({ task, index }) => {
         contentLabel="Edit Task"
       >
         <PopUpEditCard card={task} onClose={closeEditModal}></PopUpEditCard>
-      </GeneralModal>
-      <GeneralModal
-        isOpen={isModalMoveOpen}
-        onRequestClose={closeMoveModal}
-        contentLabel="Move Task"
-      >
-        <MoveCard card={task} onClose={closeMoveModal}></MoveCard>
       </GeneralModal>
     </div>
   );

@@ -13,7 +13,7 @@ import {
 } from '../../redux/boards/selectors';
 
 const TaskColumnsList = () => {
-  const columns = useSelector(selectColumnsByBoardId);
+  const columns = useSelector(selectColumnsByBoardId) || [];
   const loading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
 
