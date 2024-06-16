@@ -1,8 +1,7 @@
-import { useSelector } from 'react-redux';
+import { useMemo } from 'react';
 import Card from '../Card/Card';
 import s from './CardsList.module.css';
-import { selectPriorityFilter } from '../../redux/filters/selector';
-import { useMemo } from 'react';
+import { useSelector } from 'react-redux';
 
 const CardsList = ({ column }) => {
   const currentPriority = useSelector(selectPriorityFilter);
