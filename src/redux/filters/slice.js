@@ -3,11 +3,13 @@ import { createSlice } from '@reduxjs/toolkit';
 const filtersSlice = createSlice({
   name: 'filters',
   initialState: {
-    priority: "all",
+    priority: 'all',
   },
   reducers: {
     setPriorityFilter(state, action) {
+      console.log(state.priority);
       state.priority = action.payload;
+      console.log(state.priority);
     },
   },
 });

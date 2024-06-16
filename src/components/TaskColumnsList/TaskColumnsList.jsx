@@ -11,12 +11,17 @@ import {
   selectError,
   selectIsLoading,
 } from '../../redux/boards/selectors';
+// import {
+//   // selectFilteredCards,
+//   // selectPriorityFilter,
+// } from '../../redux/filters/selector';
 
 const TaskColumnsList = () => {
   const columns = useSelector(selectColumnsByBoardId);
   const loading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
-
+  // const filtredTasks = useSelector(selectFilteredCards);
+  // const filtredValue = useSelector(selectPriorityFilter);
   if (loading) return <Loader />;
   if (error) return <Error />;
   if (!Array.isArray(columns)) return <div>No columns available</div>;

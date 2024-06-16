@@ -7,16 +7,17 @@ const Filters = ({ onRequestClose }) => {
   const dispatch = useDispatch();
   const currentPriority = useSelector(selectPriorityFilter);
 
-  const handlePriorityChange = (priority) => {
+  console.log(currentPriority);
+
+  const handlePriorityChange = priority => {
     dispatch(setPriorityFilter(priority));
-    onRequestClose(); 
+    onRequestClose();
   };
 
   const handleShowAll = () => {
     dispatch(setPriorityFilter('all'));
-    onRequestClose(); 
+    onRequestClose();
   };
-
   return (
     <div className={s.filtersModal}>
       <h3 className={s.title}>Filters</h3>
