@@ -14,8 +14,6 @@ import {
   REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import { filtersReducer } from './filters/slice.js';
-// import { cardsReduser } from './cards/cardSlice.js';
 
 const authPersistConfig = {
   key: 'authSlice',
@@ -30,8 +28,6 @@ export const store = configureStore({
     auth: persistedAuthReducer,
     boards: boardsReducer,
     columns: columnsReducer,
-    filters: filtersReducer,
-    // cards: cardsReduser,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
