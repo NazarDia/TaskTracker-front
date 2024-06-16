@@ -25,6 +25,9 @@ export default function PopUpAddCard({ column, onClose }) {
       .min(3, 'Too Short!')
       .max(500, 'Too Long! Max symbols is 500')
       .required('Required'),
+    deadline: Yup.date()
+      .required('Required')
+      .min(new Date(), 'Deadline must be in the future'),
   });
 
   const initialValues = {
@@ -76,9 +79,9 @@ export default function PopUpAddCard({ column, onClose }) {
                 name="title"
                 placeholder="Title"
               />
-              <div className={css.warning}>
+              <p className={css.warning}>
                 <ErrorMessage name="title" />
-              </div>
+              </p>
               <label className={css.modalLabel} htmlFor={cardDescriptionId}>
                 Description
               </label>
@@ -89,9 +92,9 @@ export default function PopUpAddCard({ column, onClose }) {
                 name="description"
                 placeholder="Description"
               />
-              <div className={css.warning}>
+              <p className={css.warning}>
                 <ErrorMessage name="description" />
-              </div>
+              </p>
               <p className={css.labelColor}>Label color</p>
               <div className={css.customRadios}>
                 <div className={css.someColor}>

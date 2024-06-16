@@ -7,14 +7,15 @@ import sprite from '../../../images/sprite/sprite-icon.svg';
 const MoveCard = ({ card, onClose }) => {
   const dispatch = useDispatch();
   const columns = useSelector(selectColumns);
-  
 
   const currentBoardId = card.boardId;
 
+  // const filteredColumns = columns.filter(
+  //   column => column.boardId === currentBoardId
+  // );
   const filteredColumns = columns.filter(
-    column => column.boardId === currentBoardId
+    column => column.boardId === currentBoardId && column._id !== card.columnId
   );
-  
 
   const onMoveCard = (columnId, targetColumnName, boardId) => {
     const taskId = card._id;
@@ -36,13 +37,9 @@ const MoveCard = ({ card, onClose }) => {
           onClick={() => onMoveCard(column._id, column.title, column.boardId)}
         >
           {column.title}
-          <svg
-              width={16}
-              height={16}
-              className={s.icon}
-            >
-              <use href={`${sprite}#broken-right`}></use>
-            </svg>
+          <svg width={16} height={16} className={s.icon}>
+            <use href={`${sprite}#broken-right`}></use>
+          </svg>
         </li>
       ))}
     </ul>
@@ -50,6 +47,3 @@ const MoveCard = ({ card, onClose }) => {
 };
 
 export default MoveCard;
-
-
-

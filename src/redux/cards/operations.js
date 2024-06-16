@@ -2,7 +2,6 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { getBoardByID } from '../boards/operations';
 
-
 axios.defaults.baseURL = 'https://tasktracker-back.onrender.com/api';
 
 //GET
@@ -31,11 +30,33 @@ export const addCard = createAsyncThunk(
   }
 );
 //UPDATE
+// export const updateCard = createAsyncThunk(
+//   'card/updateCard',
+//   async (updatedCard, thunkAPI) => {
+//     try {
+//       const response = await axios.put(`/tasks/${updatedCard.id}`, updatedCard);
+//       return response.data;
+//     } catch (error) {
+//       return thunkAPI.rejectWithValue(error.message);
+//     }
+//   }
+// );,
+
 export const updateCard = createAsyncThunk(
   'card/updateCard',
-  async (updatedCard, thunkAPI) => {
+  async (
+    { id, boardId, color, columnId, deadline, description, title },
+    thunkAPI
+  ) => {
     try {
-      const response = await axios.put(`/tasks/${updatedCard.id}`, updatedCard);
+      const response = await axios.put(`/tasks/${id}`, {
+        boardId,
+        color,
+        columnId,
+        deadline,
+        description,
+        title,
+      });
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
