@@ -22,10 +22,10 @@ const TaskColumnsList = () => {
 
   console.log(columns);
 
-  const cardLists = columns ? columns.find(column => column.tasks).tasks : [];
+  // const cardLists = columns ? columns.find(column => column.tasks).tasks : [];
 
   // console.log('Values:', filterValue);
-  console.log(cardLists);
+  // console.log(cardLists);
 
   // const filteredCards = cardLists.filter(
   //   list => `#${list.color}` === filterValue.toUpperCase()

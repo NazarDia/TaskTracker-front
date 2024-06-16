@@ -13,12 +13,12 @@ const Filters = ({ onRequestClose }) => {
     console.log(priority);
     console.log(setPriorityFilter(priority));
     dispatch(setPriorityFilter(priority));
-    onRequestClose(); 
+    onRequestClose();
   };
 
   const handleShowAll = () => {
     dispatch(setPriorityFilter('all'));
-    onRequestClose(); 
+    onRequestClose();
   };
 
   return (
@@ -34,9 +34,9 @@ const Filters = ({ onRequestClose }) => {
             <input
               type="radio"
               name="priority"
-              value="#8fa1d0"
-              checked={currentPriority === '#8fa1d0'}
-              onChange={() => handlePriorityChange('#8fa1d0')}
+              value="#bedbb0"
+              checked={currentPriority === '#bedbb0'}
+              onChange={() => handlePriorityChange('#bedbb0')}
             />
             High
           </label>
@@ -54,9 +54,9 @@ const Filters = ({ onRequestClose }) => {
             <input
               type="radio"
               name="priority"
-              value="#bedbb0"
-              checked={currentPriority === '#bedbb0'}
-              onChange={() => handlePriorityChange('#bedbb0')}
+              value="#8fa1d0"
+              checked={currentPriority === '#8fa1d0'}
+              onChange={() => handlePriorityChange('#8fa1d0')}
             />
             Low
           </label>
