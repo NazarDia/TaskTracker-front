@@ -64,9 +64,9 @@ const Filters = ({ onRequestClose }) => {
             <input
               type="radio"
               name="priority"
-              value="none"
-              checked={currentPriority === 'none'}
-              onChange={() => handlePriorityChange('none')}
+              value="all"
+              checked={currentPriority === 'all'}
+              onChange={() => handlePriorityChange('all')}
             />
             Without priority
           </label>
