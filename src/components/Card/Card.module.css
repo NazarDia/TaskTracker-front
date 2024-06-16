@@ -1,5 +1,6 @@
 .container {
   box-sizing: border-box;
+  position: relative;
   width: 335px;
   background-color: var(--card-bg-color);
   padding: 14px 24px;
@@ -9,6 +10,12 @@
   opacity: 0;
   transform: translateY(20px);
   transition: box-shadow 0.3s ease-in, transform 0.8s ease-in, opacity 0.8s ease;
+}
+.dropdownWrapper {
+  position: absolute;
+  bottom: 15px;
+  right: 85px;
+  z-index: 9999;
 }
 .container.visible {
   opacity: 1;
