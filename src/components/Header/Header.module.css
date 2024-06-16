@@ -35,9 +35,11 @@
   width: 24px;
   border: none;
   background-color:var(--header-bg-color);
+  stroke: var(--stroke-icon-color);
   @media screen and (min-width: 768px) {
     height: 32px;
     width: 32px;
+    
   }
 
   @media screen and (min-width: 1440px) {
