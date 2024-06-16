@@ -23,6 +23,8 @@ const TaskColumnsList = () => {
 
   const error = useSelector(selectError);
 
+  console.log(columns);
+
   const cardLists = columns ? columns.find(column => column.tasks).tasks : [];
 
   console.log('Values:', filterValue);
