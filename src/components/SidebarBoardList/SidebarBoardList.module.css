@@ -45,7 +45,7 @@
 }
 
 .iconButtons {
-  display: none; /* приховані за замовчуванням */
+  display: none;
   gap: 8px;
 }
 
@@ -63,6 +63,10 @@
 
 .boardItem.active {
   position: relative;
+}
+
+.boardItem.active .iconButtons {
+  display: flex;
 }
 
 .boardItem.active:before,
@@ -99,7 +103,7 @@
 
 @media screen and (min-width: 1440px) {
   .iconButtons.alwaysVisible {
-    display: flex; /* завжди відображені для активної дошки */
+    display: flex;
   }
 
   .editButton,
@@ -115,7 +119,7 @@
   }
 
   .boardItem:hover .iconButtons {
-    display: flex; /* відображаємо при ховері для неактивних дошок */
+    display: flex;
   }
 
   .activeBoardContainer {

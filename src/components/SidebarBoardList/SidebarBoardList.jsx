@@ -58,6 +58,13 @@ export default function SidebarBoardList({ onClose }) {
     e.stopPropagation();
     setBoardToEdit(board._id);
     setModalIsOpen(true);
+
+    if (board._id !== selectedBoard) {
+      setSelectedBoard(board._id);
+      dispatch(setActiveBoard(board));
+      dispatch(getBoardByID(board._id));
+      localStorage.setItem('activeBoard', board._id);
+    }
   };
 
   const handleDeleteBoard = async (e, board) => {
@@ -120,7 +127,7 @@ export default function SidebarBoardList({ onClose }) {
     if (boards.length < 3) {
       const activeBoard = boards.find(board => board?._id === selectedBoard);
       const otherBoards = boards.filter(board => board?._id !== selectedBoard);
-      return [activeBoard, ...otherBoards].filter(Boolean); // Remove any null/undefined
+      return [activeBoard, ...otherBoards].filter(Boolean);
     }
     return boards;
   }, [boards, selectedBoard]);
