@@ -2,9 +2,7 @@ import { createSelector } from '@reduxjs/toolkit';
 import { selectCards } from '../cards/selectors';
 
 // Селектор для отримання фільтра пріоритету
-export const selectPriorityFilter = state => {
-  console.log(state.filters.priority), state.filters.priority;
-};
+export const selectPriorityFilter = state => state.filters.priority;
 
 // Мапа кольорів до значень пріоритетів
 const priorityColorMap = {
