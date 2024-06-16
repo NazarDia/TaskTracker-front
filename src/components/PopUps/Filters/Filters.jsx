@@ -64,9 +64,9 @@ const Filters = ({ onRequestClose }) => {
             <input
               type="radio"
               name="priority"
-              value="rgba(255, 255, 255, 0.3)"
-              checked={currentPriority === 'rgba(255, 255, 255, 0.3)'}
-              onChange={() => handlePriorityChange('rgba(255, 255, 255, 0.3)')}
+              value="none"
+              checked={currentPriority === 'none'}
+              onChange={() => handlePriorityChange('none')}
             />
             Without priority
           </label>
