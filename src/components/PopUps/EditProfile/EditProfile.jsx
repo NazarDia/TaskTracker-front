@@ -58,7 +58,15 @@ const EditProfile = ({ onClose }) => {
             onChange={handleChangeAvatar}
           />
           {user.avatarURL ? (
-            <img src={user.avatarURL} className={s.imgUser} alt="avatar" />
+            avatar ? (
+              <img
+                src={URL.createObjectURL(avatar)}
+                className={s.imgUser}
+                alt="avatar"
+              />
+            ) : (
+              <img src={user.avatarURL} className={s.imgUser} alt="avatar" />
+            )
           ) : (
             <svg width="68" height="68" className={s.img}>
               <use xlinkHref={`${sprite}#icon-user-ico`} />
@@ -96,7 +104,11 @@ const EditProfile = ({ onClose }) => {
           />
           <span className={s.passwordToggle} onClick={togglePasswordVisibility}>
             <svg width="18" height="18" className={s.fieldIcon}>
-              <use xlinkHref={`${sprite}#eye`} />
+              <use
+                xlinkHref={`${sprite}#${
+                  passwordVisible ? 'eye' : 'icon-eye-off'
+                }`}
+              />
             </svg>
           </span>
         </label>
