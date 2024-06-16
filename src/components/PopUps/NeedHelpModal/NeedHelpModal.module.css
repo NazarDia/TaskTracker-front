@@ -35,7 +35,7 @@
     border-radius: 8px;
     margin-bottom: 24px;
     opacity: 0.4;
-    color: var(--stroke-icon-color);
+    color: var(--user-text-color);
     transition: border var(--primary-transition);
     box-shadow: 0px 4px 16px 0px var(--label-color-grey);
 }
@@ -55,6 +55,7 @@
     background-color: var(--main-bg-color);
     border-radius: 8px;
     margin-bottom: 24px;
+    color: var(--user-text-color);
     height: 120px;
     opacity: 0.4;
     transition: border var(--primary-transition);
@@ -84,7 +85,7 @@
             font-weight: 500;
                 font-size: 14px;
                 letter-spacing: -0.02em;
-                color: var(--text-color);
+                color: var(--mini-btn-color);
 }
 
 .helpSubmitBtn:hover:active {
