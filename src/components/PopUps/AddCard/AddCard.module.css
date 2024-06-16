@@ -181,7 +181,7 @@
   cursor: pointer;
   margin-top: 8px;
   font-size: 14px;
-  color: var(--text-color-modify);
+  color: var(--btn-hover-color);
 }
 
 .datePickerWrapper {
@@ -197,7 +197,16 @@
   border: 1px solid #ddd;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
-
+.warning {
+  /* display: inline-block; */
+  color: red;
+  /* background-color: #92e2c4; */
+  font-size: 14px;
+  margin-top: -16px;
+  text-align: center;
+  margin-bottom: 8px;
+  height: 14px;
+}
 .btn {
   margin-top: 40px;
   color: #000;

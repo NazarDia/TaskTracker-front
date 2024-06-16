@@ -1,60 +1,213 @@
+.modalContent {
+  width: 335px;
+  background-color: var(--modal-bg-color);
+  padding: 24px;
+}
+
 .title {
-  font-weight: 500;
+  color: var(--text-color);
+  font-family: PoppinsSemiBold;
   font-size: 18px;
-  letter-spacing: -0.02em;
-  color: #fff;
+  font-style: normal;
+
+  line-height: normal;
+  letter-spacing: -0.36px;
 }
 
-.form {
-  display: flex;
-  flex-direction: column;
+.modalInputTitle:focus,
+.modalInputTitle:active {
+  outline: 2px solid #bedbb0;
 }
-
-.deadlineContainer {
-  margin-bottom: 20px;
-}
-
-.colorContainer {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 20px;
-}
-
-.colorContainer label {
-  display: flex;
-  align-items: center;
-  margin-bottom: 5px;
-}
-
-.colorContainer label input {
-  margin-right: 10px;
-}
-
-.high {
-  color: var(--label-color-green);
-}
-
-.medium {
-  color: var(--label-color-pink);
-}
-
-.low {
-  color: var(--label-color-blue);
-}
-
-.none {
-  color: var(--label-color-grey);
-}
-
-.error {
-  color: red;
-}
-
-.btn {
+.modalInputTitle {
+  margin-top: 24px;
+  width: 287px;
+  padding: 14px 18px;
   border-radius: 8px;
-  width: 302px;
-  height: 49px;
-  background-color: var(--btn-bg-color);
-  cursor: pointer;
+  border: 1px solid var(--btn-bg-color);
+  background-color: var(--modal-bg-color);
+  box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08);
+
+  color: var(--text-color);
+  font-family: PoppinsRegular;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.28px;
 }
 
+.modalInputTitle::placeholder {
+  opacity: 0.4;
+}
+.modalLabel {
+  display: none;
+}
+.modalInputDescription {
+  margin-top: 14px;
+  display: flex;
+  width: 287px;
+  height: 154px;
+  padding: 14px 18px;
+  align-items: center;
+  flex-shrink: 0;
+  background-color: var(--modal-bg-color);
+  border-radius: 8px;
+  border: 1px solid #bedbb0;
+  box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08);
+
+  color: var(--text-color);
+  font-family: PoppinsRegular;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.285;
+  letter-spacing: -0.28px;
+
+  resize: none;
+  vertical-align: top;
+  overflow: auto;
+}
+.modalInputDescription::placeholder {
+  opacity: 0.4;
+}
+.modalInputDescription:focus,
+.modalInputDescription:active {
+  outline: 2px solid #bedbb0;
+}
+.customRadios {
+  display: flex;
+}
+
+.colorInput {
+  display: none;
+}
+
+.labelColor {
+  margin-top: 24px;
+  margin-bottom: 4px;
+  color: rgba(22, 22, 22, 0.5);
+  font-family: PoppinsRegular;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.24px;
+}
+
+.customRadios input[type='radio'] + label {
+  color: #333;
+  font-family: Arial, sans-serif;
+  font-size: 6px;
+}
+
+.color1,
+.color2,
+.color3,
+.color4 {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  margin: -1px 4px 0 0;
+  vertical-align: middle;
+  cursor: pointer;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);
+  background-repeat: no-repeat;
+  background-position: center;
+  text-align: center;
+  line-height: 20px;
+}
+
+.imgColor1,
+.imgColor2,
+.imgColor3,
+.imgColor4 {
+  width: 10px;
+  height: 10px;
+  display: inline-block;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.color1 {
+  background-color: #8fa1d0;
+}
+
+.color2 {
+  background-color: #e09cb5;
+}
+
+.color3 {
+  background-color: #bedbb0;
+}
+.color4 {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+.svgAccept {
+  display: inline-block;
+  opacity: 0;
+  font-size: 14px;
+  color: #000;
+}
+.customRadios input[type='radio']:checked + label span .svgAccept {
+  display: inline-block;
+  opacity: 1;
+  font-size: 18px;
+  color: #000;
+}
+
+.deadline {
+  margin-top: 14px;
+  margin-bottom: 4px;
+  color: rgba(22, 22, 22, 0.5);
+  font-family: PoppinsRegular;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.24px;
+}
+
+.datePicker {
+  display: auto;
+  padding: 8px;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.deadlineDisplay {
+  cursor: pointer;
+  margin-top: 8px;
+  font-size: 14px;
+  color: var(--btn-hover-color);
+}
+
+.datePickerWrapper {
+  position: relative;
+}
+
+.datePickerOverlay {
+  position: absolute;
+  bottom: 50%;
+  left: 0;
+  z-index: 1000;
+  background-color: var(--modal-bg-color);
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+.warning {
+  /* display: inline-block; */
+  color: red;
+  /* background-color: #92e2c4; */
+  font-size: 14px;
+  margin-top: -16px;
+  text-align: center;
+  margin-bottom: 8px;
+  height: 14px;
+}
+.btn {
+  margin-top: 40px;
+  color: #000;
+}
