@@ -57,7 +57,17 @@ export default function EditBoard({ boardId, onClose, initialIcon }) {
     }
   }, [dispatch, boardId]);
 
-  const handleSubmit = async (values, { resetForm }) => {
+  const handleSubmit = async (values, { setFieldError, resetForm }) => {
+
+    const duplicateTitle = boards.some(
+      (board) => board.title.toLowerCase() === values.title.toLowerCase() && board._id !== boardId
+    );
+
+    if (duplicateTitle) {
+      setFieldError("title", "The board with this title already exists");
+      return;
+    }
+
     const updatedData = {
       title: values.title,
       icon: icon,
