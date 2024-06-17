@@ -16,15 +16,13 @@ const CardsList = ({ column }) => {
   }, [column, currentPriority]);
 
   return (
-    <div className={s.container}>
-      <ul className={s.cardList}>
-        {filteredTasksByPriority.map((task, index) => (
-          <li key={task._id} className={s.listItem}>
-            <Card task={task} index={index} />
-          </li>
-        ))}
-      </ul>
-    </div>
+    <ul className={s.cardList}>
+      {filteredTasksByPriority.map((task, index) => (
+        <li key={task._id} className={s.listItem}>
+          <Card task={task} index={index} />
+        </li>
+      ))}
+    </ul>
   );
 };
 
