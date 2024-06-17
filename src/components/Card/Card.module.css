@@ -7,20 +7,9 @@
   border-left: 4px solid;
   border-radius: 8px;
   margin-bottom: 8px;
-  opacity: 0;
-  transform: translateY(20px);
+  overflow: visible;
+
   transition: box-shadow 0.3s ease-in, transform 0.8s ease-in, opacity 0.8s ease;
-}
-.dropdownWrapper {
-  position: absolute;
-  bottom: 15px;
-  right: 85px;
-  z-index: 9999;
-}
-.container.visible {
-  opacity: 1;
-  transform: translateY(0);
-  z-index: 12;
 }
 
 .contentWrapper {
@@ -115,10 +104,6 @@
   top: 45%;
   box-shadow: 0 0 14px 5px var(--text-color-modify);
   transition: all 0.4s ease-in;
-}
-.disabled {
-  stroke: rgb(143, 143, 141);
-  cursor: context-menu;
 }
 
 @keyframes swingBell {

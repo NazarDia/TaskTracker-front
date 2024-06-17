@@ -2,7 +2,7 @@ import s from './Card.module.css';
 import sprite from '../../images/sprite/sprite-icon.svg';
 
 import GeneralModal from '../GeneralModal/GeneralModal';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getBoardByID } from '../../redux/boards/operations';
 import PopUpEditCard from '../PopUps/EditCard/EditCard';
@@ -11,19 +11,11 @@ import MoveCard from '../PopUps/MoveCard/MoveCard';
 import { getAllColumns } from '../../redux/columns/operations';
 import { selectCurrentBoard } from '../../redux/boards/selectors';
 
-const Card = ({ task, index }) => {
+const Card = ({ task }) => {
   const dispatch = useDispatch();
-  const [isVisible, setIsVisible] = useState(false);
+
   const currentBoard = useSelector(selectCurrentBoard);
   const columnsLength = currentBoard.columns.length;
-
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      setIsVisible(true);
-    }, index * 100);
-
-    return () => clearTimeout(timeout);
-  }, [index]);
 
   const [isModalEditOpen, setModaEditlIsOpen] = useState(false);
 
@@ -35,9 +27,12 @@ const Card = ({ task, index }) => {
 
   const [isDropdownOpen, setDropdownOpen] = useState(false);
   const toggleDropdown = () => {
-    dispatch(getAllColumns());
     setDropdownOpen(!isDropdownOpen);
   };
+  const closeLeaveDropdown = () => {
+    setDropdownOpen(false);
+  };
+
   const closeDropdown = () => {
     setDropdownOpen(false);
     dispatch(getBoardByID(task.boardId));
@@ -81,9 +76,7 @@ const Card = ({ task, index }) => {
 
   return (
     <div
-      className={`${s.container} ${isVisible ? s.visible : ''} ${
-        s.hoverEffect
-      }`}
+      className={`${s.container} ${s.hoverEffect}`}
       style={{ borderLeftColor: backgroundColor }}
       onMouseEnter={e => {
         e.currentTarget.style.boxShadow = hoverStyle.boxShadow;
@@ -98,7 +91,7 @@ const Card = ({ task, index }) => {
         <h3 className={s.cardTitle}>{task.title}</h3>
         <p className={s.taskDescr}>{task.description}</p>
       </div>
-      <div className={s.cardBottomnContent}>
+      <div className={s.cardBottomnContent} onMouseLeave={closeLeaveDropdown}>
         <div className={s.cardextraWrapper}>
           <div className={s.exraItem}>
             <p className={s.extraItemTitle}>Priority</p>
@@ -131,7 +124,7 @@ const Card = ({ task, index }) => {
               </svg>
             </button>
           )}
-
+          {isDropdownOpen && <MoveCard card={task} onClose={closeDropdown} />}
           <button className={s.cardBtn} onClick={openEditModal}>
             <svg width={16} height={16} className={s.icon}>
               <use href={`${sprite}#pencil`}></use>
@@ -143,11 +136,6 @@ const Card = ({ task, index }) => {
             </svg>
           </button>
         </div>
-        {isDropdownOpen && (
-          <div className={s.dropdownWrapper}>
-            <MoveCard card={task} onClose={closeDropdown} />
-          </div>
-        )}
       </div>
 
       <GeneralModal

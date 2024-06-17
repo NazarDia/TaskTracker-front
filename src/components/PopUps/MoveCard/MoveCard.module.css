@@ -1,41 +1,49 @@
 .dropdown {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: var(--modal-bg-color);
-    border:none;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    width: 135px;
-    z-index: 1000;
-    padding: 10px 0;
-  }
-  
-  .dropdown li {
-    list-style: none;
-    padding: 10px;
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-weight: 400;
-    font-size: 14px;
-    letter-spacing: -0.02em;
-    color: var(--text-color);
-    transition: color 0.3s;
-  }
-  
-  .dropdown li:hover {
-    color: var(--text-color-modify);
-  }
-  
-  .icon {
-    stroke: var(--text-color-light); ;
-    transition: stroke 0.3s;
-  }
+  background-color: var(--modal-bg-color);
+  border: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  width: 135px;
+  padding: 18px;
+  position: absolute;
+  bottom: 40px;
+  right: 5px;
+  display: flex;
+  gap: 8px;
+  flex-direction: column;
+  height: 100px;
+  overflow-y: auto;
+  scrollbar-color: var(--btn-hover-color) transparent;
+  scrollbar-width: thin;
+}
 
-  
-  
-  .dropdown li:hover .icon {
-    stroke: var(--text-color-modify);
-  }
+.dropdownItem {
+  font-family: 'PoppinsRegular', sans-serif;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: var(--base-font-size);
+  letter-spacing: -0.02em;
+  color: var(--select-text);
+  transition: color 0.3s ease-out;
+}
+.columnText {
+  width: 75px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dropdownItem:hover {
+  color: var(--text-color-modify);
+}
+
+.icon {
+  stroke: var(--stroke-icon-color);
+  transition: stroke 0.3s;
+}
+
+.dropdownItem:hover .icon {
+  stroke: var(--text-color-modify);
+}
