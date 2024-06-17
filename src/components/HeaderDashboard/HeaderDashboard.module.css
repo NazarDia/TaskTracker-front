@@ -1,14 +1,14 @@
 .headerWrapper {
-  width: 100%;
+  /* width: 100%; */
   height: 48px;
   padding: 0 20px;
-  margin-bottom: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: var(--header-bg-color);
   z-index: 0;
   border-radius: 8px;
+  margin: 14px 20px 39px 20px;
 }
 .boardTitle {
   color: var(--header-text-color);
@@ -37,4 +37,18 @@
   letter-spacing: -0.0175em;
   display: flex;
   align-items: center;
+}
+
+@media screen and (min-width: 768px) {
+  .headerWrapper {
+    margin: 26px 32px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .headerWrapper {
+    margin: 10px 24px;
+  }
+}
+@media screen and (max-width: 1440px) {
 }

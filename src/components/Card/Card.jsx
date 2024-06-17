@@ -9,13 +9,13 @@ import PopUpEditCard from '../PopUps/EditCard/EditCard';
 import { deleteCard } from '../../redux/cards/operations';
 import MoveCard from '../PopUps/MoveCard/MoveCard';
 import { getAllColumns } from '../../redux/columns/operations';
-import { selectColumns } from '../../redux/columns/selectors';
+import { selectCurrentBoard } from '../../redux/boards/selectors';
 
 const Card = ({ task, index }) => {
-  const columns = useSelector(selectColumns);
-  console.log(columns.length);
   const dispatch = useDispatch();
   const [isVisible, setIsVisible] = useState(false);
+  const currentBoard = useSelector(selectCurrentBoard);
+  const columnsLength = currentBoard.columns.length;
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -124,15 +124,14 @@ const Card = ({ task, index }) => {
               <span className={s.bellSpan}></span>
             </div>
           )}
-          <button
-            className={`${s.cardBtn} ${columns.length < '2' ? s.disabled : ''}`}
-            disabled={columns.length < '2'}
-            onClick={toggleDropdown}
-          >
-            <svg width={16} height={16} className={s.icon}>
-              <use href={`${sprite}#broken-right`}></use>
-            </svg>
-          </button>
+          {columnsLength >= 2 && (
+            <button className={s.cardBtn} onClick={toggleDropdown}>
+              <svg width={16} height={16} className={s.icon}>
+                <use href={`${sprite}#broken-right`}></use>
+              </svg>
+            </button>
+          )}
+
           <button className={s.cardBtn} onClick={openEditModal}>
             <svg width={16} height={16} className={s.icon}>
               <use href={`${sprite}#pencil`}></use>

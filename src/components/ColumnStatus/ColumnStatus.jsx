@@ -19,11 +19,13 @@ const ColumnStatus = () => {
   const currentBoard = useSelector(selectOneBoard);
 
   return (
-    <div className={s.container}>
-      <CardButton
-        onClick={openModal}
-        btnText={'Add another column'}
-      ></CardButton>
+    <>
+      <div className={s.container}>
+        <CardButton
+          onClick={openModal}
+          btnText={'Add another column'}
+        ></CardButton>
+      </div>
       <GeneralModal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
@@ -31,7 +33,7 @@ const ColumnStatus = () => {
       >
         <AddColumn boardId={currentBoard._id} closeModal={closeModal} />
       </GeneralModal>
-    </div>
+    </>
   );
 };
 
