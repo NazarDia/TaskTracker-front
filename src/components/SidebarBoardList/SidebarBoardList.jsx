@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState, useMemo } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   fetchBoards,
   getBoardByID,
@@ -14,6 +15,7 @@ import s from './SidebarBoardList.module.css';
 
 export default function SidebarBoardList({ onClose }) {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [selectedBoard, setSelectedBoard] = useState(null);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [boardToEdit, setBoardToEdit] = useState(null);
@@ -39,9 +41,12 @@ export default function SidebarBoardList({ onClose }) {
         setSelectedBoard(activeBoardId);
         dispatch(setActiveBoard(activeBoard));
         dispatch(getBoardByID(activeBoardId));
+        navigate(`/home/${activeBoard.title}`);
+      } else {
+        navigate('/home');
       }
     }
-  }, [boards, dispatch]);
+  }, [boards, dispatch, navigate]);
 
   const handleBoardClick = board => {
     if (board._id === selectedBoard) return;
@@ -51,6 +56,7 @@ export default function SidebarBoardList({ onClose }) {
     dispatch(setActiveBoard(board));
     dispatch(getBoardByID(boardId));
     localStorage.setItem('activeBoard', boardId);
+    navigate(`/home/${board.title}`);
     if (onClose) onClose();
   };
 
@@ -60,19 +66,32 @@ export default function SidebarBoardList({ onClose }) {
     setModalIsOpen(true);
 
     if (board._id !== selectedBoard) {
-      setSelectedBoard(board._id);
+      setSelectedBoard(board.title);
       dispatch(setActiveBoard(board));
-      dispatch(getBoardByID(board._id));
+      // dispatch(getBoardByID(board._id));
       localStorage.setItem('activeBoard', board._id);
+      navigate(`/home/${board.title}`);
     }
   };
 
   const handleDeleteBoard = async (e, board) => {
     e.stopPropagation();
-    await dispatch(deleteBoard(board._id));
-    dispatch(fetchBoards());
+    dispatch(deleteBoard(board._id));
+    // dispatch(fetchBoards());
+
     localStorage.removeItem('activeBoard');
-    if (selectedBoard === board._id) setSelectedBoard(null);
+
+    if (selectedBoard === board._id) {
+      if (boards.length === 0) {
+        setSelectedBoard(null);
+        navigate(`/home`);
+      } else {
+        setSelectedBoard(boards[0]._id);
+        dispatch(setActiveBoard(boards[0]));
+        // dispatch(getBoardByID(boards[0]._id));
+        localStorage.setItem('activeBoard', boards[0]._id);
+      }
+    }
   };
 
   const closeModal = () => {

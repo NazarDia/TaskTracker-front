@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   background-color: var(--main-bg-color);
-  padding: 14px 20px;
   height: calc(100vh - 60px);
   overflow: hidden;
   background-size: cover;
@@ -12,15 +11,11 @@
 
 @media screen and (min-width: 768px) {
   .container {
-    padding: 26px 32px;
     height: calc(100vh - 68px);
   }
 }
 
 @media screen and (min-width: 1280px) {
-  .container {
-    padding: 10px 24px;
-  }
 }
 @media screen and (max-width: 1440px) {
 }
