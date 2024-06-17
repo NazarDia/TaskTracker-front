@@ -35,6 +35,8 @@
   --text-color-light: rgba(22, 22, 22, 0.5);
   --text-color-modify: #bedbb0;
 
+  --dropDown-bg-color: #fcfcfc;
+
   --header-text-color: rgba(22, 22, 22, 0.8);
   --card-text-color: rgba(22, 22, 22, 0.7);
   --card-title-color: #161616;
@@ -97,6 +99,8 @@
   --text-color-light: rgba(22, 22, 22, 0.5);
   --text-color-modify: #bedbb0;
 
+  --dropDown-bg-color: #fcfcfc;
+
   --header-text-color: rgba(22, 22, 22, 0.8);
   --card-text-color: rgba(22, 22, 22, 0.7);
   --card-title-color: #161616;
@@ -140,6 +144,7 @@
   --text-color: #fff;
   --text-color-light: rgba(255, 255, 255, 0.5);
   --text-color-modify: #bedbb0;
+  --dropDown-bg-color: #1f1f1f;
 
   --header-text-color: rgba(255, 255, 255, 0.8);
   --card-text-color: rgba(255, 255, 255, 0.5);
@@ -184,6 +189,8 @@
   --text-color: #fff;
   --text-color-light: rgba(255, 255, 255, 0.5);
   --text-color-modify: #5255bc;
+
+  --dropDown-bg-color: #fcfcfc;
 
   --header-text-color: rgba(22, 22, 22, 0.8);
   --card-text-color: rgba(22, 22, 22, 0.7);

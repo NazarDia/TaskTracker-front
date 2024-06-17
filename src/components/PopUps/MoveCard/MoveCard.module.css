@@ -1,5 +1,5 @@
 .dropdown {
-  background-color: var(--modal-bg-color);
+  background-color: var(--dropDown-bg-color);
   border: none;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
@@ -11,7 +11,7 @@
   display: flex;
   gap: 8px;
   flex-direction: column;
-  height: 100px;
+  max-height: 100px;
   overflow-y: auto;
   scrollbar-color: var(--btn-hover-color) transparent;
   scrollbar-width: thin;
