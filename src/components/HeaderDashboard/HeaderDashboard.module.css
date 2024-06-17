@@ -8,7 +8,9 @@
   background-color: var(--header-bg-color);
   z-index: 0;
   border-radius: 8px;
-  margin: 14px 20px 39px 20px;
+  margin-bottom: 39px;
+  margin-right: 12px;
+  margin-left: 12px;
 }
 .boardTitle {
   color: var(--header-text-color);
@@ -41,13 +43,17 @@
 
 @media screen and (min-width: 768px) {
   .headerWrapper {
-    margin: 26px 32px;
+    margin-right: 9px;
+    margin-left: 9px;
+    margin-bottom: 26px;
   }
 }
 
 @media screen and (min-width: 1280px) {
   .headerWrapper {
-    margin: 10px 24px;
+    margin-right: 5px;
+    margin-left: 5px;
+    margin-bottom: 10px;
   }
 }
 @media screen and (max-width: 1440px) {

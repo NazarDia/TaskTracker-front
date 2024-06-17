@@ -2,12 +2,8 @@
   height: 100%;
   overflow-x: auto;
   overflow-y: hidden;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   scrollbar-color: var(--btn-hover-color) var(--btn-bg-color);
   scrollbar-width: thin;
-  margin: 0 5px 5px 5px;
 }
 
 @media screen and (min-width: 768px) {

@@ -1,18 +1,20 @@
-.textInner {
-  min-width: 335px;
-  max-width: 468px;
+.startWrapper {
+  max-width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  height: calc(100vh - 60px);
+}
+.textInner {
+  min-width: 335px;
+  max-width: 468px;
   text-align: center;
   color: var(--card-text-color);
 }
 
-.startWrapper {
-  max-width: 100%;
-  display: flex;
-  justify-content: center;
-  height: calc(100vh - 60px);
+.link {
+  color: var(--text-color-modify);
+  cursor: pointer;
 }
 
 @media (min-width: 375px) {

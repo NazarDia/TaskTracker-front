@@ -1,4 +1,6 @@
-.container {
-}
-.cardList {
+/* .cardList {
+  padding-right: 8px;
+} */
+.listItem {
+  margin-right: 5px;
 }

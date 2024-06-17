@@ -1,9 +1,11 @@
 .container {
-  width: 335px;
+  min-width: 300px;
 }
-.icons {
-  opacity: 50%;
-  stroke: var(--stroke-icon-color);
+
+@media screen and (min-width: 375px) {
+  .container {
+    width: 335px;
+  }
 }
 
 @media screen and (min-width: 768px) {

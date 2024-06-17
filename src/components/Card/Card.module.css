@@ -1,7 +1,7 @@
 .container {
   box-sizing: border-box;
   position: relative;
-  width: 335px;
+  min-width: 290px;
   background-color: var(--card-bg-color);
   padding: 14px 24px;
   border-left: 4px solid;
@@ -118,6 +118,11 @@
   }
   100% {
     transform: rotateZ(0deg) translateX(0px);
+  }
+}
+@media screen and (min-width: 375px) {
+  .container {
+    width: 335px;
   }
 }
 @media screen and (min-width: 768px) {
