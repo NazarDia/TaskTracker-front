@@ -1,17 +1,17 @@
 .helpModalWrap {
-   width: 287px;
-  
+    width: 287px;
+
 }
 
 .helpTitle {
     font-family: var(--font-family-medium);
     font-size: 14px;
-        text-align: left;
-        font-size: 18px;
-        font-weight: 500;
-        margin-bottom: 24px;
-        letter-spacing: -0.36px;
-        color: var(--header-text-color);
+    text-align: left;
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 24px;
+    letter-spacing: -0.36px;
+    color: var(--header-text-color);
 }
 
 .helpForm {
@@ -71,29 +71,30 @@
 }
 
 .helpSubmitBtn {
-        display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 287px;
-            height: 49px;
-            background-color: var(--btn-bg-color);
-            border: none;
-            border-radius: 8px;
-            padding: 10px 0;
-            cursor: pointer;
-            transition: scale 250ms ease-in 0s;
-            font-weight: 500;
-                font-size: 14px;
-                letter-spacing: -0.02em;
-                color: var(--mini-btn-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 287px;
+    height: 49px;
+    background-color: var(--btn-bg-color);
+    border: none;
+    border-radius: 8px;
+    padding: 10px 0;
+    cursor: pointer;
+    transition: scale 250ms ease-in 0s;
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: -0.02em;
+    color: var(--mini-btn-color);
 }
 
 .helpSubmitBtn:hover:active {
     background-color: var(--btn-hover-color);
-        transition: transform 400ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 400ms cubic-bezier(0.4, 0, 0.2, 1);
 }
+
 @media screen and (min-width: 768px) {
-    .helpInput{
+    .helpInput {
         width: 352px;
     }
 
@@ -101,17 +102,18 @@
      width: 352px;
     }
 
-  .helpSubmitBtn {
-     width: 352px;
+    .helpSubmitBtn {
+        width: 352px;
     }
-    
-  .helpModalWrap {
-      width: 352px;
 
-  }
+    .helpModalWrap {
+        width: 352px;
+
+    }
 }
+
 .helpErrorMsg {
-    color: red;
+    color: var(--btn-hover-color);
     margin-bottom: 10px;
     font-size: 14px;
     text-align: center;
@@ -123,5 +125,5 @@
     margin-bottom: 10px;
     font-size: 14px;
     text-align: center;
-     width: 100%;
+    width: 100%;
 }

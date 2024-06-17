@@ -44,7 +44,7 @@
 .errorMessage {
     font-size: 12px;
     font-weight: 500;
-    color: red;
+    color: var(--btn-hover-color);
     text-align: center;
 }
 
