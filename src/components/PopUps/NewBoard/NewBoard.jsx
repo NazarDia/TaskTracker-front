@@ -1,10 +1,20 @@
+// NewBoard.jsx
+
 import { useState, useEffect } from 'react';
 import { Formik, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import sprite from '../../../images/sprite/sprite-icon.svg';
 import { useDispatch, useSelector } from 'react-redux';
-import { addBoard, fetchBoards, fetchBackgrounds } from '../../../redux/boards/operations';
-import { selectBoards, selectBackgrounds } from '../../../redux/boards/selectors';
+import {
+  addBoard,
+  fetchBoards,
+  fetchBackgrounds,
+} from '../../../redux/boards/operations';
+import {
+  selectBoards,
+  selectBackgrounds,
+} from '../../../redux/boards/selectors';
+import { setActiveBoard } from '../../../redux/boards/boardSlice';
 import styles from './NewBoard.module.css';
 import { CardButton } from '../CardButton/CardButton.jsx';
 
@@ -39,16 +49,18 @@ export default function NewBoard({ closeModal, initialIcon }) {
     dispatch(fetchBackgrounds());
   }, [dispatch]);
 
-  const handleRadioChange = (e) => {
+  const handleRadioChange = e => {
     setIcon(e.target.value);
   };
 
-  const handleRadioChangeBackground = (e) => {
+  const handleRadioChangeBackground = e => {
     setBackground(e.target.value);
   };
 
   const handleSubmit = async (values, { setFieldError, resetForm }) => {
-    const isBoardExists = boards.find((board) => board.title === values.titleBoard);
+    const isBoardExists = boards.find(
+      board => board.title === values.titleBoard
+    );
 
     if (isBoardExists) {
       setFieldError('titleBoard', 'The board with this title already exists');
@@ -62,7 +74,13 @@ export default function NewBoard({ closeModal, initialIcon }) {
     };
 
     try {
-      await dispatch(addBoard(newBoard));
+      const response = await dispatch(addBoard(newBoard));
+      const createdBoard = response.payload;
+
+      // Активуємо новостворену дошку
+      dispatch(setActiveBoard(createdBoard));
+      localStorage.setItem('activeBoard', createdBoard._id);
+
       await dispatch(fetchBoards());
       resetForm();
       closeModal();
@@ -86,19 +104,29 @@ export default function NewBoard({ closeModal, initialIcon }) {
           <h2 className={styles.title}>New board</h2>
           <label className={styles.label}>
             <Field
-              className={`${styles.input} ${errors.titleBoard && touched.titleBoard ? styles.error : ''}`}
+              className={`${styles.input} ${
+                errors.titleBoard && touched.titleBoard ? styles.error : ''
+              }`}
               autoFocus
               type="text"
               name="titleBoard"
               placeholder="Title"
             />
           </label>
-          <ErrorMessage name="titleBoard" component="div" className={styles.errorMessage} />
+          <ErrorMessage
+            name="titleBoard"
+            component="div"
+            className={styles.errorMessage}
+          />
 
           <div className={styles.smallTitle}>Icons</div>
           <div id="my-radio-group">
-            <div className={styles.iconsWrapper} role="group" aria-labelledby="my-radio-group">
-              {icons.map((name) => (
+            <div
+              className={styles.iconsWrapper}
+              role="group"
+              aria-labelledby="my-radio-group"
+            >
+              {icons.map(name => (
                 <label className={styles.label} key={name}>
                   <input
                     className={styles.field}
@@ -108,7 +136,13 @@ export default function NewBoard({ closeModal, initialIcon }) {
                     name="icon"
                     value={name}
                   />
-                  <svg className={`${styles.icon} ${icon === name ? styles.checked : ''}`} width="18" height="18">
+                  <svg
+                    className={`${styles.icon} ${
+                      icon === name ? styles.checked : ''
+                    }`}
+                    width="18"
+                    height="18"
+                  >
                     <use href={`${sprite}#${name}`} />
                   </svg>
                 </label>
@@ -118,8 +152,16 @@ export default function NewBoard({ closeModal, initialIcon }) {
 
           <div className={styles.smallTitle}>Background</div>
           <div id="my-backgrounds-radio-group">
-            <div className={styles.backgroundsWrapper} role="group" aria-labelledby="my-backgrounds-radio-group">
-              <label className={`${styles.backgroundLabel} ${!background ? styles.selected : ''}`}>
+            <div
+              className={styles.backgroundsWrapper}
+              role="group"
+              aria-labelledby="my-backgrounds-radio-group"
+            >
+              <label
+                className={`${styles.backgroundLabel} ${
+                  !background ? styles.selected : ''
+                }`}
+              >
                 <input
                   className={styles.backgroundField}
                   onChange={() => setBackground('')}
@@ -128,7 +170,11 @@ export default function NewBoard({ closeModal, initialIcon }) {
                   name="background"
                   value=""
                 />
-                <div className={`${styles.iconBackground} ${background === '' ? styles.checked : ''}`}>
+                <div
+                  className={`${styles.iconBackground} ${
+                    background === '' ? styles.checked : ''
+                  }`}
+                >
                   <div className={styles.iconContainer}>
                     <svg className={styles.iconDefault} width="32" height="32">
                       <use href={`${sprite}#no-background`} />
@@ -137,11 +183,16 @@ export default function NewBoard({ closeModal, initialIcon }) {
                 </div>
               </label>
 
-              {backgrounds.map((bg) => {
-                const key = Object.keys(bg).find((key) => key !== '_id');
+              {backgrounds.map(bg => {
+                const key = Object.keys(bg).find(key => key !== '_id');
                 const url = bg[key];
                 return (
-                  <label className={`${styles.backgroundLabel} ${background === key ? styles.selected : ''}`} key={bg._id}>
+                  <label
+                    className={`${styles.backgroundLabel} ${
+                      background === key ? styles.selected : ''
+                    }`}
+                    key={bg._id}
+                  >
                     <input
                       className={styles.backgroundField}
                       onChange={handleRadioChangeBackground}
@@ -150,14 +201,22 @@ export default function NewBoard({ closeModal, initialIcon }) {
                       name="background"
                       value={key}
                     />
-                    <div className={`${styles.iconBackground} ${background === key ? styles.checked : ''}`}>
+                    <div
+                      className={`${styles.iconBackground} ${
+                        background === key ? styles.checked : ''
+                      }`}
+                    >
                       <img src={url} alt={key} />
                     </div>
                   </label>
                 );
               })}
             </div>
-            <ErrorMessage name="background" component="div" className={styles.errorMessage} />
+            <ErrorMessage
+              name="background"
+              component="div"
+              className={styles.errorMessage}
+            />
           </div>
 
           <CardButton type="submit" btnText="Create" isLoading={isSubmitting} />
