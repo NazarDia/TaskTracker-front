@@ -15,44 +15,34 @@
   background-color: transparent;
   cursor: pointer;
   min-width: 100px;
-  /* Додано для запобігання "скаканню" */
-}
+  }
 
 .select_content {
   background-color: var(--header-bg-color);
   border: 1px solid var(--select-bg-border);
   border-radius: 8px;
   position: absolute;
-  /* Додано для позиціонування без впливу на інші елементи */
   top: 100%;
-  /* Додано для розташування під кнопкою */
   left: 0;
-  /* Вирівнювання по лівому краю */
   padding: 18px 18px;
-  /* Оновлено для вирівнювання тексту по лівому краю */
   display: inline-flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  /* Вирівнювання елементів по лівому краю */
   width: 100%;
-  /* Додано для відповідності ширині батьківського контейнера */
 }
 
 .select_item {
   color: var(--select-text);
   background-color: var(--select-bg-color);
   text-align: left;
-  /* Вирівнювання тексту по лівому краю */
   transition: all 200ms linear;
   cursor: pointer;
   border: none;
   font-weight: 400;
   margin: 4px 0;
-  /* Додано відступ між елементами списку */
   width: 100%;
-  /* Додано для відповідності ширині батьківського контейнера */
-
+  
   &:hover,
   &:focus {
     transform: scale(1.1);
@@ -69,5 +59,4 @@
   width: 16px;
   height: 16px;
   stroke: var(--stroke-icon-color);
-  
-}
+  }

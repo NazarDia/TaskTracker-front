@@ -1,6 +1,5 @@
 .modal {
   margin-top: 10px;
-
   width: 350px;
   min-height: 300px;
 }
@@ -49,7 +48,6 @@
 
 .img {
   display: inline-block;
-
   justify-content: center;
 }
 
@@ -96,4 +94,21 @@
 
 .fieldIcon{
   stroke: var(--stroke-icon-color);
+}
+.btnplus{
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 4px;
+  position: absolute;
+  left: 47%;
+  bottom: -8px;
+  background-color: var(--sidebar-btn-board);
+}
+
+.btnplus:hover {
+  border: 1px solid var(--select-text-hover);
 }
