@@ -51,8 +51,7 @@ const EditProfile = ({ onClose }) => {
   };
 
   const avatarURL =
-    user.avatarURL || defaultAvatars[theme] || defaultAvatars['Light']; // Вибір дефолтного аватара за темою
-
+    user.avatarURL || defaultAvatars[theme] || defaultAvatars['Light'];
   return (
     <div className={s.modal}>
       <h2 className={s.titleName}>Edit profile</h2>
@@ -72,6 +71,14 @@ const EditProfile = ({ onClose }) => {
           ) : (
             <img src={avatarURL} className={s.imgUser} alt="avatar" />
           )}
+          <svg
+            className={s.btnplus}
+            width={24}
+            height={24}
+            stroke="var(--sidebar-btn-icon)"
+          >
+            <use href={`${sprite}#icon-plus`}></use>
+          </svg>
         </label>
         <label className={s.labelStyle}>
           <input
