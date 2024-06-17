@@ -81,7 +81,7 @@ const cardsSlice = createSlice({
       .addCase(moveCard.fulfilled, (state, action) => {
         state.loading = false;
         state.error = null;
-        console.log('action.payload', action.payload);
+
         const cardId = action.payload._id;
         const targetBoardId = action.payload.boardId;
         const card = state.items.find(card => card._id === cardId);

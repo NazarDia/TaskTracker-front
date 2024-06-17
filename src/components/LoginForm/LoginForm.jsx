@@ -106,11 +106,16 @@ export default function LoginForm() {
               showPassword={showPassword}
               togglePasswordVisibility={togglePasswordVisibility}
             ></FormInput>
+            {isLoading ? (
+              <div className={s.loaderWrapper}>
+                <Loader />
+              </div>
+            ) : (
+              <button type="submit" className={s.logBtn}>
+                Log In Now
+              </button>
+            )}
             {authError && <div className={s.error}>{authError}</div>}
-            <button type="submit" className={s.logBtn}>
-              Log In Now
-            </button>
-            <div className={s.loaderWrapper}>{isLoading && <Loader />}</div>
           </Form>
         </div>
       </div>

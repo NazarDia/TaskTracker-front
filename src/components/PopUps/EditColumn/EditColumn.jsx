@@ -22,12 +22,6 @@ const EditColumn = ({ column, onClose }) => {
       ...column,
       title: values.title,
     };
-    console.log(
-      'updatedColumn',
-      updatedColumn._id,
-      updatedColumn.boardId,
-      updatedColumn.title
-    );
 
     dispatch(
       editColumnById({

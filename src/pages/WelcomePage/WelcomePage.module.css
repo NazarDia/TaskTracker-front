@@ -333,7 +333,7 @@
 .loginButton:hover,
 .loginButton:focus {
   animation: pulse 1s infinite;
-  transition: 0.3s;
-  opacity: 0.9;
+  transition: 0.9s;
+  letter-spacing: 2px;
   transform: scale(1.05);
 }

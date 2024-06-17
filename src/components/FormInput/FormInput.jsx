@@ -28,9 +28,7 @@ export default function FormInput({
           </svg>
         )}
       </div>
-      <span className={s.error}>
-        <ErrorMessage name={name} as="span" />
-      </span>
+      {<ErrorMessage name={name} component="span" className={s.error} />}
     </div>
   );
 }

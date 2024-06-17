@@ -107,10 +107,15 @@ export default function RegistrationForm() {
               showPassword={showPassword}
               togglePasswordVisibility={togglePasswordVisibility}
             ></FormInput>
-            <button type="submit" className={s.regBtn}>
-              Register Now
-            </button>
-            <div className={s.loaderWrapper}>{isLoading && <Loader />}</div>
+            {isLoading ? (
+              <div className={s.loaderWrapper}>
+                <Loader />
+              </div>
+            ) : (
+              <button type="submit" className={s.regBtn}>
+                Register Now
+              </button>
+            )}
             {authError && <div className={s.errorMessage}>{authError}</div>}
           </Form>
         </div>

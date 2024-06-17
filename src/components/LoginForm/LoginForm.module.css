@@ -211,3 +211,29 @@
     justify-content: center;
   }
 }
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.logBtn:hover,
+.logBtn:focus {
+  animation: pulse 1s infinite;
+  transition: 0.3s;
+  opacity: 0.9;
+  transform: scale(1.05);
+  box-shadow: 0 0 50px rgba(157, 200, 136, 1);
+}
+.active:hover,
+.active:focus {
+  animation: pulse 1s infinite;
+  transition: 0.3s;
+  opacity: 0.9;
+  transform: scale(1.05);
+}

@@ -45,13 +45,10 @@ const EditCard = ({ card, onClose }) => {
       deadline: values.deadline.toISOString().split('T')[0],
     };
 
-    console.log('Submitting values:', formattedValues);
-
     dispatch(updateCard(formattedValues))
       .unwrap()
       .then(() => {
         onClose();
-        console.log('Card updated successfully');
         toast.success('Card updated');
       })
       .catch(error => {
