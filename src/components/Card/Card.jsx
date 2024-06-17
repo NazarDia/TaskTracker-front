@@ -27,6 +27,7 @@ const Card = ({ task }) => {
 
   const [isDropdownOpen, setDropdownOpen] = useState(false);
   const toggleDropdown = () => {
+    dispatch(getAllColumns());
     setDropdownOpen(!isDropdownOpen);
   };
   const closeLeaveDropdown = () => {
