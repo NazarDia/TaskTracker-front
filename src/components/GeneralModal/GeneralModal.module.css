@@ -28,6 +28,11 @@
   line-height: 0;
 }
 
+.iconColor {
+  stroke: var(--header-text-color);
+
+}
+
 .content {
   padding: 24px;
 }

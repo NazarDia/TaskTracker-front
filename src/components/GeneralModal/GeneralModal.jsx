@@ -20,7 +20,7 @@ export default function GeneralModal({
       overlayClassName={s.overlay}
     >
       <button className={s.closeButton} onClick={onRequestClose}>
-        <svg width={18} height={18} stroke="#161616">
+        <svg width={18} height={18} className={s.iconColor}>
           <use href={`${sprite}#close`}></use>
         </svg>
       </button>
