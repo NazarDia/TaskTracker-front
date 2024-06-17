@@ -12,24 +12,11 @@ import {
   selectIsLoading,
 } from '../../redux/boards/selectors';
 
-import { selectPriorityFilter } from '../../redux/filters/selector';
-
 const TaskColumnsList = () => {
   const columns = useSelector(selectColumnsByBoardId) || [];
   const loading = useSelector(selectIsLoading);
 
   const error = useSelector(selectError);
-
-  // const cardLists = columns ? columns.find(column => column.tasks).tasks : [];
-
-  // console.log('Values:', filterValue);
-  // console.log(cardLists);
-
-  // const filteredCards = cardLists.filter(
-  //   list => `#${list.color}` === filterValue.toUpperCase()
-  // );
-
-  // console.log(filteredCards);
 
   if (loading) return <Loader />;
   if (error) return <Error />;

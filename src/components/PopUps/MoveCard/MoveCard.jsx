@@ -10,9 +10,6 @@ const MoveCard = ({ card, onClose }) => {
 
   const currentBoardId = card.boardId;
 
-  // const filteredColumns = columns.filter(
-  //   column => column.boardId === currentBoardId
-  // );
   const filteredColumns = columns.filter(
     column => column.boardId === currentBoardId && column._id !== card.columnId
   );
@@ -36,7 +33,8 @@ const MoveCard = ({ card, onClose }) => {
           key={column._id}
           onClick={() => onMoveCard(column._id, column.title, column.boardId)}
         >
-          {column.title}
+          <p className={s.columnText}> {column.title}</p>
+
           <svg width={16} height={16} className={s.icon}>
             <use href={`${sprite}#broken-right`}></use>
           </svg>

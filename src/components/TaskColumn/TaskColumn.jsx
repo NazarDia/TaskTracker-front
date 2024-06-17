@@ -40,7 +40,6 @@ const TaskColumn = ({ column }) => {
   const boardId = column.boardId;
 
   const deleteCol = () => dispatch(deleteColumn({ columnId, boardId }));
-  console.log(column);
 
   return (
     <>
