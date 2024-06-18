@@ -62,7 +62,7 @@ const Card = ({ task }) => {
   const deleteTask = () => dispatch(deleteCard({ taskId, columnId, boardId }));
 
   const hoverStyle = {
-    boxShadow: `2px 6px 8px ${backgroundColor}`,
+    boxShadow: `0px 1px 4px ${backgroundColor}`,
     transform: 'scale(101%)',
   };
 

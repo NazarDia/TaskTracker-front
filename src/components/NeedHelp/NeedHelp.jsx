@@ -20,7 +20,7 @@ export default function NeedHelp() {
         resources or reach out to our customer support team.
       </p>
       <button className={s.btn} onClick={openModal}>
-        <svg width={20} height={20}>
+        <svg width={20} height={20} className={s.icon}>
           <use href={`${sprite}#need-help`}></use>
         </svg>
         <p>Need help?</p>
@@ -31,7 +31,7 @@ export default function NeedHelp() {
         onRequestClose={closeModal}
         contentLabel="Need help"
       >
-        <NeedHelpModal closeModal={closeModal}/>
+        <NeedHelpModal closeModal={closeModal} />
       </GeneralModal>
     </div>
   );
