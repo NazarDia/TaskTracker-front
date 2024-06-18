@@ -26,7 +26,6 @@
 .taskDescr {
   min-height: 38px;
   color: var(--card-text-color);
-
   font-family: 'PoppinsRegular';
   font-size: 12px;
   font-weight: 400;

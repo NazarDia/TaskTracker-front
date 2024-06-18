@@ -104,7 +104,6 @@ const Card = ({ task }) => {
     >
       <div className={s.contentWrapper}>
         <h3 className={s.cardTitle}>{task.title}</h3>
-        {/* <p className={s.taskDescr}>{task.description}</p> */}
 
         <p className={s.taskDescr} onClick={handleClick}>
           {showFullText
