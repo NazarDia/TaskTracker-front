@@ -24,17 +24,12 @@
   margin-bottom: 8px;
 }
 .taskDescr {
-  height: 38px;
-  overflow: hidden;
+  min-height: 38px;
   color: var(--card-text-color);
-  text-overflow: ellipsis;
-  /* text-wrap: wrap; */
-  white-space: nowrap;
-
   font-family: 'PoppinsRegular';
   font-size: 12px;
   font-weight: 400;
-  line-height: 1.33; /* 133.333% */
+  line-height: 1.33;
   letter-spacing: -0.015em;
 }
 .cardBottomnContent {
