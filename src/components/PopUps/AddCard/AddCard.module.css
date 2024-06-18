@@ -5,30 +5,39 @@
 }
 
 .title {
-  color: var(--text-color);
-  font-family: PoppinsSemiBold;
+  color: var(--header-text-color);
+  font-family: var(--font-family-medium);
   font-size: 18px;
   font-style: normal;
-
+  font-weight: 500;
   line-height: normal;
   letter-spacing: -0.36px;
 }
 
 .modalInputTitle:focus,
-.modalInputTitle:active {
-  outline: 2px solid #bedbb0;
+.modalInputTitle:active .modalInputDescription:focus,
+.modalInputDescription:active {
+  outline: 1px solid var(--aside-bg-color);
 }
+
+.modalInputTitle:focus-visible,
+.modalInputDescription:focus-visible {
+  outline: 1px solid var(--aside-bg-color);
+}
+
 .modalInputTitle {
   margin-top: 24px;
   width: 287px;
   padding: 14px 18px;
   border-radius: 8px;
-  border: 1px solid var(--btn-bg-color);
+  border: 1px solid var(--aside-active-bg-color);
   background-color: var(--modal-bg-color);
-  box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08);
 
-  color: var(--text-color);
-  font-family: PoppinsRegular;
+  color: var(--user-text-color);
+  transition: border var(--primary-transition);
+
+  box-shadow: 0px 4px 16px 0px var(--label-color-grey);
+  font-family: var(--PoppinsRegular);
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -36,8 +45,10 @@
   letter-spacing: -0.28px;
 }
 
-.modalInputTitle::placeholder {
-  opacity: 0.4;
+.modalInputTitle::placeholder,
+.modalInputDescription::placeholder {
+  color: var(--card-text-color);
+  font-family: var(--PoppinsRegular);
 }
 .modalLabel {
   display: none;
@@ -50,13 +61,18 @@
   padding: 14px 18px;
   align-items: center;
   flex-shrink: 0;
-  background-color: var(--modal-bg-color);
   border-radius: 8px;
-  border: 1px solid #bedbb0;
-  box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08);
+  border: 1px solid var(--aside-active-bg-color);
+  background-color: var(--modal-bg-color);
 
-  color: var(--text-color);
-  font-family: PoppinsRegular;
+  color: var(--user-text-color);
+  transition: border var(--primary-transition);
+
+  box-shadow: 0px 4px 16px 0px var(--label-color-grey);
+  font-family: var(--PoppinsRegular);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -67,13 +83,7 @@
   vertical-align: top;
   overflow: auto;
 }
-.modalInputDescription::placeholder {
-  opacity: 0.4;
-}
-.modalInputDescription:focus,
-.modalInputDescription:active {
-  outline: 2px solid #bedbb0;
-}
+
 .customRadios {
   display: flex;
 }
@@ -85,8 +95,8 @@
 .labelColor {
   margin-top: 24px;
   margin-bottom: 4px;
-  color: rgba(22, 22, 22, 0.5);
-  font-family: PoppinsRegular;
+  color: var(--card-text-color);
+  font-family: var(--PoppinsRegular);
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
@@ -156,12 +166,24 @@
   font-size: 18px;
   color: #000;
 }
+.priorityContainer {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.priorityContainerText {
+  /* color: var(--btn-hover-color); */
+  color: var(--card-text-color);
+  font-family: var(--PoppinsRegular);
+  font-size: 12px;
+}
 
 .deadline {
   margin-top: 14px;
   margin-bottom: 4px;
-  color: rgba(22, 22, 22, 0.5);
-  font-family: PoppinsRegular;
+  color: var(--card-text-color);
+  font-family: var(--PoppinsRegular);
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
@@ -178,10 +200,11 @@
 }
 
 .deadlineDisplay {
+  width: max-content;
   cursor: pointer;
   margin-top: 8px;
   font-size: 14px;
-  color: var(--btn-hover-color);
+  color: var(--text-color-modify);
 }
 
 .datePickerWrapper {
@@ -207,7 +230,24 @@
   margin-bottom: 8px;
   height: 14px;
 }
+.warningDate {
+  color: red;
+  font-size: 14px;
+  text-align: center;
+  margin-bottom: 8px;
+  height: 14px;
+}
+
 .btn {
-  margin-top: 40px;
+  margin-top: 26px;
   color: #000;
+}
+
+.datePickerWrapper {
+  position: relative;
+}
+
+.datePickerOverlay {
+  position: absolute;
+  z-index: 10;
 }

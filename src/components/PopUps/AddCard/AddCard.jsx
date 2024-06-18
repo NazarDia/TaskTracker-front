@@ -4,17 +4,39 @@ import toast from 'react-hot-toast';
 import { nanoid } from 'nanoid';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import 'react-datepicker/dist/react-datepicker.css';
-import ReactDatePicker from 'react-datepicker';
 import css from './AddCard.module.css';
 import { CardButton } from '../CardButton/CardButton';
 import { TiTick } from 'react-icons/ti';
 import { format } from 'date-fns';
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import * as Yup from 'yup';
+import Calendar from '../Calendar/Calendar';
 
 export default function PopUpAddCard({ column, onClose }) {
   const dispatch = useDispatch();
   const [showDatePicker, setShowDatePicker] = useState(false);
+  const datePickerRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = event => {
+      if (
+        datePickerRef.current &&
+        !datePickerRef.current.contains(event.target)
+      ) {
+        setShowDatePicker(false);
+      }
+    };
+
+    if (showDatePicker) {
+      document.addEventListener('mousedown', handleClickOutside);
+    } else {
+      document.removeEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [showDatePicker]);
 
   const cardsSchema = Yup.object().shape({
     title: Yup.string()
@@ -27,7 +49,15 @@ export default function PopUpAddCard({ column, onClose }) {
       .required('Required'),
     deadline: Yup.date()
       .required('Required')
-      .min(new Date(), 'Deadline must be in the future'),
+      .test(
+        'is-future-date',
+        'Deadline must be in the future or today',
+        value => {
+          const today = new Date();
+          today.setHours(0, 0, 0, 0);
+          return value >= today;
+        }
+      ),
   });
 
   const initialValues = {
@@ -79,9 +109,9 @@ export default function PopUpAddCard({ column, onClose }) {
                 name="title"
                 placeholder="Title"
               />
-              <p className={css.warning}>
+              <div className={css.warning}>
                 <ErrorMessage name="title" />
-              </p>
+              </div>
               <label className={css.modalLabel} htmlFor={cardDescriptionId}>
                 Description
               </label>
@@ -92,68 +122,77 @@ export default function PopUpAddCard({ column, onClose }) {
                 name="description"
                 placeholder="Description"
               />
-              <p className={css.warning}>
+              <div className={css.warning}>
                 <ErrorMessage name="description" />
-              </p>
-              <p className={css.labelColor}>Label color</p>
-              <div className={css.customRadios}>
-                <div className={css.someColor}>
-                  <Field
-                    className={css.colorInput}
-                    type="radio"
-                    id="color1"
-                    name="color"
-                    value="8FA1D0"
-                  />
-                  <label htmlFor="color1">
-                    <span className={css.color1}>
-                      <TiTick className={css.svgAccept} />
-                    </span>
-                  </label>
-                </div>
+              </div>
+              <div className={css.priorityContainer}>
                 <div>
-                  <Field
-                    className={css.colorInput}
-                    type="radio"
-                    id="color-2"
-                    name="color"
-                    value="E09CB5"
-                  />
-                  <label htmlFor="color-2">
-                    <span className={css.color2}>
-                      <TiTick className={css.svgAccept} />
-                    </span>
-                  </label>
+                  <p className={css.labelColor}>Label color</p>
+                  <div className={css.customRadios}>
+                    <div className={css.someColor}>
+                      <Field
+                        className={css.colorInput}
+                        type="radio"
+                        id="color1"
+                        name="color"
+                        value="8FA1D0"
+                      />
+                      <label htmlFor="color1">
+                        <span className={css.color1}>
+                          <TiTick className={css.svgAccept} />
+                        </span>
+                      </label>
+                    </div>
+                    <div>
+                      <Field
+                        className={css.colorInput}
+                        type="radio"
+                        id="color-2"
+                        name="color"
+                        value="E09CB5"
+                      />
+                      <label htmlFor="color-2">
+                        <span className={css.color2}>
+                          <TiTick className={css.svgAccept} />
+                        </span>
+                      </label>
+                    </div>
+                    <div>
+                      <Field
+                        className={css.colorInput}
+                        type="radio"
+                        id="color-3"
+                        name="color"
+                        value="BEDBB0"
+                      />
+                      <label htmlFor="color-3">
+                        <span className={css.color3}>
+                          <TiTick className={css.svgAccept} />
+                        </span>
+                      </label>
+                    </div>
+                    <div>
+                      <Field
+                        className={css.colorInput}
+                        type="radio"
+                        id="color-4"
+                        name="color"
+                        value="B9B9B9"
+                      />
+                      <label htmlFor="color-4">
+                        <span className={css.color4}>
+                          <TiTick className={css.svgAccept} />
+                        </span>
+                      </label>
+                    </div>
+                  </div>
                 </div>
-                <div>
-                  <Field
-                    className={css.colorInput}
-                    type="radio"
-                    id="color-3"
-                    name="color"
-                    value="BEDBB0"
-                  />
-                  <label htmlFor="color-3">
-                    <span className={css.color3}>
-                      <TiTick className={css.svgAccept} />
-                    </span>
-                  </label>
-                </div>
-                <div>
-                  <Field
-                    className={css.colorInput}
-                    type="radio"
-                    id="color-4"
-                    name="color"
-                    value="B9B9B9"
-                  />
-                  <label htmlFor="color-4">
-                    <span className={css.color4}>
-                      <TiTick className={css.svgAccept} />
-                    </span>
-                  </label>
+                <div className={css.priorityContainerText}>
+                  {' '}
+                  <p>Tasks priority:</p> <p>{values.color}</p>
                 </div>
               </div>
+
               <div className={css.datePickerWrapper}>
                 <p className={css.deadline}>Deadline</p>
                 <p
@@ -165,21 +204,24 @@ export default function PopUpAddCard({ column, onClose }) {
                     : 'Select date'}
                 </p>
                 {showDatePicker && (
-                  <div className={css.datePickerOverlay}>
-                    <ReactDatePicker
+                  <div ref={datePickerRef} className={css.datePickerOverlay}>
+                    <Field
+                      component={Calendar}
+                      name="deadline"
                       selected={values.deadline}
                       onChange={date => {
                         setFieldValue('deadline', date);
                         setShowDatePicker(false);
                       }}
-                      dateFormat="dd/MM/yyyy"
-                      className={css.datePicker}
-                      inline
+                      onDateSelect={() => setShowDatePicker(false)}
                     />
                   </div>
                 )}
-              </div>
 
+                <p className={css.warningDate}>
+                  <ErrorMessage name="deadline" />
+                </p>
+              </div>
               <div className={css.btn}>
                 <CardButton type="submit" btnText="Add" />
               </div>
