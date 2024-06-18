@@ -5,7 +5,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 const Calendar = ({ field, form, onDateSelect, ...props }) => {
   const handleChange = date => {
     form.setFieldValue(field.name, date);
-    onDateSelect(); // Виклик функції закриття календаря
+    onDateSelect();
   };
 
   return (
@@ -16,9 +16,10 @@ const Calendar = ({ field, form, onDateSelect, ...props }) => {
         selected={field.value}
         onChange={handleChange}
         minDate={new Date()}
+        placeholderText="Select a date"
         dateFormat="dd/MM/yyyy"
         inline
-        calendarClassName={s.reactDatepicker} // Додаємо клас для календаря
+        calendarClassName={s.reactDatepicker}
       />
     </div>
   );
