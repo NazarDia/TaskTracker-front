@@ -42,8 +42,10 @@
   --card-title-color: #161616;
   --card-bg-color: #fff;
 
-  --scrollbar-accent-color: rgba(22, 22, 22, 0.1);
-  --scrollbar-bg-color: #e8e8e8;
+  --scrollbar-bg-color-horizontal: #ffffff;
+  --scrollbar-finger-color-horizontal: #e8e8e8;
+  --scrollbar-bg-color-vertical: #e8e8e8;
+  --scrollbar-finger-color-vertical: rgba(22, 22, 22, 0.1);
 
   --btn-bg-color: #bedbb0;
   --btn-hover-color: #9dc888;
@@ -109,8 +111,10 @@
   --card-title-color: #161616;
   --card-bg-color: #fff;
 
-  --scrollbar-accent-color: rgba(22, 22, 22, 0.1);
-  --scrollbar-bg-color: #e8e8e8;
+  --scrollbar-bg-color-horizontal: #ffffff;
+  --scrollbar-finger-color-horizontal: #e8e8e8;
+  --scrollbar-bg-color-vertical: #e8e8e8;
+  --scrollbar-finger-color-vertical: rgba(22, 22, 22, 0.1);
 
   --btn-bg-color: #bedbb0;
   --btn-hover-color: #74a05e;
@@ -157,8 +161,10 @@
   --card-title-color: #fff;
   --card-bg-color: #121212;
 
-  --scrollbar-accent-color: #121212;
-  --scrollbar-bg-color: rgba(255, 255, 255, 0.1);
+  --scrollbar-bg-color-horizontal: #161616;
+  --scrollbar-finger-color-horizontal: rgba(255, 255, 255, 0.1);
+  --scrollbar-bg-color-vertical: rgba(255, 255, 255, 0.08);
+  --scrollbar-finger-color-vertical: #121212;
 
   --btn-bg-color: #bedbb0;
   --btn-hover-color: #74a05e;
@@ -206,8 +212,10 @@
   --card-title-color: #161616;
   --card-bg-color: #fff;
 
-  --scrollbar-accent-color: #b8bcfd;
-  --scrollbar-bg-color: #fff;
+  --scrollbar-bg-color-horizontal: #ffffff;
+  --scrollbar-finger-color-horizontal: #b8bcfd;
+  --scrollbar-bg-color-vertical: #ffffff;
+  --scrollbar-finger-color-vertical: #b8bcfd;
 
   --btn-bg-color: #5255bc;
   --btn-hover-color: #7b7ede;

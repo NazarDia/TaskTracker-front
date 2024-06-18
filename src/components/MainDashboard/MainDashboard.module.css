@@ -1,15 +1,18 @@
 .contentWrapper {
   height: 100%;
   overflow-x: auto;
-  overflow-y: hidden;
-  scrollbar-color: var(--scrollbar-accent-color) var(--scrollbar-bg-color);
-  scrollbar-width: thin;
 }
 
-@media screen and (min-width: 768px) {
+.contentWrapper::-webkit-scrollbar {
+  width: 12px;
 }
 
-@media screen and (min-width: 1280px) {
+.contentWrapper::-webkit-scrollbar-track {
+  background: var(--scrollbar-bg-color-horizontal);
+  border-radius: 12px;
 }
-@media screen and (max-width: 1440px) {
+
+.contentWrapper::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-finger-color-horizontal);
+  border-radius: 12px;
 }
