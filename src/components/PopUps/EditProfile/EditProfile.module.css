@@ -76,6 +76,8 @@
   background-color: var(--btn-bg-color);
   height: 49px;
   justify-content: center;
+  color: var(--mini-btn-color);
+  border: none;
 }
 
 .titleName {
