@@ -49,13 +49,13 @@ export default function PopUpAddCard({ column, onClose }) {
       .max(500, 'Too Long! Max symbols is 500')
       .required('Required'),
     deadline: Yup.date()
-      .required('Required')
+      .required('Please choose deadline date')
       .test(
         'is-future-date',
         'Deadline must be in the future or today',
         value => {
           const today = new Date();
-          today.setHours(0, 0, 0, 0);
+          // today.setHours(0, 0, 0, 0);
           return value >= today;
         }
       ),
@@ -198,11 +198,12 @@ export default function PopUpAddCard({ column, onClose }) {
                   </div>
                 </div>
                 <div className={css.priorityContainerText}>
-                  {' '}
-                  <p>Tasks priority:</p> <p>{values.label}</p>
+
+                  <p>Tasks priority:</p>
+                  <p className={css.priorityValue}>{values.label}</p>
+
                 </div>
               </div>
-
               <div className={css.datePickerWrapper}>
                 <p className={css.deadline}>Deadline</p>
                 <div
