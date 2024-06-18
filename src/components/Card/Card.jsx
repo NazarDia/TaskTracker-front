@@ -75,6 +75,20 @@ const Card = ({ task }) => {
     return daysLeft;
   };
 
+  const [showFullText, setShowFullText] = useState(false);
+  const handleClick = () => {
+    setShowFullText(!showFullText);
+  };
+  const handleTextOverflow = text => {
+    const shouldTextBeHidden = text.length >= 88;
+
+    if (shouldTextBeHidden) {
+      return `${text.slice(0, 88)}...`;
+    } else {
+      return text;
+    }
+  };
+
   return (
     <div
       className={`${s.container} ${s.hoverEffect}`}
@@ -90,7 +104,13 @@ const Card = ({ task }) => {
     >
       <div className={s.contentWrapper}>
         <h3 className={s.cardTitle}>{task.title}</h3>
-        <p className={s.taskDescr}>{task.description}</p>
+        {/* <p className={s.taskDescr}>{task.description}</p> */}
+
+        <p className={s.taskDescr} onClick={handleClick}>
+          {showFullText
+            ? task.description
+            : handleTextOverflow(task.description)}
+        </p>
       </div>
       <div className={s.cardBottomnContent} onMouseLeave={closeLeaveDropdown}>
         <div className={s.cardextraWrapper}>
