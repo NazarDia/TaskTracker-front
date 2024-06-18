@@ -39,22 +39,23 @@ const Card = ({ task }) => {
     dispatch(getBoardByID(task.boardId));
   };
 
-  const backgroundColor = `#${task.color}`;
-  const getPriority = color => {
-    switch (color.toUpperCase()) {
-      case 'B9B9B9':
-        return 'without';
-      case 'E09CB5':
-        return 'medium';
-      case '8FA1D0':
-        return 'low';
-      case 'BEDBB0':
-        return 'high';
+  const getPriority = label => {
+    switch (label) {
+      case 'without':
+        return 'B9B9B9';
+      case 'medium':
+        return 'E09CB5';
+      case 'low':
+        return '8FA1D0';
+      case 'high':
+        return 'BEDBB0';
       default:
-        return 'unknown';
+        return 'without priority';
     }
   };
-  const priority = getPriority(task.color);
+  const priority = getPriority(task.label);
+  const backgroundColor = `#${priority}`;
+
   const taskId = task._id;
   const columnId = task.columnId;
   const boardId = task.boardId;
@@ -120,7 +121,7 @@ const Card = ({ task }) => {
                 className={s.extraPriority}
                 style={{ backgroundColor: backgroundColor }}
               ></span>
-              <span className={s.extraItemContent}>{priority}</span>
+              <span className={s.extraItemContent}>{task.label}</span>
             </div>
           </div>
           <div className={s.exraItem}>
