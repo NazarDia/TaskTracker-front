@@ -45,13 +45,13 @@ export const addCard = createAsyncThunk(
 export const updateCard = createAsyncThunk(
   'card/updateCard',
   async (
-    { id, boardId, color, columnId, deadline, description, title },
+    { id, boardId, label, columnId, deadline, description, title },
     thunkAPI
   ) => {
     try {
       const response = await axios.put(`/tasks/${id}`, {
         boardId,
-        color,
+        label,
         columnId,
         deadline,
         description,
