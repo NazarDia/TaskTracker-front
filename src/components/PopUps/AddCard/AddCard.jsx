@@ -198,8 +198,10 @@ export default function PopUpAddCard({ column, onClose }) {
                   </div>
                 </div>
                 <div className={css.priorityContainerText}>
+
                   <p>Tasks priority:</p>
                   <p className={css.priorityValue}>{values.label}</p>
+
                 </div>
               </div>
               <div className={css.datePickerWrapper}>

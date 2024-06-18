@@ -41,7 +41,7 @@ const Card = ({ task }) => {
 
   const getPriority = label => {
     switch (label) {
-      case 'without':
+      case 'without priority':
         return 'B9B9B9';
       case 'medium':
         return 'E09CB5';
