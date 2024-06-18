@@ -56,7 +56,14 @@
   width: 68px;
   height: 68px;
   justify-content: center;
-}
+  transition: transform 0.3s ease;
+    /* Додано плавний перехід */
+  }
+  
+  .imgUser:hover {
+    transform: scale(1.2);
+    /* Збільшення на 20% при наведенні */
+  }
 
 .btnAdd {
   display: flex;

@@ -1,6 +1,6 @@
 .header {
   background-color: var(--header-bg-color);
-  
+
   height: 60px;
 
   @media screen and (min-width: 768px) {
@@ -13,10 +13,10 @@
   width: 24px;
   height: 24px;
 
-@media screen and (min-width: 768px) {
-  height: 32px;
-  width: 32px;
-}
+  @media screen and (min-width: 768px) {
+    height: 32px;
+    width: 32px;
+  }
 }
 
 .container {
@@ -37,7 +37,7 @@
 
 .menu_btn {
   border: none;
-  background-color:var(--header-bg-color);
+  background-color: var(--header-bg-color);
   stroke: var(--stroke-icon-color);
 
   @media screen and (min-width: 1440px) {
