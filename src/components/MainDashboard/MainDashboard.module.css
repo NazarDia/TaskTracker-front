@@ -2,7 +2,7 @@
   height: 100%;
   overflow-x: auto;
   overflow-y: hidden;
-  scrollbar-color: var(--btn-hover-color) var(--btn-bg-color);
+  scrollbar-color: var(--scrollbar-accent-color) var(--scrollbar-bg-color);
   scrollbar-width: thin;
 }
 

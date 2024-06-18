@@ -5,6 +5,7 @@
 @media screen and (min-width: 375px) {
   .container {
     width: 335px;
+    margin-left: 8px;
   }
 }
 
@@ -12,6 +13,9 @@
 }
 
 @media screen and (min-width: 1280px) {
+  .container {
+    margin-left: 8px;
+  }
 }
 @media screen and (max-width: 1440px) {
 }

@@ -42,6 +42,9 @@
   --card-title-color: #161616;
   --card-bg-color: #fff;
 
+  --scrollbar-accent-color: rgba(22, 22, 22, 0.1);
+  --scrollbar-bg-color: #e8e8e8;
+
   --btn-bg-color: #bedbb0;
   --btn-hover-color: #9dc888;
   --mini-btn-color: #161616;
@@ -106,6 +109,9 @@
   --card-title-color: #161616;
   --card-bg-color: #fff;
 
+  --scrollbar-accent-color: rgba(22, 22, 22, 0.1);
+  --scrollbar-bg-color: #e8e8e8;
+
   --btn-bg-color: #bedbb0;
   --btn-hover-color: #74a05e;
   --mini-btn-color: #161616;
@@ -150,6 +156,9 @@
   --card-text-color: rgba(255, 255, 255, 0.5);
   --card-title-color: #fff;
   --card-bg-color: #121212;
+
+  --scrollbar-accent-color: #121212;
+  --scrollbar-bg-color: rgba(255, 255, 255, 0.1);
 
   --btn-bg-color: #bedbb0;
   --btn-hover-color: #74a05e;
@@ -196,6 +205,9 @@
   --card-text-color: rgba(22, 22, 22, 0.7);
   --card-title-color: #161616;
   --card-bg-color: #fff;
+
+  --scrollbar-accent-color: #b8bcfd;
+  --scrollbar-bg-color: #fff;
 
   --btn-bg-color: #5255bc;
   --btn-hover-color: #7b7ede;

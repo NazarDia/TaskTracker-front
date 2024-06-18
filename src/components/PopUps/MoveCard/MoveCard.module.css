@@ -13,10 +13,9 @@
   flex-direction: column;
   max-height: 100px;
   overflow-y: auto;
-  scrollbar-color: var(--btn-hover-color) transparent;
   scrollbar-width: thin;
+  scrollbar-color: var(--btn-hover-color) transparent;
 }
-
 .dropdownItem {
   font-family: 'PoppinsRegular', sans-serif;
   cursor: pointer;
