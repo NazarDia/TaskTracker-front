@@ -28,12 +28,19 @@ const TaskColumnsList = () => {
         <ColumnStatus />
       ) : (
         <ul className={s.columnList}>
-          {columns.map(column => (
-            <li key={column._id} className={s.listItem}>
+          {columns.map((column, index) => (
+            <li
+              key={column._id}
+              className={s.listItem}
+              style={{ animationDelay: `${index * 0.1}s` }}
+            >
               <TaskColumn column={column} />
             </li>
           ))}
-          <li>
+          <li
+            className={s.listItem}
+            style={{ animationDelay: `${columns.length * 0.1}s` }}
+          >
             <ColumnStatus />
           </li>
         </ul>
