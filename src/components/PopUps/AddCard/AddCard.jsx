@@ -66,7 +66,7 @@ export default function PopUpAddCard({ column, onClose }) {
     columnId: column._id,
     title: '',
     description: '',
-    color: 'B9B9B9',
+    label: 'without priority',
     deadline: '',
   };
 
@@ -144,8 +144,8 @@ export default function PopUpAddCard({ column, onClose }) {
                         className={css.colorInput}
                         type="radio"
                         id="color1"
-                        name="color"
-                        value="8FA1D0"
+                        name="label"
+                        value="low"
                       />
                       <label htmlFor="color1">
                         <span className={css.color1}>
@@ -158,8 +158,8 @@ export default function PopUpAddCard({ column, onClose }) {
                         className={css.colorInput}
                         type="radio"
                         id="color-2"
-                        name="color"
-                        value="E09CB5"
+                        name="label"
+                        value="medium"
                       />
                       <label htmlFor="color-2">
                         <span className={css.color2}>
@@ -172,8 +172,8 @@ export default function PopUpAddCard({ column, onClose }) {
                         className={css.colorInput}
                         type="radio"
                         id="color-3"
-                        name="color"
-                        value="BEDBB0"
+                        name="label"
+                        value="high"
                       />
                       <label htmlFor="color-3">
                         <span className={css.color3}>
@@ -186,8 +186,8 @@ export default function PopUpAddCard({ column, onClose }) {
                         className={css.colorInput}
                         type="radio"
                         id="color-4"
-                        name="color"
-                        value="B9B9B9"
+                        name="label"
+                        value="without priority"
                       />
                       <label htmlFor="color-4">
                         <span className={css.color4}>
@@ -199,7 +199,7 @@ export default function PopUpAddCard({ column, onClose }) {
                 </div>
                 <div className={css.priorityContainerText}>
                   {' '}
-                  <p>Tasks priority:</p> <p>{values.color}</p>
+                  <p>Tasks priority:</p> <p>{values.label}</p>
                 </div>
               </div>
 

@@ -30,9 +30,9 @@ const Filters = ({ onRequestClose }) => {
             <input
               type="radio"
               name="priority"
-              value="#bedbb0"
-              checked={currentPriority === '#bedbb0'}
-              onChange={() => handlePriorityChange('#bedbb0')}
+              value="low"
+              checked={currentPriority === 'low'}
+              onChange={() => handlePriorityChange('low')}
             />
             High
           </label>
@@ -40,9 +40,9 @@ const Filters = ({ onRequestClose }) => {
             <input
               type="radio"
               name="priority"
-              value="#e09cb5"
-              checked={currentPriority === '#e09cb5'}
-              onChange={() => handlePriorityChange('#e09cb5')}
+              value="medium"
+              checked={currentPriority === 'medium'}
+              onChange={() => handlePriorityChange('medium')}
             />
             Medium
           </label>
@@ -50,9 +50,9 @@ const Filters = ({ onRequestClose }) => {
             <input
               type="radio"
               name="priority"
-              value="#8fa1d0"
-              checked={currentPriority === '#8fa1d0'}
-              onChange={() => handlePriorityChange('#8fa1d0')}
+              value="heit"
+              checked={currentPriority === 'heit'}
+              onChange={() => handlePriorityChange('heit')}
             />
             Low
           </label>
@@ -60,9 +60,9 @@ const Filters = ({ onRequestClose }) => {
             <input
               type="radio"
               name="priority"
-              value="all"
-              checked={currentPriority === 'all'}
-              onChange={() => handlePriorityChange('all')}
+              value="without priority"
+              checked={currentPriority === 'without priority'}
+              onChange={() => handlePriorityChange('without priority')}
             />
             Without priority
           </label>

@@ -35,7 +35,7 @@ const EditCard = ({ card, onClose }) => {
     columnId: card.columnId,
     title: card.title,
     description: card.description,
-    color: card.color,
+    label: card.label,
     deadline: card.deadline ? new Date(card.deadline) : new Date(),
   };
 
@@ -104,7 +104,7 @@ const EditCard = ({ card, onClose }) => {
                     className={css.colorInput}
                     type="radio"
                     id="color1"
-                    name="color"
+                    name="label"
                     value="8FA1D0"
                   />
                   <label htmlFor="color1">
@@ -118,7 +118,7 @@ const EditCard = ({ card, onClose }) => {
                     className={css.colorInput}
                     type="radio"
                     id="color-2"
-                    name="color"
+                    name="label"
                     value="E09CB5"
                   />
                   <label htmlFor="color-2">
@@ -132,7 +132,7 @@ const EditCard = ({ card, onClose }) => {
                     className={css.colorInput}
                     type="radio"
                     id="color-3"
-                    name="color"
+                    name="label"
                     value="BEDBB0"
                   />
                   <label htmlFor="color-3">
@@ -146,7 +146,7 @@ const EditCard = ({ card, onClose }) => {
                     className={css.colorInput}
                     type="radio"
                     id="color-4"
-                    name="color"
+                    name="label"
                     value="B9B9B9"
                   />
                   <label htmlFor="color-4">

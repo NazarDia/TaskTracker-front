@@ -8,8 +8,8 @@ export const selectPriorityFilter = state => state.filters.priority;
 const priorityColorMap = {
   none: 'rgba(255, 255, 255, 0.3)',
   low: '#8fa1d0',
-  medium: '#e09cb5',
-  high: '#bedbb0',
+  medium: 'medium',
+  high: 'high',
 };
 
 // Селектор для фільтрації карток за кольором (пріоритетом)
@@ -20,8 +20,8 @@ export const selectFilteredCards = createSelector(
       return cards;
     }
 
-    const color = priorityColorMap[priorityFilter];
+    const label = priorityColorMap[priorityFilter];
 
-    return cards.filter(card => card.color === color);
+    return cards.filter(card => card.label === label);
   }
 );

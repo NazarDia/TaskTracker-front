@@ -9,9 +9,9 @@ const CardsList = ({ column }) => {
 
   const filteredTasksByPriority = useMemo(() => {
     if (currentPriority === 'all') return column.tasks;
-    const normalizedColor = currentPriority.toUpperCase().slice(1);
+    const normalizedColor = currentPriority.toLowerCase();
 
-    const columnTasks = column.tasks.filter(el => el.color === normalizedColor);
+    const columnTasks = column.tasks.filter(el => el.label === normalizedColor);
     return columnTasks;
   }, [column, currentPriority]);
 
