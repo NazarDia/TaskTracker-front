@@ -178,7 +178,9 @@
   font-family: var(--PoppinsRegular);
   font-size: 12px;
 }
-
+.priorityValue {
+  text-transform: capitalize;
+}
 .deadline {
   margin-top: 14px;
   margin-bottom: 4px;
