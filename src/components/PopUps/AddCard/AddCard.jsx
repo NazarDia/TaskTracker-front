@@ -11,6 +11,7 @@ import { format } from 'date-fns';
 import { useState, useEffect, useRef } from 'react';
 import * as Yup from 'yup';
 import Calendar from '../Calendar/Calendar';
+import { SlArrowDown } from 'react-icons/sl';
 
 export default function PopUpAddCard({ column, onClose }) {
   const dispatch = useDispatch();
@@ -66,7 +67,7 @@ export default function PopUpAddCard({ column, onClose }) {
     title: '',
     description: '',
     color: 'B9B9B9',
-    deadline: new Date(),
+    deadline: '',
   };
 
   const handleSubmit = values => {
@@ -87,6 +88,15 @@ export default function PopUpAddCard({ column, onClose }) {
 
   const cardTitleId = nanoid();
   const cardDescriptionId = nanoid();
+
+  const formatDate = deadline => {
+    const formattedDate = format(new Date(deadline), 'MMMM d');
+    const todayFormattedDate = format(new Date(), 'MMMM d');
+
+    return formattedDate === todayFormattedDate
+      ? `Today, ${formattedDate}`
+      : format(new Date(deadline), 'eeee, MMMM d');
+  };
 
   return (
     <div className={css.addCardModal}>
@@ -195,14 +205,26 @@ export default function PopUpAddCard({ column, onClose }) {
 
               <div className={css.datePickerWrapper}>
                 <p className={css.deadline}>Deadline</p>
-                <p
+                <div
                   className={css.deadlineDisplay}
                   onClick={() => setShowDatePicker(!showDatePicker)}
                 >
-                  {values.deadline
-                    ? format(values.deadline, 'eeee, MMMM d')
-                    : 'Select date'}
-                </p>
+                  {!values.deadline ? (
+                    <>
+                      Select date
+                      <span className={css.downIcon}>
+                        <SlArrowDown />
+                      </span>
+                    </>
+                  ) : (
+                    <>
+                      {formatDate(values.deadline)}
+                      <span className={css.downIcon}>
+                        <SlArrowDown />
+                      </span>
+                    </>
+                  )}
+                </div>
                 {showDatePicker && (
                   <div ref={datePickerRef} className={css.datePickerOverlay}>
                     <Field
