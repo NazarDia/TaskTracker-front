@@ -22,7 +22,7 @@
   cursor: pointer;
   text-decoration: underline;
   font-family: 'PoppinsRegular';
-  color: var(--label-color-grey);
+  color: var(--filtr-modal-text);
 }
 
 .priorityFilter {
@@ -62,7 +62,7 @@
 }
 
 .none {
-  color: var(--label-color-grey);
+  color: var(--filtr-modal-text);
 }
 .hederOfModal {
   display: flex;

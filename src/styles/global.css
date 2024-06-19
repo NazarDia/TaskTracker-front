@@ -139,6 +139,7 @@
   --user-text-color: #161616;
 
   --stroke-icon-color: #161616;
+  --filtr-modal-text: rgba(22, 22, 22, 0.3);
 }
 
 [data-theme='Dark'] {
@@ -189,6 +190,7 @@
   --user-text-color: #fff;
 
   --stroke-icon-color: #fff;
+  --filtr-modal-text: rgba(255, 255, 255, 0.5);
 }
 
 [data-theme='Violet'] {
