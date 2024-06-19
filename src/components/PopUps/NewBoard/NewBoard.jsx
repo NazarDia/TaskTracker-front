@@ -56,43 +56,38 @@ export default function NewBoard({ closeModal, initialIcon }) {
   const handleRadioChangeBackground = e => {
     setBackground(e.target.value);
   };
-const handleSubmit = async (values, { setFieldError, resetForm }) => {
-  const isBoardExists = boards.find(
-    board => board.title === values.titleBoard
-  );
 
-  if (isBoardExists) {
-    setFieldError('titleBoard', 'The board with this title already exists');
-    return;
-  }
+  const handleSubmit = async (values, { setFieldError, resetForm }) => {
+    const isBoardExists = boards.find(
+      board => board.title === values.titleBoard
+    );
 
-  let selectedBackground = background;
-  if (!selectedBackground) {
-    selectedBackground = 'no-background'; 
-  }
+    if (isBoardExists) {
+      setFieldError('titleBoard', 'The board with this title already exists');
+      return;
+    }
 
-  const newBoard = {
-    title: values.titleBoard,
-    icon: icon,
-    background: selectedBackground,
+    const newBoard = {
+      title: values.titleBoard,
+      icon: icon,
+      background: background || 'no-background',
+    };
+
+    try {
+      const response = await dispatch(addBoard(newBoard));
+      const createdBoard = response.payload;
+
+      // Активуємо новостворену дошку
+      dispatch(setActiveBoard(createdBoard));
+      localStorage.setItem('activeBoard', createdBoard._id);
+
+      await dispatch(fetchBoards());
+      resetForm();
+      closeModal();
+    } catch (error) {
+      console.error('Error creating the board:', error);
+    }
   };
-
-  try {
-    const response = await dispatch(addBoard(newBoard));
-    const createdBoard = response.payload;
-
-    // Activate the newly created board
-    dispatch(setActiveBoard(createdBoard));
-    localStorage.setItem('activeBoard', createdBoard._id);
-
-    await dispatch(fetchBoards());
-    resetForm();
-    closeModal();
-  } catch (error) {
-    console.error('Error creating the board:', error);
-  }
-};
-
 
   return (
     <Formik

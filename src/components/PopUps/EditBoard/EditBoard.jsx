@@ -34,20 +34,17 @@ export default function EditBoard({ boardId, onClose, initialIcon }) {
   const backgrounds = useSelector(selectBackgrounds);
 
   const [icon, setIcon] = useState(initialIcon || icons[0]);
-  const [background, setBackground] = useState("");
+  const [background, setBackground] = useState(selectedBoard?.background?.toString() || "");
 
   useEffect(() => {
     dispatch(fetchBackgrounds());
-  }, [dispatch]);
-
-  useEffect(() => {
     if (boardId) {
       dispatch(getBoardByID(boardId))
         .unwrap()
         .then(data => {
           if (data) {
             setIcon(data.icon || icons[0]);
-            setBackground(data.background || "");
+            setBackground(data.background?.toString() || selectedBoard?.background?.toString() || "");
           }
         })
         .catch(error => {
@@ -55,10 +52,9 @@ export default function EditBoard({ boardId, onClose, initialIcon }) {
           toast.error('Failed to fetch board data. Please check the ID.');
         });
     }
-  }, [dispatch, boardId]);
+  }, [dispatch, boardId, selectedBoard?.background]);
 
   const handleSubmit = async (values, { setFieldError, resetForm }) => {
-
     const duplicateTitle = boards.some(
       (board) => board.title.toLowerCase() === values.title.toLowerCase() && board._id !== boardId
     );
@@ -71,11 +67,11 @@ export default function EditBoard({ boardId, onClose, initialIcon }) {
     const updatedData = {
       title: values.title,
       icon: icon,
-      background: background,
+      background: typeof background === 'string' ? background : (selectedBoard?.background?.toString() || ""),
     };
 
     try {
-      const response = await dispatch(editBoardById({ boardId, ...updatedData })).unwrap();
+      await dispatch(editBoardById({ boardId, ...updatedData })).unwrap();
       await dispatch(getBoardByID(boardId));
       resetForm();
       onClose();
@@ -93,6 +89,7 @@ export default function EditBoard({ boardId, onClose, initialIcon }) {
         background: background,
       }}
       validationSchema={formSchema}
+      enableReinitialize
       onSubmit={handleSubmit}
     >
       {({ errors, touched, isSubmitting }) => (
@@ -179,3 +176,4 @@ export default function EditBoard({ boardId, onClose, initialIcon }) {
     </Formik>
   );
 }
+
