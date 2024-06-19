@@ -173,7 +173,7 @@
   .allBoardsMenu {
     position: absolute;
     top: -8px;
-    left: 4px;
+
     background-color: var(--aside-bg-color);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
     z-index: -1;
@@ -189,10 +189,12 @@
 
   .showAllBoards:hover .allBoardsMenu {
     animation: slideIn 800ms forwards;
+    left: 4px;
   }
 
   .showAllBoards:not(:hover) .allBoardsMenu {
     animation: slideOut 800ms forwards;
+    left: 0;
   }
 
   .boardItem:hover {
@@ -223,7 +225,7 @@
   }
 
   .allBoardsMenu::-webkit-scrollbar-thumb:hover {
-    background-color: #555;
+    background-color: var(--btn-hover-color);
   }
 
   .allBoardsMenu::-webkit-scrollbar-button:start {
