@@ -134,6 +134,28 @@
     height: 18px;
   }
 
+  @keyframes slideIn {
+    from {
+      transform: translateX(0);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(100%);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideOut {
+    from {
+      transform: translateX(100%);
+      opacity: 1;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 0;
+    }
+  }
+
   .showAllBoards {
     cursor: pointer;
     position: relative;
@@ -151,10 +173,10 @@
   .allBoardsMenu {
     position: absolute;
     top: -8px;
-    left: 100%;
+    left: 4px;
     background-color: var(--aside-bg-color);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-    z-index: 9999;
+    z-index: -1;
     width: 260px;
     max-height: 390px;
     overflow-y: auto;
@@ -162,6 +184,15 @@
     border-bottom-right-radius: 10px;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 24px;
+    animation: slideIn 800ms forwards;
+  }
+
+  .showAllBoards:hover .allBoardsMenu {
+    animation: slideIn 800ms forwards;
+  }
+
+  .showAllBoards:not(:hover) .allBoardsMenu {
+    animation: slideOut 800ms forwards;
   }
 
   .boardItem:hover {

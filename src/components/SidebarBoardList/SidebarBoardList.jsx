@@ -21,6 +21,7 @@ export default function SidebarBoardList({ onClose }) {
   const [boardToEdit, setBoardToEdit] = useState(null);
   const [showAllBoards, setShowAllBoards] = useState(false);
   const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 1440);
+  const [animateOut, setAnimateOut] = useState(false);
 
   useEffect(() => {
     dispatch(fetchBoards());
@@ -99,8 +100,14 @@ export default function SidebarBoardList({ onClose }) {
     setBoardToEdit(null);
   };
 
-  const handleMouseEnter = () => setShowAllBoards(true);
-  const handleMouseLeave = () => setShowAllBoards(false);
+  const handleMouseEnter = () => {
+    setAnimateOut(false);
+    setShowAllBoards(true);
+  };
+  const handleMouseLeave = () => {
+    setAnimateOut(true);
+    setTimeout(() => setShowAllBoards(false), 0);
+  };
 
   const renderBoardItem = (board, isActive) => {
     if (!board) return null;
@@ -170,8 +177,12 @@ export default function SidebarBoardList({ onClose }) {
                 >
                   <p>Show all boards</p>
                   <FaAngleRight className={s.arrow} />
-                  {showAllBoards && (
-                    <div className={s.allBoardsMenu}>
+                  {(showAllBoards || animateOut) && (
+                    <div
+                      className={`${s.allBoardsMenu} ${
+                        animateOut ? s.slideOut : s.slideIn
+                      }`}
+                    >
                       <ul className={s.boardList}>
                         {boards.map(board => renderBoardItem(board, false))}
                       </ul>
