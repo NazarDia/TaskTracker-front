@@ -25,7 +25,12 @@ const TaskColumnsList = () => {
   return (
     <div className={s.container}>
       {columns.length === 0 ? (
-        <ColumnStatus />
+        <div
+          className={s.listItem}
+          style={{ animationDelay: `${columns.length * 0.1}s` }}
+        >
+          <ColumnStatus />
+        </div>
       ) : (
         <ul className={s.columnList}>
           {columns.map((column, index) => (

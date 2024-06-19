@@ -22,11 +22,13 @@
 .filterWrapper {
   display: flex;
   height: 100%;
+  cursor: pointer;
 }
 .icon {
   stroke: var(--stroke-icon-color);
   display: block;
   align-self: center;
+  transition: all 0.4s ease;
 }
 
 .filtersPar {
@@ -39,6 +41,7 @@
   letter-spacing: -0.0175em;
   display: flex;
   align-items: center;
+  transition: all 0.4s ease;
 }
 
 @media screen and (min-width: 768px) {
@@ -54,6 +57,13 @@
     margin-right: 5px;
     margin-left: 5px;
     margin-bottom: 10px;
+  }
+  .filterWrapper:hover .filtersPar {
+    color: var(--btn-hover-color);
+  }
+  .filterWrapper:hover .icon {
+    stroke: var(--btn-hover-color);
+    transform: rotateY(180deg);
   }
 }
 @media screen and (max-width: 1440px) {
