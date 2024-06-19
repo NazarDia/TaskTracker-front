@@ -9,8 +9,8 @@
   z-index: 0;
   border-radius: 8px;
   margin-bottom: 39px;
-  margin-right: 12px;
-  margin-left: 12px;
+  margin-right: 8px;
+  margin-left: 8px;
 }
 .boardTitle {
   color: var(--header-text-color);
