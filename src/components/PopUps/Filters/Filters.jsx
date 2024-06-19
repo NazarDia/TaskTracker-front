@@ -20,19 +20,34 @@ const Filters = ({ onRequestClose }) => {
   return (
     <div className={s.filtersModal}>
       <h3 className={s.title}>Filters</h3>
-      <button className={s.showAllButton} onClick={handleShowAll}>
-        Show all
-      </button>
+      <hr />
       <div className={s.priorityFilter}>
-        <p>Label color</p>
+        <div className={s.hederOfModal}>
+          {' '}
+          <p>Label color</p>
+          <p className={s.showAllButton} onClick={handleShowAll}>
+            Show all
+          </p>
+        </div>
+
         <div>
-          <label className={s.high}>
+          <label className={s.none}>
             <input
               type="radio"
               name="priority"
-              value="low"
-              checked={currentPriority === 'low'}
-              onChange={() => handlePriorityChange('low')}
+              value="without priority"
+              checked={currentPriority === 'without priority'}
+              onChange={() => handlePriorityChange('without priority')}
+            />
+            Without priority
+          </label>
+          <label className={s.low}>
+            <input
+              type="radio"
+              name="priority"
+              value="heit"
+              checked={currentPriority === 'heit'}
+              onChange={() => handlePriorityChange('heit')}
             />
             Low
           </label>
@@ -46,26 +61,19 @@ const Filters = ({ onRequestClose }) => {
             />
             Medium
           </label>
-          <label className={s.low}>
-            <input
-              type="radio"
-              name="priority"
-              value="heit"
-              checked={currentPriority === 'high'}
-              onChange={() => handlePriorityChange('high')}
-            />
-            High
-          </label>
-          <label className={s.none}>
-            <input
-              type="radio"
-              name="priority"
-              value="without priority"
-              checked={currentPriority === 'without priority'}
-              onChange={() => handlePriorityChange('without priority')}
-            />
-            Without priority
-          </label>
+          <div>
+            {' '}
+            <label className={s.high}>
+              <input
+                type="radio"
+                name="priority"
+                value="low"
+                checked={currentPriority === 'low'}
+                onChange={() => handlePriorityChange('low')}
+              />
+              High
+            </label>
+          </div>
         </div>
       </div>
     </div>
