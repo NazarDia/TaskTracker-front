@@ -6,7 +6,7 @@
   height: calc(100vh - 60px);
 }
 .textInner {
-  min-width: 335px;
+  min-width: 300 px;
   max-width: 468px;
   text-align: center;
   color: var(--card-text-color);
