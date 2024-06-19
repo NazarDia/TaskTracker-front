@@ -18,7 +18,7 @@ const defaultAvatars = {
 
 const EditProfile = ({ onClose }) => {
   const user = useUserData();
-  const theme = useTheme(); // Отримання поточної теми
+  const theme = useTheme();
   const dispatch = useDispatch();
   const [avatar, setAvatar] = useState(null);
   const [passwordVisible, setPasswordVisible] = useState(false);
@@ -71,12 +71,7 @@ const EditProfile = ({ onClose }) => {
           ) : (
             <img src={avatarURL} className={s.imgUser} alt="avatar" />
           )}
-          <svg
-            className={s.btnplus}
-            width={24}
-            height={24}
-            stroke="var(--sidebar-btn-icon)"
-          >
+          <svg className={s.btnplus} stroke="var(--sidebar-btn-icon)">
             <use href={`${sprite}#icon-plus`}></use>
           </svg>
         </label>

@@ -1,12 +1,23 @@
 .modal {
   margin-top: 10px;
-  width: 350px;
+  width: 100%;
   min-height: 300px;
+  max-width: 350px;
 }
 
 .formStyle {
-  width: 350px;
+  width: 100%;
   text-align: center;
+}
+
+@media (min-width: 375px) {
+  .modal {
+    width: 350px;
+  }
+
+  .formStyle {
+    width: 350px;
+  }
 }
 
 .labelStyle {
@@ -25,23 +36,27 @@
   height: 49px;
   background: none;
   color: var(--user-text-color);
-  border: 1px solid var(--select-bg-border);
+  border: 1px solid var(--btn-bg-color);
   opacity: 0.4;
+  transition: opacity 350ms ease-in-out;
 }
 
 .inputName:hover {
-  border: 1px solid var(--select-text-hover);
+  border: 1px solid var(--btn-hover-color);
+  opacity: 1;
 }
 
 .inputName:focus {
-  border: 1px solid;
-  border-color: var(--select-text-hover);
-  color: var(--user-text-color);
+  border: 1px solid var(--btn-hover-color);
+  opacity: 1;
+}
+
+.inputName:active {
+  opacity: 0;
 }
 
 .inputNameImg {
   display: block;
-
   width: 100px;
   opacity: 0;
 }
@@ -57,20 +72,23 @@
   height: 68px;
   justify-content: center;
   transition: transform 0.3s ease;
-    /* Додано плавний перехід */
-  }
-  
-  .imgUser:hover {
-    transform: scale(1.2);
-    /* Збільшення на 20% при наведенні */
-  }
+  border-radius: 5px;
+  border: 1px solid var(--text-color-modify);
+}
+
+.imgUser:hover {
+  transform: scale(1.2);
+  box-shadow: 0px 6px 7px 1px var(--text-color-modify);
+}
 
 .btnAdd {
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-family: 'Poppins-Medium', sans-serif;
   font-weight: 700;
   font-size: 14px;
+  letter-spacing: -0.28px;
   border-radius: 6px;
   width: 100%;
   background-color: var(--btn-bg-color);
@@ -80,8 +98,13 @@
   border: none;
 }
 
+.btnAdd:hover {
+  background-color: var(--btn-hover-color);
+}
+
 .titleName {
-  color:var(--text-color);
+  font-family: 'Poppins-Medium', sans-serif;
+  color: var(--user-text-color);
   font-size: 18px;
   width: 96px;
 }
@@ -91,20 +114,30 @@
   right: 5px;
   top: 33%;
   transform: translate(-70%);
+  transition: opacity 0.4s;
 }
 
 .img {
   display: inline-block;
-
   fill: none;
   stroke: var(--stroke-icon-color);
   cursor: pointer;
 }
 
-.fieldIcon{
+.fieldIcon {
   stroke: var(--stroke-icon-color);
+  opacity: 0.4;
+  margin-right: 8px;
+  stroke-width: 2;
+  transition: opacity 350ms ease-in-out;
 }
-.btnplus{
+
+.fieldIcon:active,
+.fieldIcon:focus {
+  opacity: 1;
+}
+
+.btnplus {
   width: 24px;
   height: 24px;
   display: flex;
@@ -120,4 +153,10 @@
 
 .btnplus:hover {
   border: 1px solid var(--select-text-hover);
+}
+
+.svg {
+  width: 10px;
+  height: 10px;
+  stroke: var(--stroke-icon-color);
 }

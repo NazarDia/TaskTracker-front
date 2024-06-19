@@ -3,7 +3,7 @@
 }
 
 .titleModal {
-  color: var(--text-color);
+  color: var(--user-text-color);
   font-family: 'PoppinsMedium';
   font-size: 18px;
   font-style: normal;
@@ -20,7 +20,7 @@
   width: 287px;
   padding: 14px 18px;
   align-items: center;
-  color: var(--text-color);
+  color: var(--user-text-color);
 
   border-radius: 8px;
   border: 1px solid var(--btn-bg-color);
