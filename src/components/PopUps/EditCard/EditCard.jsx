@@ -50,7 +50,16 @@ const EditCard = ({ card, onClose }) => {
       .required('Required'),
     deadline: Yup.date()
       .required('Please choose deadline date')
-      .min(new Date(), 'Deadline must be in the future'),
+      // .min(new Date(), 'Deadline must be in the future or today'),
+      .test(
+        'is-future-date',
+        'Deadline must be in the future or today',
+        value => {
+          const today = new Date();
+          today.setHours(0, 0, 0, 0);
+          return value >= today;
+        }
+      ),
   });
 
   const initialValues = {
@@ -64,9 +73,24 @@ const EditCard = ({ card, onClose }) => {
   };
 
   const handleSubmit = values => {
+    // Отримуємо частини дати
+    const year = values.deadline.getFullYear();
+    const month = values.deadline.getMonth() + 1;
+    const day = values.deadline.getDate();
+
+    // YYYY-MM-DD
+    const formattedDeadline = `${year}-${month
+      .toString()
+      .padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
+
+    // DD/MM/YYYY
+    // const formattedDeadline = `${day.toString().padStart(2, '0')}/${month
+    //   .toString()
+    //   .padStart(2, '0')}/${year}`;
+
     const formattedValues = {
       ...values,
-      deadline: values.deadline.toISOString().split('T')[0],
+      deadline: formattedDeadline,
     };
 
     dispatch(updateCard(formattedValues))
@@ -85,12 +109,12 @@ const EditCard = ({ card, onClose }) => {
   const cardDescriptionId = nanoid();
 
   const formatDate = deadline => {
-    const formattedDate = format(new Date(deadline), 'MMMM d');
-    const todayFormattedDate = format(new Date(), 'MMMM d');
+    const formattedDate = format(new Date(deadline), 'eeee, MMMM d');
+    const todayFormattedDate = format(new Date(), 'eeee, MMMM d');
 
     return formattedDate === todayFormattedDate
       ? `Today, ${formattedDate}`
-      : format(new Date(deadline), 'eeee, MMMM d');
+      : formattedDate;
   };
 
   return (

@@ -50,12 +50,13 @@ export default function PopUpAddCard({ column, onClose }) {
       .required('Required'),
     deadline: Yup.date()
       .required('Please choose deadline date')
+      // .min(new Date(), 'Deadline must be in the future or today'),
       .test(
         'is-future-date',
         'Deadline must be in the future or today',
         value => {
           const today = new Date();
-          // today.setHours(0, 0, 0, 0);
+          today.setHours(0, 0, 0, 0);
           return value >= today;
         }
       ),
@@ -71,10 +72,26 @@ export default function PopUpAddCard({ column, onClose }) {
   };
 
   const handleSubmit = values => {
+    // Отримуємо частини дати
+    const year = values.deadline.getFullYear();
+    const month = values.deadline.getMonth() + 1;
+    const day = values.deadline.getDate();
+
+    // YYYY-MM-DD
+    const formattedDeadline = `${year}-${month
+      .toString()
+      .padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
+
+    // DD/MM/YYYY
+    // const formattedDeadline = `${day.toString().padStart(2, '0')}/${month
+    //   .toString()
+    //   .padStart(2, '0')}/${year}`;
+
     const formattedValues = {
       ...values,
-      deadline: values.deadline.toISOString().split('T')[0],
+      deadline: formattedDeadline,
     };
+
     dispatch(addCard(formattedValues))
       .unwrap()
       .then(() => {
@@ -198,10 +215,8 @@ export default function PopUpAddCard({ column, onClose }) {
                   </div>
                 </div>
                 <div className={css.priorityContainerText}>
-
                   <p>Tasks priority:</p>
                   <p className={css.priorityValue}>{values.label}</p>
-
                 </div>
               </div>
               <div className={css.datePickerWrapper}>
