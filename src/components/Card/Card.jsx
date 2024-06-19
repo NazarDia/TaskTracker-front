@@ -81,10 +81,10 @@ const Card = ({ task }) => {
     setShowFullText(!showFullText);
   };
   const handleTextOverflow = text => {
-    const shouldTextBeHidden = text.length >= 88;
+    const shouldTextBeHidden = text.length >= 70;
 
     if (shouldTextBeHidden) {
-      return `${text.slice(0, 88)}...`;
+      return `${text.slice(0, 70)}...`;
     } else {
       return text;
     }

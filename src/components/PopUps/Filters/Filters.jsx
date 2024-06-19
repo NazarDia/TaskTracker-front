@@ -34,7 +34,7 @@ const Filters = ({ onRequestClose }) => {
               checked={currentPriority === 'low'}
               onChange={() => handlePriorityChange('low')}
             />
-            High
+            Low
           </label>
           <label className={s.medium}>
             <input
@@ -51,10 +51,10 @@ const Filters = ({ onRequestClose }) => {
               type="radio"
               name="priority"
               value="heit"
-              checked={currentPriority === 'heit'}
-              onChange={() => handlePriorityChange('heit')}
+              checked={currentPriority === 'high'}
+              onChange={() => handlePriorityChange('high')}
             />
-            Low
+            High
           </label>
           <label className={s.none}>
             <input
