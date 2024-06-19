@@ -16,8 +16,14 @@
   width: 32px;
   height: 32px;
   padding: 0;
-  border: none;
+  /* border: none; */
   background: none;
+  border-radius: 5px;
+  border: 1px solid var(--text-color-modify);
+}
+
+.profile_btn:hover{
+  box-shadow: 0px 6px 7px 1px var(--text-color-modify);
 }
 
 .profile_btn svg {
