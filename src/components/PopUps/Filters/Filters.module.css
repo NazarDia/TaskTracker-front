@@ -1,54 +1,70 @@
 .filtersModal {
-    position: relative;
-    padding: 20px;
-  }
-  
-  .title {
-    margin: 0;
-    padding: 0;
-    font-size: 24px;
-  }
-  
-  .showAllButton {
-    display: block;
-    margin: 20px 0;
-    padding: 10px 20px;
-    background-color: #ccc;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .priorityFilter {
-    margin-top: 20px;
-  }
-  
-  .priorityFilter p {
-    margin: 0;
-    font-size: 18px;
-  }
-  
-  .priorityFilter label {
-    display: block;
-    margin: 10px 0;
-  }
-  
-  .priorityFilter input {
-    margin-right: 10px;
-  }
-  
-  .high {
-    color: var(--label-color-green);
-  }
-  
-  .medium {
-    color: var(--label-color-pink);
-  }
-  
-  .low {
-    color: var(--label-color-blue);
-  }
-  
-  .none {
-    color: var(--label-color-grey);
-  }
+  position: relative;
+  width: 300px;
+  color: var(--card-title-color);
+}
+
+.title {
+  margin: 0;
+  padding: 0;
+  font-size: 24px;
+  color: var(--card-title-color);
+  margin-bottom: 14px;
+}
+
+.showAllButton {
+  display: block;
+  /* margin: 20px 0;
+  padding: 10px 20px; */
+  /* background-color: #ccc; */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: underline;
+  font-family: 'PoppinsRegular';
+  color: var(--filtr-modal-text);
+}
+
+.priorityFilter {
+  margin-top: 14px;
+}
+
+.priorityFilter p {
+  margin: 0;
+  font-size: 18px;
+}
+
+.priorityFilter label {
+  display: block;
+  margin: 10px 0;
+}
+
+.priorityFilter input {
+  margin-right: 10px;
+}
+
+.high {
+  color: var(--label-color-green);
+}
+.high:hover,
+.medium:hover,
+.low:hover,
+.none:hover,
+.showAllButton:hover {
+  color: var(--card-title-color);
+}
+.medium {
+  color: var(--label-color-pink);
+}
+
+.low {
+  color: var(--label-color-blue);
+}
+
+.none {
+  color: var(--filtr-modal-text);
+}
+.hederOfModal {
+  display: flex;
+  justify-content: space-between;
+}
