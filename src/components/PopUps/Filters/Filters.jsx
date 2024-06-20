@@ -46,8 +46,8 @@ const Filters = ({ onRequestClose }) => {
               type="radio"
               name="priority"
               value="high"
-              checked={currentPriority === 'high'}
-              onChange={() => handlePriorityChange('high')}
+              checked={currentPriority === 'low'}
+              onChange={() => handlePriorityChange('low')}
             />
             Low
           </label>
@@ -67,8 +67,8 @@ const Filters = ({ onRequestClose }) => {
                 type="radio"
                 name="priority"
                 value="low"
-                checked={currentPriority === 'low'}
-                onChange={() => handlePriorityChange('low')}
+                checked={currentPriority === 'high'}
+                onChange={() => handlePriorityChange('high')}
               />
               High
             </label>

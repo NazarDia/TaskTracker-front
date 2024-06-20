@@ -46,9 +46,9 @@ const Card = ({ task }) => {
       case 'medium':
         return 'E09CB5';
       case 'low':
-        return 'BEDBB0';
-      case 'high':
         return '8FA1D0';
+      case 'high':
+        return 'BEDBB0';
       default:
         return 'without priority';
     }
