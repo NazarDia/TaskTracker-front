@@ -4,12 +4,14 @@
   align-items: center;
   justify-content: center;
   height: calc(100vh - 60px);
+  padding: 0 16px;
 }
 .textInner {
-  min-width: 300 px;
-  max-width: 468px;
   text-align: center;
   color: var(--card-text-color);
+  font-size: var(--md-font-size);
+  line-height: 1.333;
+  letter-spacing: -0.015em;
 }
 
 .link {
@@ -18,11 +20,19 @@
 }
 
 @media (min-width: 375px) {
+  .textInner {
+    width: 335px;
+  }
 }
 
 @media (min-width: 768px) {
   .startWrapper {
     height: calc(100vh - 110px);
+  }
+  .textInner {
+    width: 486px;
+    font-size: var(--base-font-size);
+    line-height: 1.28;
   }
 }
 
