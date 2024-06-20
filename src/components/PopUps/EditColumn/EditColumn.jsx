@@ -7,6 +7,7 @@ import toast from 'react-hot-toast';
 import * as Yup from 'yup';
 
 import { CardButton } from '../CardButton/CardButton';
+import { useState } from 'react';
 
 const ColumnsSchema = Yup.object().shape({
   title: Yup.string()
@@ -16,6 +17,7 @@ const ColumnsSchema = Yup.object().shape({
 });
 const EditColumn = ({ column, onClose }) => {
   const dispatch = useDispatch();
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleSubmit = (values, actions) => {
     const updatedColumn = {
@@ -34,9 +36,10 @@ const EditColumn = ({ column, onClose }) => {
       .then(() => {
         onClose();
         toast.success('Column saved');
+        setErrorMessage('');
       })
       .catch(error => {
-        console.error('Error while editing column:', error);
+        setErrorMessage(error);
       })
       .finally(() => {
         actions.setSubmitting(false);
@@ -65,10 +68,12 @@ const EditColumn = ({ column, onClose }) => {
               name="title"
               placeholder="Title"
             />
-            <p className={s.warning}>
-              <ErrorMessage name="title" />
-            </p>
-
+            <div className={s.warning}>
+              <ErrorMessage name="title" component="div" className={s.error} />
+              {errorMessage && (
+                <div className={s.error}>This title already used</div>
+              )}{' '}
+            </div>
             <CardButton type="submit" btnText="Edit" />
           </Form>
         </Formik>

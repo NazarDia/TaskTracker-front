@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import s from './AddColumn.module.css';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { nanoid } from 'nanoid';
@@ -16,17 +17,24 @@ const ColumnsSchema = Yup.object().shape({
 
 const AddColumn = ({ boardId, closeModal }) => {
   const dispatch = useDispatch();
+  const [errorMessage, setErrorMessage] = useState('');
+
   const handleSubmit = (values, actions) => {
     dispatch(addNewColumn({ title: values.title, boardId: boardId }))
       .unwrap()
       .then(() => {
         toast.success('Column added successfully');
         closeModal();
+        actions.resetForm();
+        setErrorMessage('');
       })
-      .catch(() => {
-        toast.error('Error, please reload page');
+      .catch(error => {
+        if (error) {
+          setErrorMessage(error);
+        } else {
+          toast.error('Error, please reload page');
+        }
       });
-    actions.resetForm();
   };
 
   const columnTitleId = nanoid();
@@ -52,9 +60,12 @@ const AddColumn = ({ boardId, closeModal }) => {
               type="text"
               name="title"
               id={columnTitleId}
-            ></Field>
+            />
             <div className={s.warning}>
-              <ErrorMessage name="title" />
+              <ErrorMessage name="title" component="div" className={s.error} />
+              {errorMessage && (
+                <div className={s.error}>This title already used</div>
+              )}{' '}
             </div>
             <div className={s.btn}>
               <CardButton type="submit" btnText="Add column" />

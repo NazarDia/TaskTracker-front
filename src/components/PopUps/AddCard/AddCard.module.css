@@ -17,26 +17,38 @@
 .modalInputTitle:focus,
 .modalInputTitle:active .modalInputDescription:focus,
 .modalInputDescription:active {
-  outline: 1px solid var(--aside-bg-color);
+  opacity: 1;
+  outline: 1px solid var(--btn-bg-color);
+  box-shadow: 0px 4px 16px 0px var(--label-color-grey);
+  transition: transform 400ms cubic-bezier(0.4, 0, 0.2, 1);
+  /* outline: 1px solid var(--aside-bg-color); */
 }
 
 .modalInputTitle:focus-visible,
 .modalInputDescription:focus-visible {
+  opacity: 1;
+  outline: 1px solid var(--btn-bg-color);
+  box-shadow: 0px 4px 16px 0px var(--label-color-grey);
+  transition: transform 400ms cubic-bezier(0.4, 0, 0.2, 1);
   outline: 1px solid var(--aside-bg-color);
 }
 
 .modalInputTitle {
   margin-top: 24px;
+
   width: 287px;
   padding: 14px 18px;
+  font-size: 14px;
+  background-color: var(--main-bg-color);
   border-radius: 8px;
-  border: 1px solid var(--aside-active-bg-color);
-  background-color: var(--modal-bg-color);
 
+  opacity: 0.4;
   color: var(--user-text-color);
   transition: border var(--primary-transition);
-
   box-shadow: 0px 4px 16px 0px var(--label-color-grey);
+  border-radius: 8px;
+  border: 1px solid var(--select-bg-border);
+
   font-family: var(--PoppinsRegular);
   font-size: 14px;
   font-style: normal;
@@ -54,19 +66,20 @@
   display: none;
 }
 .modalInputDescription {
+  /* opacity: 0.4; */
   margin-top: 14px;
-  display: flex;
   width: 287px;
-  height: 154px;
   padding: 14px 18px;
-  align-items: center;
-  flex-shrink: 0;
-  border-radius: 8px;
-  border: 1px solid var(--aside-active-bg-color);
-  background-color: var(--modal-bg-color);
-
+  font-size: 14px;
+  background-color: var(--main-bg-color);
+  /* margin-bottom: 24px; */
   color: var(--user-text-color);
-  transition: border var(--primary-transition);
+  height: 120px;
+
+  opacity: 0.4;
+  box-shadow: 0px 4px 16px 0px var(--label-color-grey);
+  border-radius: 8px;
+  border: 1px solid var(--select-bg-border);
 
   box-shadow: 0px 4px 16px 0px var(--label-color-grey);
   font-family: var(--PoppinsRegular);
@@ -218,17 +231,12 @@
   bottom: 50%;
   left: 0;
   z-index: 1000;
-  background-color: var(--modal-bg-color);
-  border: 1px solid #ddd;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 .downIcon {
   margin-left: 4px;
 }
 .warning {
-  /* display: inline-block; */
   color: red;
-  /* background-color: #92e2c4; */
   font-size: 14px;
   margin-top: -16px;
   text-align: center;
@@ -250,10 +258,4 @@
 
 .datePickerWrapper {
   position: relative;
-}
-
-.datePickerOverlay {
-  position: absolute;
-  z-index: 10;
-  border: none;
 }
