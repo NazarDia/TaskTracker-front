@@ -33,6 +33,7 @@ const Filters = ({ onRequestClose }) => {
         <div>
           <label className={s.none}>
             <input
+              className={s.colorInputWithout}
               type="radio"
               name="priority"
               value="without priority"
@@ -43,9 +44,10 @@ const Filters = ({ onRequestClose }) => {
           </label>
           <label className={s.low}>
             <input
+              className={s.colorInputLow}
               type="radio"
               name="priority"
-              value="high"
+              value="low"
               checked={currentPriority === 'low'}
               onChange={() => handlePriorityChange('low')}
             />
@@ -53,6 +55,7 @@ const Filters = ({ onRequestClose }) => {
           </label>
           <label className={s.medium}>
             <input
+              className={s.colorInputMedium}
               type="radio"
               name="priority"
               value="medium"
@@ -64,9 +67,10 @@ const Filters = ({ onRequestClose }) => {
           <div>
             <label className={s.high}>
               <input
+                className={s.colorInputHigh}
                 type="radio"
                 name="priority"
-                value="low"
+                value="high"
                 checked={currentPriority === 'high'}
                 onChange={() => handlePriorityChange('high')}
               />

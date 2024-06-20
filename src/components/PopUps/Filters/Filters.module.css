@@ -68,3 +68,51 @@
   display: flex;
   justify-content: space-between;
 }
+input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+
+  transition: 0.2s all linear;
+  outline: none;
+  margin-right: 5px;
+
+  position: relative;
+  top: 4px;
+}
+.colorInputHigh {
+  border: 10px solid var(--label-color-green);
+}
+
+.colorInputHigh:checked {
+  border: 6px solid var(--label-color-green);
+}
+.colorInputMedium {
+  border: 10px solid var(--label-color-pink);
+}
+
+.colorInputMedium:checked {
+  border: 6px solid var(--label-color-pink);
+}
+
+.colorInputLow {
+  border: 10px solid var(--label-color-blue);
+}
+
+.colorInputLow:checked {
+  border: 6px solid var(--label-color-blue);
+}
+.colorInputWithout {
+  outline: 3px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid var(--card-title-color);
+}
+
+.colorInputWithout:checked {
+  opacity: 0.8;
+  border: 5px solid var(--card-title-color);
+  /* outline: 3px solid var(--card-title-color);*/
+}
