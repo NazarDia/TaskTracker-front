@@ -112,7 +112,7 @@ export default function PopUpAddCard({ column, onClose }) {
 
     return formattedDate === todayFormattedDate
       ? `Today, ${formattedDate}`
-      : format(new Date(deadline), 'eeee, MMMM d');
+      : format(new Date(deadline), 'MMMM d');
   };
 
   return (
