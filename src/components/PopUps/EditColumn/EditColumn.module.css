@@ -1,4 +1,5 @@
 .editModalContainer {
+  width: 287px;
   background-color: var(--modal-bg-color);
 }
 
@@ -17,7 +18,7 @@
 }
 
 .modalInputTitle {
-  width: 287px;
+  width: 100%;
   padding: 14px 18px;
   align-items: center;
   color: var(--user-text-color);
@@ -46,4 +47,11 @@
   background-color: var(--modal-bg-color);
   box-shadow: 0px 4px 16px 0px var(--header-text-color);
   outline: var(--btn-bg-color);
+}
+
+@media screen and (min-width: 768px) {
+  .editModalContainer {
+    width: 302px;
+    background-color: var(--modal-bg-color);
+  }
 }

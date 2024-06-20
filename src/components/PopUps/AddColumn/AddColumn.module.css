@@ -1,4 +1,5 @@
-.editModalContainer {
+.addColumnModalContainer {
+  width: 287px;
   background-color: var(--modal-bg-color);
 }
 
@@ -17,7 +18,7 @@
 }
 
 .modalInputTitle {
-  width: 287px;
+  width: 100%;
   padding: 14px 18px;
   align-items: center;
   color: var(--user-text-color);
@@ -48,4 +49,9 @@
 }
 .btn {
   margin-top: 24px;
+}
+@media screen and (min-width: 768px) {
+  .addColumnModalContainer {
+    width: 302px;
+  }
 }

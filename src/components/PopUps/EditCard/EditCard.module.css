@@ -1,7 +1,7 @@
 .modalContent {
-  width: 335px;
+  width: 287px;
   background-color: var(--modal-bg-color);
-  padding: 24px;
+  /* padding: 24px; */
 }
 
 .title {
@@ -36,7 +36,7 @@
 .modalInputTitle {
   margin-top: 24px;
 
-  width: 287px;
+  width: 100%;
   padding: 14px 18px;
   font-size: 14px;
   background-color: var(--main-bg-color);
@@ -67,7 +67,7 @@
 }
 .modalInputDescription {
   margin-top: 14px;
-  width: 287px;
+  width: 100%;
   padding: 14px 18px;
   font-size: 14px;
   background-color: var(--main-bg-color);
@@ -256,4 +256,11 @@
 }
 .datePickerWrapper {
   position: relative;
+}
+
+@media screen and (min-width: 768px) {
+  .modalContent {
+    width: 302px;
+    background-color: var(--modal-bg-color);
+  }
 }
