@@ -40,7 +40,7 @@ const AddColumn = ({ boardId, closeModal }) => {
   const columnTitleId = nanoid();
 
   return (
-    <div className={s.addModalContainer}>
+    <div className={s.addColumnModalContainer}>
       <h3 className={s.titleModal}>Add column</h3>
       <div className={s.modalAddColumnContainer}>
         <Formik
