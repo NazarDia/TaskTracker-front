@@ -42,9 +42,7 @@ export default function SidebarBoardList({ onClose }) {
         setSelectedBoard(activeBoardId);
         dispatch(setActiveBoard(activeBoard));
         dispatch(getBoardByID(activeBoardId));
-        navigate(
-          `/home/${activeBoard.title.toLowerCase().split(' ').join('-')}`
-        );
+        navigate(`/home/${activeBoard._id}`);
       } else {
         navigate('/home');
       }
