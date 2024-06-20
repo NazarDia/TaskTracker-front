@@ -41,7 +41,7 @@
   font-size: 14px;
   background-color: var(--main-bg-color);
   border-radius: 8px;
-  margin-bottom: 24px;
+
   opacity: 0.4;
   color: var(--user-text-color);
   transition: border var(--primary-transition);
@@ -66,13 +66,11 @@
   display: none;
 }
 .modalInputDescription {
-  /* opacity: 0.4; */
   margin-top: 14px;
   width: 287px;
   padding: 14px 18px;
   font-size: 14px;
   background-color: var(--main-bg-color);
-  margin-bottom: 24px;
   color: var(--user-text-color);
   height: 120px;
 
@@ -181,7 +179,6 @@
 }
 .priorityContainer {
   display: flex;
-
   justify-content: space-between;
   align-items: flex-end;
 }
@@ -231,9 +228,6 @@
   bottom: 50%;
   left: 0;
   z-index: 1000;
-  background-color: var(--modal-bg-color);
-  border: 1px solid #ddd;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
 .downIcon {
@@ -241,9 +235,7 @@
 }
 
 .warning {
-  /* display: inline-block; */
   color: red;
-  /* background-color: #92e2c4; */
   font-size: 14px;
   margin-top: -16px;
   text-align: center;
@@ -264,9 +256,4 @@
 }
 .datePickerWrapper {
   position: relative;
-}
-
-.datePickerOverlay {
-  position: absolute;
-  z-index: 10;
 }

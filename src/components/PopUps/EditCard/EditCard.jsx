@@ -50,7 +50,6 @@ const EditCard = ({ card, onClose }) => {
       .required('Required'),
     deadline: Yup.date()
       .required('Please choose deadline date')
-      // .min(new Date(), 'Deadline must be in the future or today'),
       .test(
         'is-future-date',
         'Deadline must be in the future or today',
@@ -73,7 +72,6 @@ const EditCard = ({ card, onClose }) => {
   };
 
   const handleSubmit = values => {
-    // Отримуємо частини дати
     const year = values.deadline.getFullYear();
     const month = values.deadline.getMonth() + 1;
     const day = values.deadline.getDate();
@@ -100,7 +98,6 @@ const EditCard = ({ card, onClose }) => {
         toast.success('Card updated');
       })
       .catch(error => {
-        console.error('Update card error:', error);
         toast.error(`Error: ${error.message}`);
       });
   };

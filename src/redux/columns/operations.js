@@ -23,7 +23,7 @@ export const addNewColumn = createAsyncThunk(
       const response = await axios.post('/columns', newColumn);
       return response.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.response.data.message);
     }
   }
 );
@@ -39,7 +39,7 @@ export const editColumnById = createAsyncThunk(
 
       return response.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.response.data.message);
     }
   }
 );
