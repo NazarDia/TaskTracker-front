@@ -3,7 +3,7 @@
   font-family: PoppinsRegular;
   border-radius: 8px;
   border: 1px solid #bedbb0;
-  background-color: var(--aside-help-bg-color);
+  background-color: var(--calendar-bg-color);
 }
 
 /* Стилі для заголовку календаря (назва місяця, стрілки перемикання) */
@@ -11,7 +11,7 @@
   font-family: PoppinsRegular;
   border-radius: 8px;
   border: 1px solid #bedbb0;
-  background: var(--aside-help-bg-color);
+  background: var(--calendar-bg-color);
 }
 
 /* Стилі для дня календаря */

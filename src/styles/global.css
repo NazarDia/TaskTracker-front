@@ -83,6 +83,8 @@
 
   --stroke-icon-color: #161616;
 
+  --calendar-bg-color: #FFF;
+
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -140,6 +142,7 @@
 
   --stroke-icon-color: #161616;
   --filtr-modal-text: rgba(22, 22, 22, 0.3);
+  --calendar-bg-color: #FFF;
 }
 
 [data-theme='Dark'] {
@@ -191,6 +194,7 @@
 
   --stroke-icon-color: #fff;
   --filtr-modal-text: rgba(255, 255, 255, 0.5);
+  --calendar-bg-color: #1F1F1F;
 }
 
 [data-theme='Violet'] {
@@ -242,6 +246,7 @@
   --user-text-color: #161616;
 
   --stroke-icon-color: #161616;
+  --calendar-bg-color: #FFF;
 }
 
 .container {
