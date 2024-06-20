@@ -1,0 +1,71 @@
+/* Загальні стилі для календаря */
+.react-datepicker {
+  font-family: PoppinsRegular;
+  border-radius: 8px;
+  border: 1px solid #bedbb0;
+  background-color: var(--aside-help-bg-color);
+}
+
+/* Стилі для заголовку календаря (назва місяця, стрілки перемикання) */
+.react-datepicker__header {
+  font-family: PoppinsRegular;
+  border-radius: 8px;
+  border: 1px solid #bedbb0;
+  background: var(--aside-help-bg-color);
+}
+
+/* Стилі для дня календаря */
+.react-datepicker__day {
+  color: var(--user-text-color);
+  font-family: PoppinsRegular;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.2857;
+  letter-spacing: -0.28px;
+}
+.react-datepicker__day:not(.react-datepicker__day--disabled):hover {
+  background-color: #bedbb0;
+  color: rgb(8, 7, 7);
+  border-radius: 50%;
+}
+
+.react-datepicker__day--disabled {
+  color: var(--card-text-color);
+  line-height: 1.2857; /* 128.571% */
+  letter-spacing: -0.28px;
+}
+/* Стилі для обраного дня */
+.react-datepicker__day--selected {
+  background-color: #bedbb0;
+  color: rgb(8, 7, 7);
+  border-radius: 50%;
+}
+.react-datepicker__current-month {
+  color: var(--user-text-color);
+  font-family: PoppinsMedium;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.32px;
+}
+/* .react-datepicker__day--outside-month {
+  color: #cccccc;
+} */
+/* Стилі для заголовків днів тижня */
+.react-datepicker__day-name {
+  color: var(--card-text-color);
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.28px;
+}
+
+.react-datepicker__navigation-icon {
+  fill: #ff0505;
+  stroke: #00ff95;
+  color: #00ff95;
+}
